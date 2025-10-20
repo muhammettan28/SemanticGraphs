@@ -290,6 +290,7 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
         # Paketleyici tespiti varsa, indirimi iptal et! (Bu örnekte bu oluyor)
         reduction_multiplier = 1.0
 
+
     total_raw = total_raw_normalized * reduction_multiplier
 
     # 7) SQUASH UYGULA VE LOGLA

@@ -22,6 +22,7 @@ def inspect_apk_zip_minimal(apk_path: str):
                 info["large_files"].append((name, size))
     return info
 
+
 # -----------------------------------------------------------
 # Yardımcı: Tüm stringleri Dex analizinden çıkar
 # -----------------------------------------------------------
