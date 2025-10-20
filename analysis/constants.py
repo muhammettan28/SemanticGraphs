@@ -243,5 +243,5 @@ W = {
     "file_operations": 3.0,
     "sqlite": 2.5,
     "shared_prefs": 1.5,
-    "modern_libs": 1,
+    "modern_libs": 0,
 }

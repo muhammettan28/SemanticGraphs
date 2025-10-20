@@ -14,8 +14,6 @@ from pathlib import Path
 from typing import List, Dict, Tuple
 import networkx as nx
 import json
-
-
 from analysis import packing
 from analysis import constants as c
 
@@ -26,7 +24,7 @@ except ImportError:
     exit(1)
 
 
-def _squash(x: float, K: float = 100.0, a: float = 0.005) -> float: # a=0.05'ten 0.025'e düşürüldü
+def _squash(x: float, K: float = 100.0, a: float = 0.008) -> float: # a=0.05'ten 0.025'e düşürüldü
     """Skoru tanh benzeri bir fonksiyonla [0, K] aralığına sıkıştırır."""
     return K * (math.tanh(x * a) + 1) / 2.0
 
@@ -142,7 +140,22 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
                 counts_m[k] = 0
     
     # Kategori katkılarını sınırla (Tüm 'min' kuralları buraya gelir)
-    # ... (tüm counts_g['network'] = min(...) kurallarınız) ...
+    counts_g['network'] = min(counts_g.get('network', 0), 15)
+    counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 10) 
+    counts_g['location'] = min(counts_g.get('location', 0), 10) 
+    counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 20)
+    counts_g['crypto'] = min(counts_g.get('crypto', 0), 15)
+    counts_g['reflection'] = min(counts_g.get('reflection', 0), 15)
+    counts_g['package_info'] = min(counts_g.get('package_info', 0), 10)
+    counts_g['device_info'] = min(counts_g.get('device_info', 0), 10)
+    counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 10)
+    counts_g['shared_prefs'] = min(counts_g.get('shared_prefs', 0), 20)
+    counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 20)
+
+    counts_g['native_code'] = min(counts_g.get('native_code', 0), 20)
+    counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 15)
+    counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 10)
+
     counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 12)
 
     # 4) HAM SEMANTİK VE YAPISAL SKORLARI HESAPLA
@@ -218,30 +231,30 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
         report['warning'] = "Graph is empty (N<=5), applying packing penalty."
 
     if uses_reflection and uses_native and uses_crypto:
-        bonus += 20.0
+        bonus += 4.0  # 10'dan 4'e düşürüldü
     if has_boot_receiver and (uses_dynamic_code or uses_native):
-        bonus += 15.0
+        bonus += 10.0
 
     # Seviye 2 Bonuslar
-    suspicious_bonus, detected_combos = check_suspicious_combinations(nodes_str)
+    suspicious_bonus, detected_combos = check_suspicious_combinations(counts_g, counts_m)
     bonus += suspicious_bonus
 
     if (uses_sms or uses_contacts or uses_telephony or uses_device_info) and has_c2_comm:
-        bonus += 15.0
+        bonus += 4
     if uses_accessibility and uses_overlay and has_banking_targets and (uses_telephony or uses_sms):
-        bonus += 10.0
+        bonus += 4.0
     if uses_keylogging and (uses_screenshot or uses_clipboard):
-        bonus += 8.0
+        bonus += 4.0
     if uses_admin and uses_crypto:
-        bonus += 8.0
+        bonus += 4.0
     if has_root_detection and has_anti_debug and has_emulator_detection:
-        bonus += 8.0
+        bonus += 4.0
 
     # Seviye 3 Bonuslar
     critical_flags = [
-        uses_sms, uses_admin, uses_dynamic_code, uses_telephony, uses_device_info,
-        has_emulator_detection, has_root_detection, uses_keylogging, has_banking_targets,
-        uses_shell_exec, uses_crypto, uses_native, uses_reflection
+        uses_sms, uses_admin, uses_dynamic_code, uses_telephony,
+        has_emulator_detection, has_root_detection, uses_keylogging, 
+        has_banking_targets, uses_shell_exec, uses_device_info
     ]
     crit_hits = sum(critical_flags)
     if crit_hits >= 4:
@@ -250,8 +263,12 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     # 6) NİHAİ SKORU HESAPLA (NORMALİZASYON & İNDİRİM)
     # ==================================================================
     mult = 1.0
-    if is_small: mult = 1.2
-    elif is_large: mult = 0.9
+    if is_small: 
+        mult = 1.2
+    elif is_large: 
+        mult = 0.9
+    else:
+        mult = 0.85  # Yeni eklenen normal boyut çarpanı
     
     # 6a. Tüm ham skorları birleştir
     total_raw_unnormalized = (sem_normed + structural + bonus) * mult
@@ -261,18 +278,17 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     total_raw_normalized = total_raw_unnormalized / normalization_factor
 
     # 6c. Benign Kütüphane İndirimini SADECE BİR KEZ UYGULA
-    benign_ratio_percent = calculate_weighted_benign_ratio(nodes_str, N)
-    benign_ratio = benign_ratio_percent / 100.0 # Yüzdeyi orana çevir
+    benign_ratio = calculate_weighted_benign_ratio(nodes_str, N) # Bu artık 0.0-1.0 arası doğru oranı döner
     
     if not is_packed:
-        # Daha agresif bir indirim uygula
-        reduction_multiplier = 1.0 / (1.0 + math.exp(3 * (benign_ratio - 0.5)))
-        # Ek güvenlik kontrolü
-        if benign_ratio > 0.8:  # Çok fazla benign kütüphane varsa
-            reduction_multiplier *= 0.5  # Skoru yarıya indir
+        # Daha güçlü bir indirim için sigmoid fonksiyonu kullanalım
+        # Oran %50 (0.5) ise skoru 0.5 ile çarpar
+        # Oran %80 (0.8) ise skoru ~0.12 ile çarpar (Güçlü indirim)
+        # Oran %20 (0.2) ise skoru ~0.88 ile çarpar (Hafif indirim)
+        reduction_multiplier = 1.0 / (1.0 + math.exp(6 * (benign_ratio - 0.55))) # 0.65'ten 0.55'e düşürüldü
     else:
-        # Paketleyici tespiti varsa, indirimi iptal et!
-        reduction_multiplier = 1.0 
+        # Paketleyici tespiti varsa, indirimi iptal et! (Bu örnekte bu oluyor)
+        reduction_multiplier = 1.0
 
     total_raw = total_raw_normalized * reduction_multiplier
 
@@ -295,7 +311,7 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
             f.write(f"  total_raw_unnormalized={(sem_normed + structural + bonus):.4f} * {mult:.2f} = {total_raw_unnormalized:.4f}\n")
             f.write(f"  normalization_factor={normalization_factor:.4f}\n")
             f.write(f"  total_raw_normalized={total_raw_normalized:.4f}\n")
-            f.write(f"\n  Benign Library Hits: Weighted ratio = {benign_ratio_percent:.2%}\n")
+            f.write(f"\n  Benign Library Hits: Weighted ratio = {benign_ratio:.2%}\n")
             f.write(f"  Benign Reduction Multiplier: {reduction_multiplier:.4f}\n")
             f.write(f"  FINAL total_raw={total_raw:.4f}\n")
             
@@ -346,51 +362,71 @@ def analyze_api_frequencies(cg) -> Dict[str, int]:
         api_call_frequencies[dst_class] += 1
     return api_call_frequencies
 
-def check_suspicious_combinations(nodes_str: List[str]) -> Tuple[float, List[str]]:
-    """Şüpheli API kombinasyonlarını kontrol eder"""
+def check_suspicious_combinations(counts_g: dict, counts_m: dict) -> Tuple[float, List[str]]:
+    """
+    Şüpheli API kombinasyonlarını KATEGORİ SAYIMLARINA göre kontrol eder.
+    (nodes_str taraması kaldırıldı, artık daha güvenilir.)
+    """
     suspicious_score = 0.0
     detected_combinations = []
     
+    # Bayrakları sayımlara göre ayarla
+    has_crypto = counts_g.get('crypto', 0) > 0
+    has_network = counts_g.get('network', 0) > 0
+    has_admin = counts_g.get('admin_operations', 0) > 0 or counts_m.get('admin_operations', 0) > 0
+    has_sms = counts_g.get('sms', 0) > 0 or counts_m.get('sms', 0) > 0
+    has_banking = counts_g.get('banking_targets', 0) > 1
+    has_overlay = counts_g.get('overlay', 0) > 0
+    has_reflection = counts_g.get('reflection', 0) > 0
+    has_native = counts_g.get('native_code', 0) > 0
+
     combinations = {
-        ('crypto', 'network'): 15.0,
-        ('reflection', 'native_code'): 12.0,
-        ('admin', 'network'): 10.0,
-        ('sms', 'network'): 8.0,
-        ('banking', 'overlay'): 20.0,
+    ('crypto', 'network'): 2.0,      # 5'ten 2'ye düşürüldü
+    ('reflection', 'native'): 1.0,   # 4'ten 1'e düşürüldü
+    ('admin', 'network'): 5.0,       # 8'den 5'e düşürüldü
+    ('sms', 'network'): 6.0,         # (Bu kalsın)
+    ('banking', 'overlay'): 3.0,     # 10'dan 3'e düşürüldü
     }
     
-    for (api1, api2), score in combinations.items():
-        has_first = any(api1 in node.lower() for node in nodes_str)
-        has_second = any(api2 in node.lower() for node in nodes_str)
-        if has_first and has_second:
-            suspicious_score += score
-            detected_combinations.append(f"{api1}+{api2}")
-            
+    # Bayrakları kullanarak kontrol et
+    if has_crypto and has_network:
+        suspicious_score += combinations[('crypto', 'network')]
+        detected_combinations.append('crypto+network')
+        
+    if has_reflection and has_native:
+        suspicious_score += combinations[('reflection', 'native')]
+        detected_combinations.append('reflection+native')
+        
+    if has_admin and has_network:
+        suspicious_score += combinations[('admin', 'network')]
+        detected_combinations.append('admin+network')
+        
+    if has_sms and has_network:
+        suspicious_score += combinations[('sms', 'network')]
+        detected_combinations.append('sms+network')
+        
+    if has_banking and has_overlay:
+        suspicious_score += combinations[('banking', 'overlay')]
+        detected_combinations.append('banking+overlay')
+
     return suspicious_score, detected_combinations
 
 def calculate_weighted_benign_ratio(nodes_str: List[str], N: int) -> float:
-    """Güvenilir kütüphaneleri ağırlıklı olarak değerlendirir"""
-    weights = {
-        'androidx': 2.5,  # Ağırlıkları artırdım
-        'com.google.android': 2.0,
-        'com.facebook': 1.8,
-        'com.squareup': 1.8,
-        'kotlin': 1.5,
-        'android.support': 2.0,  # Yeni ekledim
-        'org.jetbrains': 1.5,    # Yeni ekledim
-        'com.android': 1.8,      # Yeni ekledim
-    }
+    """
+    Güvenilir kütüphanelerin (constants.BENIGN_LIBRARIES) 
+    toplam düğümlere oranını hesaplar. (Düzeltilmiş Versiyon)
+    """
+    if N == 0:
+        return 0.0
     
-    weighted_hits = 0
+    # constants.py dosyasındaki asıl listeyi kullan
+    # (constants zaten 'c' olarak import edilmişti)
+    
+    benign_hits = 0
     for node in nodes_str:
-        for lib, weight in weights.items():
-            if lib in node:
-                weighted_hits += weight
-                break
-        else:
-            if any(lib in node.lower() for lib in c.BENIGN_LIBRARIES):
-                weighted_hits += 1.2  # Normal benign library ağırlığını artırdım
-            else:
-                weighted_hits += 0.5  # Bilinmeyen kütüphanelerin etkisini azalttım
-                
-    return (weighted_hits * 100.0) / max(N, 1)  # Yüzde olarak döndür
+        # frozenset'te hızlı arama için (Landroidx/ Lcom/google/ vb.)
+        if any(node.startswith(lib) for lib in c.BENIGN_LIBRARIES):
+            benign_hits += 1
+            
+    # Gerçek oranı (0.0 ile 1.0 arası) döndür
+    return benign_hits / N

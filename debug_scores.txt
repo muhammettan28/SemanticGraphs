@@ -1,23 +1,328 @@
 
 ================================================================================
-APK: 199015082974753A37E8529C13C1B0F209BC03C9453C8E6ABDB3364E6AF78E29.apk
-  N=6118, E=21265, size=12940.94KB, is_packed=False
-  sem_normed=782.6555
-  structural=11.6486
-  bonus=42.0000
+APK: 198F5837D529FDE9E2070449CF4F4B54B5CC3D2714A52F7A2506A645DFBD230A.apk
+  N=20505, E=75015, size=12039.03KB, is_packed=False
+  sem_normed=88.8903
+  structural=12.8475
+  bonus=33.0000
   mult=0.90
-  total_raw_unnormalized=836.3041 * 0.90 = 752.6737
-  normalization_factor=8.7190
-  total_raw_normalized=86.3258
+  total_raw_unnormalized=134.7378 * 0.90 = 121.2640
+  normalization_factor=9.9284
+  total_raw_normalized=12.2138
 
-  Benign Library Hits: Weighted ratio = 119.19%
-  Benign Reduction Multiplier: 0.9881
-  FINAL total_raw=85.2969
+  Benign Library Hits: Weighted ratio = 57.99%
+  Benign Reduction Multiplier: 0.4553
+  FINAL total_raw=5.5613
 
   Graf Kategorileri (counts_g):
-    modern_libs: 4730 (weight=1, contribution=4730.00)
-    location: 122 (weight=4, contribution=488.00)
-    shell_exec: 48 (weight=5.5, contribution=264.00)
+    modern_libs: 10760 (weight=0, contribution=0.00)
+    contacts: 20 (weight=4, contribution=80.00)
+    shared_prefs: 20 (weight=1.5, contribution=30.00)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    native_code: 14 (weight=4.0, contribution=56.00)
+    location: 10 (weight=4, contribution=40.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 7 (weight=4.0, contribution=28.00)
+    reflection: 6 (weight=4.0, contribution=24.00)
+    network: 5 (weight=4.5, contribution=22.50)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    sqlite: 4 (weight=2.5, contribution=10.00)
+    telephony: 3 (weight=9.8, contribution=29.40)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    notifications: 3 (weight=6.5, contribution=19.50)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    bluetooth: 1 (weight=4.0, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 10 (weight=12, contribution=120.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    admin_operations: 2 (weight=12.0, contribution=24.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    notifications: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    admin+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=5.5613, K=100.0, a=0.04) -> 60.9428
+
+================================================================================
+APK: 198F6C8C4B4F5137C8DB41C7C6314CA2C56C187F84EB2D9364BD45E9259577FA.apk
+  N=11682, E=60252, size=15393.74KB, is_packed=False
+  sem_normed=65.4153
+  structural=12.5680
+  bonus=28.0000
+  mult=0.90
+  total_raw_unnormalized=105.9833 * 0.90 = 95.3849
+  normalization_factor=9.3658
+  total_raw_normalized=10.1844
+
+  Benign Library Hits: Weighted ratio = 17.93%
+  Benign Reduction Multiplier: 0.9024
+  FINAL total_raw=9.1902
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 1478 (weight=0, contribution=0.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    shared_prefs: 8 (weight=1.5, contribution=12.00)
+    crypto: 6 (weight=4.0, contribution=24.00)
+    location: 6 (weight=4, contribution=24.00)
+    native_code: 6 (weight=4.0, contribution=24.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 10 (weight=12, contribution=120.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=9.1902, K=100.0, a=0.04) -> 67.5949
+
+================================================================================
+APK: 198FC1EF025FB48E39B2C28259D065C9E2A8303C78B4558F5751F79D8201F13E.apk
+  N=6120, E=22563, size=7228.98KB, is_packed=False
+  sem_normed=63.8772
+  structural=12.2681
+  bonus=34.0000
+  mult=0.85
+  total_raw_unnormalized=110.1453 * 0.85 = 93.6235
+  normalization_factor=8.7193
+  total_raw_normalized=10.7375
+
+  Benign Library Hits: Weighted ratio = 52.78%
+  Benign Reduction Multiplier: 0.5333
+  FINAL total_raw=5.7261
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 2413 (weight=0, contribution=0.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    shared_prefs: 9 (weight=1.5, contribution=13.50)
+    banking_targets: 8 (weight=6.5, contribution=52.00)
+    crypto: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    reflection: 4 (weight=4.0, contribution=16.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    content_provider: 3 (weight=4.0, contribution=12.00)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    contacts: 2 (weight=4, contribution=8.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    clipboard: 1 (weight=7.0, contribution=7.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 3 (weight=12, contribution=36.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=5.7261, K=100.0, a=0.04) -> 61.2561
+
+================================================================================
+APK: 198FF3D1D8CE34147C325FD5EF61BBA093D854B575A13FAE8F394CD222C0211C.apk
+  N=11643, E=41159, size=7215.72KB, is_packed=False
+  sem_normed=65.0414
+  structural=12.7191
+  bonus=28.0000
+  mult=0.85
+  total_raw_unnormalized=105.7605 * 0.85 = 89.8965
+  normalization_factor=9.3625
+  total_raw_normalized=9.6018
+
+  Benign Library Hits: Weighted ratio = 66.63%
+  Benign Reduction Multiplier: 0.3323
+  FINAL total_raw=3.1904
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 7243 (weight=0, contribution=0.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 6 (weight=4.0, contribution=24.00)
+    background_ops: 5 (weight=4.0, contribution=20.00)
+    network: 5 (weight=4.5, contribution=22.50)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    location: 4 (weight=4, contribution=16.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    shared_prefs: 3 (weight=1.5, contribution=4.50)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    nfc: 2 (weight=3.8, contribution=7.60)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 11 (weight=12, contribution=132.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    admin_operations: 2 (weight=12.0, contribution=24.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 2 (weight=7.0, contribution=14.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=3.1904, K=100.0, a=0.04) -> 56.3464
+
+================================================================================
+APK: 198FFAF2BF96F3AD59B156297303066BF02A50BDCBF21550DDDD1327F42A16D2.apk
+  N=22168, E=85060, size=18300.55KB, is_packed=False
+  sem_normed=94.9709
+  structural=12.8236
+  bonus=28.0000
+  mult=0.90
+  total_raw_unnormalized=135.7945 * 0.90 = 122.2151
+  normalization_factor=10.0064
+  total_raw_normalized=12.2137
+
+  Benign Library Hits: Weighted ratio = 93.41%
+  Benign Reduction Multiplier: 0.0907
+  FINAL total_raw=1.1083
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 13461 (weight=0, contribution=0.00)
+    sqlite: 32 (weight=2.5, contribution=80.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    media_capture: 13 (weight=7.0, contribution=91.00)
+    contacts: 12 (weight=4, contribution=48.00)
+    reflection: 11 (weight=4.0, contribution=44.00)
+    location: 10 (weight=4, contribution=40.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 8 (weight=4.0, contribution=32.00)
+    file_operations: 5 (weight=3.0, contribution=15.00)
+    telephony: 3 (weight=9.8, contribution=29.40)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    sensor: 3 (weight=3.5, contribution=10.50)
+    shared_prefs: 3 (weight=1.5, contribution=4.50)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    dangerous_permissions: 2 (weight=12, contribution=24.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=1.1083, K=100.0, a=0.04) -> 52.2152
+
+================================================================================
+APK: 199015082974753A37E8529C13C1B0F209BC03C9453C8E6ABDB3364E6AF78E29.apk
+  N=6118, E=21265, size=12940.94KB, is_packed=False
+  sem_normed=57.7427
+  structural=11.6483
+  bonus=14.0000
+  mult=0.90
+  total_raw_unnormalized=83.3910 * 0.90 = 75.0519
+  normalization_factor=8.7190
+  total_raw_normalized=8.6079
+
+  Benign Library Hits: Weighted ratio = 79.27%
+  Benign Reduction Multiplier: 0.1890
+  FINAL total_raw=1.6270
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 4730 (weight=0, contribution=0.00)
+    location: 10 (weight=4, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
     background_ops: 8 (weight=4.0, contribution=32.00)
     reflection: 8 (weight=4.0, contribution=32.00)
     network: 6 (weight=4.5, contribution=27.00)
@@ -50,27 +355,1231 @@ APK: 199015082974753A37E8529C13C1B0F209BC03C9453C8E6ABDB3364E6AF78E29.apk
     crypto+network
 
   Squash Function:
-    _squash(total_raw=85.2969, K=100.0, a=0.04) -> 99.8914
+    _squash(total_raw=1.6270, K=100.0, a=0.04) -> 53.2494
+
+================================================================================
+APK: 19901E7F2BF9703DED487BFA090408FD4CC6A4B2C24902212EA46048D39FA5A0.apk
+  N=21108, E=103330, size=18239.48KB, is_packed=False
+  sem_normed=57.8336
+  structural=14.4268
+  bonus=33.0000
+  mult=0.90
+  total_raw_unnormalized=105.2604 * 0.90 = 94.7344
+  normalization_factor=9.9574
+  total_raw_normalized=9.5140
+
+  Benign Library Hits: Weighted ratio = 4.80%
+  Benign Reduction Multiplier: 0.9531
+  FINAL total_raw=9.0679
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 756 (weight=0, contribution=0.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    crypto: 15 (weight=4.0, contribution=60.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    network: 7 (weight=4.5, contribution=31.50)
+    location: 6 (weight=4, contribution=24.00)
+    background_ops: 6 (weight=4.0, contribution=24.00)
+    sqlite: 5 (weight=2.5, contribution=12.50)
+    content_provider: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    banking_targets: 2 (weight=6.5, contribution=13.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    bluetooth: 2 (weight=4.0, contribution=8.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 8 (weight=12, contribution=96.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    admin+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=9.0679, K=100.0, a=0.04) -> 67.3802
+
+================================================================================
+APK: 19904C0CAE18A1803444B16CCB5B2FF488488A0CC0E7C63A348BA6EE5F7858E7.apk
+  N=5535, E=18019, size=9202.92KB, is_packed=False
+  sem_normed=82.9527
+  structural=12.2525
+  bonus=28.0000
+  mult=0.85
+  total_raw_unnormalized=123.2052 * 0.85 = 104.7245
+  normalization_factor=8.6188
+  total_raw_normalized=12.1506
+
+  Benign Library Hits: Weighted ratio = 44.34%
+  Benign Reduction Multiplier: 0.6547
+  FINAL total_raw=7.9552
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 1612 (weight=0, contribution=0.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 8 (weight=4.0, contribution=32.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    native_code: 3 (weight=4.0, contribution=12.00)
+    bluetooth: 3 (weight=4.0, contribution=12.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    clipboard: 1 (weight=7.0, contribution=7.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 9 (weight=12, contribution=108.00)
+    network: 3 (weight=4.5, contribution=13.50)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=7.9552, K=100.0, a=0.04) -> 65.3943
+
+================================================================================
+APK: 1990952F2162E9AE692AF596772456EAEB200F4D20ACFB531BD1D2B27CEBB63D.apk
+  N=17336, E=66838, size=13620.13KB, is_packed=False
+  sem_normed=59.2883
+  structural=11.2893
+  bonus=23.0000
+  mult=0.90
+  total_raw_unnormalized=93.5777 * 0.90 = 84.2199
+  normalization_factor=9.7605
+  total_raw_normalized=8.6286
+
+  Benign Library Hits: Weighted ratio = 79.33%
+  Benign Reduction Multiplier: 0.1885
+  FINAL total_raw=1.6268
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 8780 (weight=0, contribution=0.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    crypto: 11 (weight=4.0, contribution=44.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    reflection: 9 (weight=4.0, contribution=36.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    content_provider: 4 (weight=4.0, contribution=16.00)
+    sqlite: 3 (weight=2.5, contribution=7.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    contacts: 2 (weight=4, contribution=8.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    shared_prefs: 2 (weight=1.5, contribution=3.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 4 (weight=12, contribution=48.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    file_operations: 1 (weight=3.0, contribution=3.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=1.6268, K=100.0, a=0.04) -> 53.2490
+
+================================================================================
+APK: 1990964ED1A683B73F6333AB78EEC7CEE1EB1EA95BB65165EE98FE95A15FD27C.apk
+  N=17465, E=73205, size=14264.09KB, is_packed=False
+  sem_normed=92.7427
+  structural=12.6536
+  bonus=26.0000
+  mult=0.90
+  total_raw_unnormalized=131.3962 * 0.90 = 118.2566
+  normalization_factor=9.7680
+  total_raw_normalized=12.1066
+
+  Benign Library Hits: Weighted ratio = 65.40%
+  Benign Reduction Multiplier: 0.3489
+  FINAL total_raw=4.2238
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 7139 (weight=0, contribution=0.00)
+    contacts: 22 (weight=4, contribution=88.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    crypto: 15 (weight=4.0, contribution=60.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    reflection: 15 (weight=4.0, contribution=60.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    sqlite: 9 (weight=2.5, contribution=22.50)
+    emulator_detection: 7 (weight=5.8, contribution=40.60)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    telephony: 3 (weight=9.8, contribution=29.40)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    shared_prefs: 3 (weight=1.5, contribution=4.50)
+    location: 2 (weight=4, contribution=8.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    obfuscation: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    banking_targets: 1 (weight=6.5, contribution=6.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 7 (weight=12, contribution=84.00)
+    admin_operations: 2 (weight=12.0, contribution=24.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    admin+network
+
+  Squash Function:
+    _squash(total_raw=4.2238, K=100.0, a=0.04) -> 58.3680
+
+================================================================================
+APK: 19909CF48FC3E3BE114C5759314375DE4FD7B34BEA7FEC080E5A5FE8EEF90C2B.apk
+  N=19403, E=74139, size=15861.37KB, is_packed=False
+  sem_normed=82.9527
+  structural=13.1454
+  bonus=28.0000
+  mult=0.90
+  total_raw_unnormalized=124.0982 * 0.90 = 111.6883
+  normalization_factor=9.8732
+  total_raw_normalized=11.3123
+
+  Benign Library Hits: Weighted ratio = 89.85%
+  Benign Reduction Multiplier: 0.1100
+  FINAL total_raw=1.2439
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 13163 (weight=0, contribution=0.00)
+    sqlite: 34 (weight=2.5, contribution=85.00)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    reflection: 15 (weight=4.0, contribution=60.00)
+    native_code: 15 (weight=4.0, contribution=60.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    contacts: 9 (weight=4, contribution=36.00)
+    crypto: 6 (weight=4.0, contribution=24.00)
+    file_operations: 5 (weight=3.0, contribution=15.00)
+    shared_prefs: 4 (weight=1.5, contribution=6.00)
+    intent_hijacking: 4 (weight=5.5, contribution=22.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    bluetooth: 1 (weight=4.0, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 5 (weight=12, contribution=60.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=1.2439, K=100.0, a=0.04) -> 52.4858
+
+================================================================================
+APK: 1990DA98EC17D988F0E869BA5BE51165746688736417A45DDBCFD331235C5BCB.apk
+  N=1244, E=3197, size=649.96KB, is_packed=False
+  sem_normed=48.1157
+  structural=10.8636
+  bonus=0.0000
+  mult=1.20
+  total_raw_unnormalized=58.9792 * 1.20 = 70.7751
+  normalization_factor=7.1261
+  total_raw_normalized=9.9318
+
+  Benign Library Hits: Weighted ratio = 19.94%
+  Benign Reduction Multiplier: 0.8913
+  FINAL total_raw=8.8520
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 244 (weight=0, contribution=0.00)
+    shared_prefs: 20 (weight=1.5, contribution=30.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    reflection: 3 (weight=4.0, contribution=12.00)
+    network: 2 (weight=4.5, contribution=9.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    file_operations: 1 (weight=3.0, contribution=3.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    overlay: 1 (weight=8, contribution=8.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    content_provider: 1 (weight=4.0, contribution=4.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=8.8520, K=100.0, a=0.04) -> 66.9995
+
+================================================================================
+APK: 1990EFE65F96FA62C1064B4FD2C22C13530D1778795AD1F23D9D9FF85BCAB06B.apk
+  N=7511, E=40148, size=10700.02KB, is_packed=False
+  sem_normed=50.6244
+  structural=14.9300
+  bonus=24.0000
+  mult=0.90
+  total_raw_unnormalized=89.5544 * 0.90 = 80.5989
+  normalization_factor=8.9241
+  total_raw_normalized=9.0316
+
+  Benign Library Hits: Weighted ratio = 10.12%
+  Benign Reduction Multiplier: 0.9366
+  FINAL total_raw=8.4590
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 678 (weight=0, contribution=0.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    network: 6 (weight=4.5, contribution=27.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    location: 3 (weight=4, contribution=12.00)
+    crypto: 2 (weight=4.0, contribution=8.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    native_code: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    banking_targets: 1 (weight=6.5, contribution=6.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 10 (weight=12, contribution=120.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    admin_operations: 2 (weight=12.0, contribution=24.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    media_capture: 2 (weight=7.0, contribution=14.00)
+    location: 1 (weight=4, contribution=4.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    admin+network
+
+  Squash Function:
+    _squash(total_raw=8.4590, K=100.0, a=0.04) -> 66.3007
+
+================================================================================
+APK: 19912BC7A72EA8CDA23F110DC4F4E03C691C44AA43A198F0FF6C496750F51833.apk
+  N=6548, E=22056, size=3661.15KB, is_packed=False
+  sem_normed=55.6096
+  structural=11.7623
+  bonus=19.0000
+  mult=0.85
+  total_raw_unnormalized=86.3719 * 0.85 = 73.4161
+  normalization_factor=8.7869
+  total_raw_normalized=8.3552
+
+  Benign Library Hits: Weighted ratio = 23.87%
+  Benign Reduction Multiplier: 0.8662
+  FINAL total_raw=7.2373
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 1505 (weight=0, contribution=0.00)
+    shared_prefs: 20 (weight=1.5, contribution=30.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    background_ops: 6 (weight=4.0, contribution=24.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    location: 4 (weight=4, contribution=16.00)
+    network: 4 (weight=4.5, contribution=18.00)
+    crypto: 2 (weight=4.0, contribution=8.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    banking_targets: 1 (weight=6.5, contribution=6.50)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 5 (weight=12, contribution=60.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    admin_operations: 2 (weight=12.0, contribution=24.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+
+  Squash Function:
+    _squash(total_raw=7.2373, K=100.0, a=0.04) -> 64.0833
+
+================================================================================
+APK: 19912F4114176F36D3EBAABE5D4905A456E1CA1956056D259087EC23835D9ACB.apk
+  N=6348, E=21237, size=4076.9KB, is_packed=False
+  sem_normed=50.3114
+  structural=11.4297
+  bonus=14.0000
+  mult=0.85
+  total_raw_unnormalized=75.7412 * 0.85 = 64.3800
+  normalization_factor=8.7559
+  total_raw_normalized=7.3528
+
+  Benign Library Hits: Weighted ratio = 83.29%
+  Benign Reduction Multiplier: 0.1548
+  FINAL total_raw=1.1385
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 5013 (weight=0, contribution=0.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    background_ops: 8 (weight=4.0, contribution=32.00)
+    reflection: 8 (weight=4.0, contribution=32.00)
+    network: 5 (weight=4.5, contribution=22.50)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    content_provider: 4 (weight=4.0, contribution=16.00)
+    sqlite: 3 (weight=2.5, contribution=7.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    crypto: 2 (weight=4.0, contribution=8.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    contacts: 2 (weight=4, contribution=8.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    banking_targets: 1 (weight=6.5, contribution=6.50)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    background_ops: 1 (weight=4.0, contribution=4.00)
+    dangerous_permissions: 1 (weight=12, contribution=12.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+
+  Squash Function:
+    _squash(total_raw=1.1385, K=100.0, a=0.04) -> 52.2754
+
+================================================================================
+APK: 19914DE77CE9002FD3095C168BE83E1674F12FCF4DDDF8B313576F959A0C474D.apk
+  N=17872, E=66817, size=17014.84KB, is_packed=False
+  sem_normed=77.5347
+  structural=11.2643
+  bonus=28.0000
+  mult=0.90
+  total_raw_unnormalized=116.7990 * 0.90 = 105.1191
+  normalization_factor=9.7910
+  total_raw_normalized=10.7363
+
+  Benign Library Hits: Weighted ratio = 39.60%
+  Benign Reduction Multiplier: 0.7159
+  FINAL total_raw=7.6859
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 4488 (weight=0, contribution=0.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    media_capture: 15 (weight=7.0, contribution=105.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 9 (weight=4.0, contribution=36.00)
+    location: 8 (weight=4, contribution=32.00)
+    sqlite: 5 (weight=2.5, contribution=12.50)
+    content_provider: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    reflection: 3 (weight=4.0, contribution=12.00)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    obfuscation: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    shared_prefs: 2 (weight=1.5, contribution=3.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 9 (weight=12, contribution=108.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=7.6859, K=100.0, a=0.04) -> 64.9051
+
+================================================================================
+APK: 19917849A3301093AA4E48B6D51B1B8C700C39C058D582DFDD45897ADEDADB30.apk
+  N=12285, E=61358, size=6470.97KB, is_packed=False
+  sem_normed=51.4275
+  structural=15.5066
+  bonus=28.0000
+  mult=0.85
+  total_raw_unnormalized=94.9341 * 0.85 = 80.6940
+  normalization_factor=9.4161
+  total_raw_normalized=8.5698
+
+  Benign Library Hits: Weighted ratio = 32.60%
+  Benign Reduction Multiplier: 0.7931
+  FINAL total_raw=6.7970
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 3498 (weight=0, contribution=0.00)
+    location: 10 (weight=4, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    sqlite: 10 (weight=2.5, contribution=25.00)
+    content_provider: 10 (weight=4.0, contribution=40.00)
+    crypto: 5 (weight=4.0, contribution=20.00)
+    network: 5 (weight=4.5, contribution=22.50)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    reflection: 3 (weight=4.0, contribution=12.00)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    sensor: 3 (weight=3.5, contribution=10.50)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    native_code: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 5 (weight=12, contribution=60.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=6.7970, K=100.0, a=0.04) -> 63.2687
+
+================================================================================
+APK: 19918F336B5800F1020AA9F7B82DA65BEEE706023E82C397A92C4C164904336C.apk
+  N=19041, E=71176, size=16804.32KB, is_packed=False
+  sem_normed=77.4301
+  structural=12.5869
+  bonus=28.0000
+  mult=0.90
+  total_raw_unnormalized=118.0170 * 0.90 = 106.2153
+  normalization_factor=9.8543
+  total_raw_normalized=10.7785
+
+  Benign Library Hits: Weighted ratio = 67.07%
+  Benign Reduction Multiplier: 0.3265
+  FINAL total_raw=3.5187
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 9522 (weight=0, contribution=0.00)
+    contacts: 26 (weight=4, contribution=104.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    background_ops: 8 (weight=4.0, contribution=32.00)
+    reflection: 7 (weight=4.0, contribution=28.00)
+    crypto: 6 (weight=4.0, contribution=24.00)
+    dynamic: 4 (weight=10.5, contribution=42.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    shared_prefs: 4 (weight=1.5, contribution=6.00)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 5 (weight=12, contribution=60.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=3.5187, K=100.0, a=0.04) -> 56.9913
+
+================================================================================
+APK: 19918FD63010D3E6D5225D94485DA120423CA7B06F09C2D4B4E79BEED610DBF7.apk
+  N=15508, E=58020, size=8023.77KB, is_packed=False
+  sem_normed=57.7157
+  structural=12.6901
+  bonus=19.0000
+  mult=0.85
+  total_raw_unnormalized=89.4059 * 0.85 = 75.9950
+  normalization_factor=9.6491
+  total_raw_normalized=7.8759
+
+  Benign Library Hits: Weighted ratio = 93.73%
+  Benign Reduction Multiplier: 0.0892
+  FINAL total_raw=0.7025
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 11468 (weight=0, contribution=0.00)
+    native_code: 14 (weight=4.0, contribution=56.00)
+    content_provider: 12 (weight=4.0, contribution=48.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    contacts: 9 (weight=4, contribution=36.00)
+    crypto: 6 (weight=4.0, contribution=24.00)
+    network: 5 (weight=4.5, contribution=22.50)
+    reflection: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    sqlite: 4 (weight=2.5, contribution=10.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    shared_prefs: 3 (weight=1.5, contribution=4.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    banking_targets: 1 (weight=6.5, contribution=6.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    dangerous_permissions: 2 (weight=12, contribution=24.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+
+  Squash Function:
+    _squash(total_raw=0.7025, K=100.0, a=0.04) -> 51.4045
+
+================================================================================
+APK: 1991A5840B391EA995D85985442574C2FC60138788D9D99B182C27D4EFC9A993.apk
+  N=21944, E=83077, size=15628.24KB, is_packed=False
+  sem_normed=78.4283
+  structural=12.9302
+  bonus=28.0000
+  mult=0.90
+  total_raw_unnormalized=119.3584 * 0.90 = 107.4226
+  normalization_factor=9.9962
+  total_raw_normalized=10.7463
+
+  Benign Library Hits: Weighted ratio = 85.56%
+  Benign Reduction Multiplier: 0.1378
+  FINAL total_raw=1.4810
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 13873 (weight=0, contribution=0.00)
+    sqlite: 39 (weight=2.5, contribution=97.50)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    native_code: 17 (weight=4.0, contribution=68.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    reflection: 13 (weight=4.0, contribution=52.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    contacts: 9 (weight=4, contribution=36.00)
+    crypto: 6 (weight=4.0, contribution=24.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    shared_prefs: 4 (weight=1.5, contribution=6.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 4 (weight=12, contribution=48.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    file_operations: 1 (weight=3.0, contribution=3.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=1.4810, K=100.0, a=0.04) -> 52.9586
+
+================================================================================
+APK: 1991F81DA53D8AEA04341D38B22F81161513C519DEFA6D933B0EE6D06840B974.apk
+  N=21043, E=81100, size=10264.66KB, is_packed=False
+  sem_normed=72.9005
+  structural=13.1568
+  bonus=30.0000
+  mult=0.90
+  total_raw_unnormalized=116.0573 * 0.90 = 104.4516
+  normalization_factor=9.9543
+  total_raw_normalized=10.4931
+
+  Benign Library Hits: Weighted ratio = 91.08%
+  Benign Reduction Multiplier: 0.1030
+  FINAL total_raw=1.0803
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 13650 (weight=0, contribution=0.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    content_provider: 13 (weight=4.0, contribution=52.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    contacts: 9 (weight=4, contribution=36.00)
+    crypto: 7 (weight=4.0, contribution=28.00)
+    emulator_detection: 7 (weight=5.8, contribution=40.60)
+    reflection: 6 (weight=4.0, contribution=24.00)
+    sqlite: 5 (weight=2.5, contribution=12.50)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    shared_prefs: 4 (weight=1.5, contribution=6.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    sensor: 3 (weight=3.5, contribution=10.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    obfuscation: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    dangerous_permissions: 2 (weight=12, contribution=24.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=1.0803, K=100.0, a=0.04) -> 52.1593
+
+================================================================================
+APK: 1991FA1CCCEED71AE19D82C49BBD72266131CC8DB4399EE3A1FC7F129841A2F2.apk
+  N=11562, E=57148, size=7208.16KB, is_packed=False
+  sem_normed=64.0355
+  structural=14.3779
+  bonus=28.0000
+  mult=0.85
+  total_raw_unnormalized=106.4135 * 0.85 = 90.4514
+  normalization_factor=9.3555
+  total_raw_normalized=9.6683
+
+  Benign Library Hits: Weighted ratio = 27.69%
+  Benign Reduction Multiplier: 0.8374
+  FINAL total_raw=8.0960
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 2977 (weight=0, contribution=0.00)
+    content_provider: 14 (weight=4.0, contribution=56.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    contacts: 9 (weight=4, contribution=36.00)
+    reflection: 8 (weight=4.0, contribution=32.00)
+    crypto: 7 (weight=4.0, contribution=28.00)
+    network: 6 (weight=4.5, contribution=27.00)
+    sqlite: 6 (weight=2.5, contribution=15.00)
+    background_ops: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    location: 4 (weight=4, contribution=16.00)
+    shared_prefs: 4 (weight=1.5, contribution=6.00)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 6 (weight=12, contribution=72.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    admin_operations: 2 (weight=12.0, contribution=24.00)
+    file_operations: 1 (weight=3.0, contribution=3.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=8.0960, K=100.0, a=0.04) -> 65.6488
+
+================================================================================
+APK: 19926020D5C42F9CAD4B87625BD6537CF5279B857D8ECC3F3F202865DF09D33E.apk
+  N=10006, E=35427, size=8433.83KB, is_packed=False
+  sem_normed=65.5754
+  structural=11.3878
+  bonus=21.0000
+  mult=0.85
+  total_raw_unnormalized=97.9632 * 0.85 = 83.2688
+  normalization_factor=9.2109
+  total_raw_normalized=9.0402
+
+  Benign Library Hits: Weighted ratio = 41.25%
+  Benign Reduction Multiplier: 0.6954
+  FINAL total_raw=6.2862
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 3495 (weight=0, contribution=0.00)
+    media_capture: 20 (weight=7.0, contribution=140.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    network: 7 (weight=4.5, contribution=31.50)
+    reflection: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    crypto: 2 (weight=4.0, contribution=8.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 2 (weight=12, contribution=24.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=6.2862, K=100.0, a=0.04) -> 62.3139
+
+================================================================================
+APK: 1992AFA72FC7176D97BBE5A6926A431501CF0A6A208BA961FCC58172033B1B55.apk
+  N=7124, E=31618, size=7963.82KB, is_packed=False
+  sem_normed=69.0728
+  structural=14.1994
+  bonus=19.0000
+  mult=0.85
+  total_raw_unnormalized=102.2722 * 0.85 = 86.9313
+  normalization_factor=8.8712
+  total_raw_normalized=9.7993
+
+  Benign Library Hits: Weighted ratio = 7.44%
+  Benign Reduction Multiplier: 0.9455
+  FINAL total_raw=9.2652
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 269 (weight=0, contribution=0.00)
+    native_code: 17 (weight=4.0, contribution=68.00)
+    location: 10 (weight=4, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    sqlite: 10 (weight=2.5, contribution=25.00)
+    content_provider: 10 (weight=4.0, contribution=40.00)
+    network: 6 (weight=4.5, contribution=27.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    crypto: 3 (weight=4.0, contribution=12.00)
+    reflection: 3 (weight=4.0, contribution=12.00)
+    shared_prefs: 3 (weight=1.5, contribution=4.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    bluetooth: 2 (weight=4.0, contribution=8.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    banking_targets: 1 (weight=6.5, contribution=6.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 6 (weight=12, contribution=72.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    location: 2 (weight=4, contribution=8.00)
+    network: 1 (weight=4.5, contribution=4.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+
+  Squash Function:
+    _squash(total_raw=9.2652, K=100.0, a=0.04) -> 67.7263
+
+================================================================================
+APK: 1992BE46779E0FAF696A99A7073D25294B3818AFCFDA30D6450A279B8F83E42D.apk
+  N=13068, E=49167, size=7366.31KB, is_packed=False
+  sem_normed=79.9678
+  structural=12.8161
+  bonus=23.0000
+  mult=0.85
+  total_raw_unnormalized=115.7839 * 0.85 = 98.4163
+  normalization_factor=9.4779
+  total_raw_normalized=10.3837
+
+  Benign Library Hits: Weighted ratio = 44.34%
+  Benign Reduction Multiplier: 0.6547
+  FINAL total_raw=6.7982
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 2021 (weight=0, contribution=0.00)
+    contacts: 36 (weight=4, contribution=144.00)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 9 (weight=4.0, contribution=36.00)
+    network: 7 (weight=4.5, contribution=31.50)
+    background_ops: 5 (weight=4.0, contribution=20.00)
+    reflection: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 6 (weight=12, contribution=72.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=6.7982, K=100.0, a=0.04) -> 63.2710
+
+================================================================================
+APK: 1992E4A0FBC9F7143108A33E65CE1E8C9C6DD2D8856FCC16E4A034314BA1E18E.apk
+  N=11855, E=40625, size=16485.89KB, is_packed=False
+  sem_normed=59.9906
+  structural=11.2424
+  bonus=23.0000
+  mult=0.90
+  total_raw_unnormalized=94.2329 * 0.90 = 84.8096
+  normalization_factor=9.3805
+  total_raw_normalized=9.0411
+
+  Benign Library Hits: Weighted ratio = 46.84%
+  Benign Reduction Multiplier: 0.6200
+  FINAL total_raw=5.6054
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 5047 (weight=0, contribution=0.00)
+    shared_prefs: 18 (weight=1.5, contribution=27.00)
+    location: 10 (weight=4, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 7 (weight=4.0, contribution=28.00)
+    background_ops: 6 (weight=4.0, contribution=24.00)
+    network: 6 (weight=4.5, contribution=27.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    reflection: 3 (weight=4.0, contribution=12.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    bluetooth: 1 (weight=4.0, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 4 (weight=12, contribution=48.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=5.6054, K=100.0, a=0.04) -> 61.0267
+
+================================================================================
+APK: 1993428D35BE23CCDEBCCE54FFE338F2AC97A402487DA61545C08F2AA43770E0.apk
+  N=6007, E=20553, size=8893.67KB, is_packed=False
+  sem_normed=68.3181
+  structural=11.5914
+  bonus=14.0000
+  mult=0.85
+  total_raw_unnormalized=93.9095 * 0.85 = 79.8230
+  normalization_factor=8.7007
+  total_raw_normalized=9.1743
+
+  Benign Library Hits: Weighted ratio = 80.42%
+  Benign Reduction Multiplier: 0.1787
+  FINAL total_raw=1.6392
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 4812 (weight=0, contribution=0.00)
+    location: 10 (weight=4, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 9 (weight=4.0, contribution=36.00)
+    background_ops: 8 (weight=4.0, contribution=32.00)
+    reflection: 8 (weight=4.0, contribution=32.00)
+    network: 6 (weight=4.5, contribution=27.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    content_provider: 4 (weight=4.0, contribution=16.00)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    contacts: 2 (weight=4, contribution=8.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    banking_targets: 1 (weight=6.5, contribution=6.50)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 5 (weight=12, contribution=60.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    location: 2 (weight=4, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+
+  Squash Function:
+    _squash(total_raw=1.6392, K=100.0, a=0.04) -> 53.2737
 
 ================================================================================
 APK: 19934535226CC35AABBA24E2FB79D3CD62EB3C4E3684DC6E369F1C24ED0D3BFE.apk
   N=6401, E=21838, size=3433.38KB, is_packed=False
-  sem_normed=831.1883
-  structural=10.9117
-  bonus=54.0000
-  mult=1.00
-  total_raw_unnormalized=896.1000 * 1.00 = 896.1000
+  sem_normed=54.6010
+  structural=10.9114
+  bonus=23.0000
+  mult=0.85
+  total_raw_unnormalized=88.5124 * 0.85 = 75.2355
   normalization_factor=8.7642
-  total_raw_normalized=102.2454
+  total_raw_normalized=8.5844
 
-  Benign Library Hits: Weighted ratio = 107.89%
-  Benign Reduction Multiplier: 0.9892
-  FINAL total_raw=101.1423
+  Benign Library Hits: Weighted ratio = 64.93%
+  Benign Reduction Multiplier: 0.3553
+  FINAL total_raw=3.0504
 
   Graf Kategorileri (counts_g):
-    modern_libs: 2969 (weight=1, contribution=2969.00)
-    shell_exec: 355 (weight=5.5, contribution=1952.50)
-    network: 225 (weight=4.5, contribution=1012.50)
+    modern_libs: 2969 (weight=0, contribution=0.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
     crypto: 5 (weight=4.0, contribution=20.00)
     file_operations: 4 (weight=3.0, contribution=12.00)
     background_ops: 4 (weight=4.0, contribution=16.00)
@@ -103,36 +1612,221 @@ APK: 19934535226CC35AABBA24E2FB79D3CD62EB3C4E3684DC6E369F1C24ED0D3BFE.apk
 
   Şüpheli API Kombinasyonları:
     crypto+network
+    banking+overlay
 
   Squash Function:
-    _squash(total_raw=101.1423, K=100.0, a=0.04) -> 99.9694
+    _squash(total_raw=3.0504, K=100.0, a=0.04) -> 56.0707
+
+================================================================================
+APK: 1993F4F15C57D7DE5393EC61BDC5FEC9D21DDF6142E5552B5891E2DE67DCCDF4.apk
+  N=6757, E=24045, size=12758.38KB, is_packed=False
+  sem_normed=82.5129
+  structural=10.7882
+  bonus=30.0000
+  mult=0.90
+  total_raw_unnormalized=123.3011 * 0.90 = 110.9710
+  normalization_factor=8.8183
+  total_raw_normalized=12.5841
+
+  Benign Library Hits: Weighted ratio = 74.99%
+  Benign Reduction Multiplier: 0.2316
+  FINAL total_raw=2.9144
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 2978 (weight=0, contribution=0.00)
+    native_code: 19 (weight=4.0, contribution=76.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    emulator_detection: 7 (weight=5.8, contribution=40.60)
+    crypto: 4 (weight=4.0, contribution=16.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 2 (weight=7.0, contribution=14.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    bluetooth: 1 (weight=4.0, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 8 (weight=12, contribution=96.00)
+    location: 2 (weight=4, contribution=8.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    file_operations: 1 (weight=3.0, contribution=3.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=2.9144, K=100.0, a=0.04) -> 55.8025
+
+================================================================================
+APK: 1994468767D955E70FAFC9254B4DABBA4D765B33B17DA3E330D92BD753706D48.apk
+  N=12954, E=47885, size=6896.9KB, is_packed=False
+  sem_normed=75.1279
+  structural=12.7747
+  bonus=23.0000
+  mult=0.85
+  total_raw_unnormalized=110.9026 * 0.85 = 94.2672
+  normalization_factor=9.4692
+  total_raw_normalized=9.9552
+
+  Benign Library Hits: Weighted ratio = 71.89%
+  Benign Reduction Multiplier: 0.2663
+  FINAL total_raw=2.6509
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 6552 (weight=0, contribution=0.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    crypto: 10 (weight=4.0, contribution=40.00)
+    location: 10 (weight=4, contribution=40.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    reflection: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    content_provider: 4 (weight=4.0, contribution=16.00)
+    sqlite: 3 (weight=2.5, contribution=7.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    contacts: 2 (weight=4, contribution=8.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 8 (weight=12, contribution=96.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+    network: 1 (weight=4.5, contribution=4.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=2.6509, K=100.0, a=0.04) -> 55.2820
+
+================================================================================
+APK: 199471B0B371AF0FEB9F80D481F3A4C8C3D78B79558B68D7AD1A047A3B70F478.apk
+  N=7626, E=25371, size=3652.32KB, is_packed=False
+  sem_normed=53.4222
+  structural=11.2805
+  bonus=23.0000
+  mult=0.85
+  total_raw_unnormalized=87.7027 * 0.85 = 74.5473
+  normalization_factor=8.9393
+  total_raw_normalized=8.3393
+
+  Benign Library Hits: Weighted ratio = 45.99%
+  Benign Reduction Multiplier: 0.6320
+  FINAL total_raw=5.2703
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 3090 (weight=0, contribution=0.00)
+    shared_prefs: 20 (weight=1.5, contribution=30.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    background_ops: 6 (weight=4.0, contribution=24.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    network: 4 (weight=4.5, contribution=18.00)
+    crypto: 3 (weight=4.0, contribution=12.00)
+    reflection: 3 (weight=4.0, contribution=12.00)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    bluetooth: 1 (weight=4.0, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 3 (weight=12, contribution=36.00)
+    location: 2 (weight=4, contribution=8.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=5.2703, K=100.0, a=0.04) -> 60.3872
 
 ================================================================================
 APK: 199479249977FA7B95BC8BACC239BD2A414D685EEB58994C8C6177D7F4518B4F.apk
   N=20637, E=84175, size=11325.12KB, is_packed=False
-  sem_normed=1402.2803
-  structural=13.5836
-  bonus=64.0000
+  sem_normed=89.8860
+  structural=13.5837
+  bonus=34.0000
   mult=0.90
-  total_raw_unnormalized=1479.8640 * 0.90 = 1331.8776
+  total_raw_unnormalized=137.4697 * 0.90 = 123.7227
   normalization_factor=9.9348
-  total_raw_normalized=134.0613
+  total_raw_normalized=12.4534
 
-  Benign Library Hits: Weighted ratio = 110.65%
-  Benign Reduction Multiplier: 0.9889
-  FINAL total_raw=132.5779
+  Benign Library Hits: Weighted ratio = 55.46%
+  Benign Reduction Multiplier: 0.4931
+  FINAL total_raw=6.1410
 
   Graf Kategorileri (counts_g):
-    modern_libs: 7492 (weight=1, contribution=7492.00)
-    shell_exec: 690 (weight=5.5, contribution=3795.00)
-    network: 348 (weight=4.5, contribution=1566.00)
-    content_provider: 67 (weight=4.0, contribution=268.00)
-    banking_targets: 43 (weight=6.5, contribution=279.50)
+    modern_libs: 7492 (weight=0, contribution=0.00)
     sqlite: 39 (weight=2.5, contribution=97.50)
     contacts: 31 (weight=4, contribution=124.00)
-    reflection: 16 (weight=4.0, contribution=64.00)
-    background_ops: 14 (weight=4.0, contribution=56.00)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    reflection: 15 (weight=4.0, contribution=60.00)
     crypto: 10 (weight=4.0, contribution=40.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
     file_operations: 6 (weight=3.0, contribution=18.00)
     webview: 3 (weight=7.5, contribution=22.50)
     shared_prefs: 3 (weight=1.5, contribution=4.50)
@@ -160,24 +1854,808 @@ APK: 199479249977FA7B95BC8BACC239BD2A414D685EEB58994C8C6177D7F4518B4F.apk
 
   Şüpheli API Kombinasyonları:
     crypto+network
+    admin+network
+    banking+overlay
 
   Squash Function:
-    _squash(total_raw=132.5779, K=100.0, a=0.04) -> 99.9975
+    _squash(total_raw=6.1410, K=100.0, a=0.04) -> 62.0409
+
+================================================================================
+APK: 199497C4C505FE6B5B4CE70F4EFF1D977D873335ED7833549F61BA915C605A14.apk
+  N=6337, E=22000, size=11390.64KB, is_packed=False
+  sem_normed=50.7878
+  structural=11.1796
+  bonus=21.0000
+  mult=0.90
+  total_raw_unnormalized=82.9674 * 0.90 = 74.6706
+  normalization_factor=8.7542
+  total_raw_normalized=8.5297
+
+  Benign Library Hits: Weighted ratio = 40.35%
+  Benign Reduction Multiplier: 0.7066
+  FINAL total_raw=6.0272
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 2396 (weight=0, contribution=0.00)
+    shared_prefs: 18 (weight=1.5, contribution=27.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 7 (weight=4.0, contribution=28.00)
+    network: 5 (weight=4.5, contribution=22.50)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    reflection: 3 (weight=4.0, contribution=12.00)
+    banking_targets: 3 (weight=6.5, contribution=19.50)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    overlay: 1 (weight=8, contribution=8.00)
+    screenshot: 1 (weight=7.5, contribution=7.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    sensor: 1 (weight=3.5, contribution=3.50)
+    account: 1 (weight=4.8, contribution=4.80)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 3 (weight=12, contribution=36.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=6.0272, K=100.0, a=0.04) -> 61.8262
+
+================================================================================
+APK: 1994CF1F38C7DEA17FF33826692ECE379866C49CC29906EF657B6ED52C3F10CF.apk
+  N=9493, E=34811, size=14515.71KB, is_packed=False
+  sem_normed=98.8737
+  structural=11.1349
+  bonus=38.0000
+  mult=0.90
+  total_raw_unnormalized=148.0085 * 0.90 = 133.2077
+  normalization_factor=9.1583
+  total_raw_normalized=14.5450
+
+  Benign Library Hits: Weighted ratio = 83.56%
+  Benign Reduction Multiplier: 0.1527
+  FINAL total_raw=2.2214
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 5149 (weight=0, contribution=0.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    reflection: 15 (weight=4.0, contribution=60.00)
+    location: 10 (weight=4, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    background_ops: 9 (weight=4.0, contribution=36.00)
+    content_provider: 7 (weight=4.0, contribution=28.00)
+    emulator_detection: 7 (weight=5.8, contribution=40.60)
+    sqlite: 6 (weight=2.5, contribution=15.00)
+    crypto: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    obfuscation: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    contacts: 2 (weight=4, contribution=8.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    shared_prefs: 2 (weight=1.5, contribution=3.00)
+    sms: 1 (weight=9.5, contribution=9.50)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 9 (weight=12, contribution=108.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    sms+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=2.2214, K=100.0, a=0.04) -> 54.4311
+
+================================================================================
+APK: 0000511D5C2A99B303AFD14D2ACDE3EBBAD5C3426039679B25F24510A87B381C.apk
+  N=21, E=21, size=3309.21KB, is_packed=False
+  sem_normed=124.2547
+  structural=12.0805
+  bonus=0.0000
+  mult=0.85
+  total_raw_unnormalized=136.3352 * 0.85 = 115.8849
+  normalization_factor=3.0445
+  total_raw_normalized=38.0634
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=36.7094
+
+  Graf Kategorileri (counts_g):
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 7 (weight=12, contribution=84.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+    accessibility: 1 (weight=7.5, contribution=7.50)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=36.7094, K=100.0, a=0.04) -> 94.9634
+
+================================================================================
+APK: 000109A075DC3AFA88C45523A3EDF2039177386C58A48936FEAFEE9716F7BCBB.apk
+  N=22, E=26, size=7482.8KB, is_packed=False
+  sem_normed=209.5784
+  structural=12.1965
+  bonus=0.0000
+  mult=0.85
+  total_raw_unnormalized=221.7749 * 0.85 = 188.5086
+  normalization_factor=3.0910
+  total_raw_normalized=60.9855
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=58.8161
+
+  Graf Kategorileri (counts_g):
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    shell_exec: 1 (weight=5.5, contribution=5.50)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 2 (weight=7.0, contribution=14.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    network: 2 (weight=4.5, contribution=9.00)
+    privileged_ops: 2 (weight=6.5, contribution=13.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=58.8161, K=100.0, a=0.04) -> 99.1034
+
+================================================================================
+APK: 00013E39079F820CC8010FA9B6DEB57290B6BEE75365DFBE36B9348052760D08.apk
+  N=951, E=2223, size=807.44KB, is_packed=True
+  sem_normed=186.6354
+  structural=9.5127
+  bonus=107.0000
+  mult=1.20
+  total_raw_unnormalized=303.1481 * 1.20 = 363.7777
+  normalization_factor=6.8575
+  total_raw_normalized=53.0480
+
+  Benign Library Hits: Weighted ratio = 50.05%
+  Benign Reduction Multiplier: 1.0000
+  FINAL total_raw=53.0480
+
+  Graf Kategorileri (counts_g):
+    network: 15 (weight=4.5, contribution=67.50)
+    crypto: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    shell_exec: 4 (weight=5.5, contribution=22.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    media_capture: 3 (weight=7.0, contribution=21.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    sms: 2 (weight=9.5, contribution=19.00)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    reflection: 1 (weight=4.0, contribution=4.00)
+    notifications: 1 (weight=6.5, contribution=6.50)
+    overlay: 1 (weight=8, contribution=8.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    sqlite: 1 (weight=2.5, contribution=2.50)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    sms: 4 (weight=9.5, contribution=38.00)
+    telephony: 3 (weight=9.8, contribution=29.40)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 2 (weight=7.0, contribution=14.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+    file_operations: 1 (weight=3.0, contribution=3.00)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+    sms+network
+
+  Squash Function:
+    _squash(total_raw=53.0480, K=100.0, a=0.04) -> 98.5851
+
+================================================================================
+APK: 00016FA3B94E1B117851EAC18D639873B892AB833D027A41243BAEE04AA49309.apk
+  N=25, E=38, size=13229.61KB, is_packed=False
+  sem_normed=160.2062
+  structural=10.6920
+  bonus=0.0000
+  mult=0.90
+  total_raw_unnormalized=170.8982 * 0.90 = 153.8084
+  normalization_factor=3.2189
+  total_raw_normalized=47.7833
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=46.0836
+
+  Graf Kategorileri (counts_g):
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    shell_exec: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    admin_operations: 3 (weight=12.0, contribution=36.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 2 (weight=7.0, contribution=14.00)
+    network: 2 (weight=4.5, contribution=9.00)
+    privileged_ops: 2 (weight=6.5, contribution=13.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=46.0836, K=100.0, a=0.04) -> 97.5557
+
+================================================================================
+APK: 0001A112E6FA954379B572D79C8FD77C14D2301266B9BA731445C5B82ADEC21D.apk
+  N=2035, E=4778, size=985.77KB, is_packed=True
+  sem_normed=104.0213
+  structural=9.3954
+  bonus=94.0000
+  mult=1.20
+  total_raw_unnormalized=207.4167 * 1.20 = 248.9000
+  normalization_factor=7.6183
+  total_raw_normalized=32.6715
+
+  Benign Library Hits: Weighted ratio = 50.81%
+  Benign Reduction Multiplier: 1.0000
+  FINAL total_raw=32.6715
+
+  Graf Kategorileri (counts_g):
+    network: 15 (weight=4.5, contribution=67.50)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    clipboard: 1 (weight=7.0, contribution=7.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    sqlite: 1 (weight=2.5, contribution=2.50)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 7 (weight=12, contribution=84.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+
+  Squash Function:
+    _squash(total_raw=32.6715, K=100.0, a=0.04) -> 93.1740
+
+================================================================================
+APK: 0002FB40F6F60813632B07E81D16EAE87753F4E92E813C8371A7EFBF61C7A6BB.apk
+  N=22, E=24, size=11748.56KB, is_packed=False
+  sem_normed=81.0909
+  structural=11.8023
+  bonus=0.0000
+  mult=0.90
+  total_raw_unnormalized=92.8932 * 0.90 = 83.6039
+  normalization_factor=3.0910
+  total_raw_normalized=27.0472
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=26.0851
+
+  Graf Kategorileri (counts_g):
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    shell_exec: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 4 (weight=12, contribution=48.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=26.0851, K=100.0, a=0.04) -> 88.9614
+
+================================================================================
+APK: 00030B8F3F6E277C5A57415429E9D4FD0584ADCBF783291DBC6D5643DE8122C2.apk
+  N=11396, E=42355, size=13469.9KB, is_packed=False
+  sem_normed=110.1797
+  structural=10.5573
+  bonus=38.0000
+  mult=0.90
+  total_raw_unnormalized=158.7371 * 0.90 = 142.8634
+  normalization_factor=9.3410
+  total_raw_normalized=15.2942
+
+  Benign Library Hits: Weighted ratio = 66.69%
+  Benign Reduction Multiplier: 0.3315
+  FINAL total_raw=5.0700
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 1923 (weight=0, contribution=0.00)
+    contacts: 38 (weight=4, contribution=152.00)
+    sqlite: 25 (weight=2.5, contribution=62.50)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    emulator_detection: 15 (weight=5.8, contribution=87.00)
+    background_ops: 10 (weight=4.0, contribution=40.00)
+    banking_targets: 10 (weight=6.5, contribution=65.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 9 (weight=4.0, contribution=36.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    reflection: 4 (weight=4.0, contribution=16.00)
+    shared_prefs: 4 (weight=1.5, contribution=6.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    location: 2 (weight=4, contribution=8.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    sms: 1 (weight=9.5, contribution=9.50)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    webview: 1 (weight=7.5, contribution=7.50)
+    clipboard: 1 (weight=7.0, contribution=7.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 9 (weight=12, contribution=108.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+    location: 1 (weight=4, contribution=4.00)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    network: 1 (weight=4.5, contribution=4.50)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+    sms+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=5.0700, K=100.0, a=0.04) -> 60.0033
+
+================================================================================
+APK: 00041CB24A2BB4585B4A2AB040A13A00789EC7B683B38E43B02D0E5495AD1E86.apk
+  N=311, E=1188, size=3001.69KB, is_packed=False
+  sem_normed=67.6002
+  structural=13.1936
+  bonus=14.0000
+  mult=0.85
+  total_raw_unnormalized=94.7938 * 0.85 = 80.5747
+  normalization_factor=5.7398
+  total_raw_normalized=14.0379
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=13.5386
+
+  Graf Kategorileri (counts_g):
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 6 (weight=4.0, contribution=24.00)
+    network: 4 (weight=4.5, contribution=18.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    background_ops: 1 (weight=4.0, contribution=4.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    reflection: 1 (weight=4.0, contribution=4.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    webview: 1 (weight=7.5, contribution=7.50)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 3 (weight=12, contribution=36.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+
+  Squash Function:
+    _squash(total_raw=13.5386, K=100.0, a=0.04) -> 74.7078
+
+================================================================================
+APK: 0004B3F36CB7708D3EA332CA6004E90735D5825D39F093BDDAE2F3288E849AD4.apk
+  N=5678, E=22727, size=7596.47KB, is_packed=False
+  sem_normed=113.3751
+  structural=10.8774
+  bonus=32.0000
+  mult=0.85
+  total_raw_unnormalized=156.2526 * 0.85 = 132.8147
+  normalization_factor=8.6444
+  total_raw_normalized=15.3643
+
+  Benign Library Hits: Weighted ratio = 28.88%
+  Benign Reduction Multiplier: 0.8274
+  FINAL total_raw=12.7117
+
+  Graf Kategorileri (counts_g):
+    sqlite: 23 (weight=2.5, contribution=57.50)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    native_code: 19 (weight=4.0, contribution=76.00)
+    crypto: 15 (weight=4.0, contribution=60.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    dynamic: 4 (weight=10.5, contribution=42.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    location: 2 (weight=4, contribution=8.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    sms: 1 (weight=9.5, contribution=9.50)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    network: 2 (weight=4.5, contribution=9.00)
+    privileged_ops: 2 (weight=6.5, contribution=13.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+    location: 1 (weight=4, contribution=4.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    admin+network
+    sms+network
+
+  Squash Function:
+    _squash(total_raw=12.7117, K=100.0, a=0.04) -> 73.4376
+
+================================================================================
+APK: 0005FAFA5FA61EA3FD6CAE8684ABE566B9F3513751AF5944066DA426CDCA02AE.apk
+  N=20, E=22, size=15718.19KB, is_packed=False
+  sem_normed=112.9116
+  structural=9.7589
+  bonus=0.0000
+  mult=0.90
+  total_raw_unnormalized=122.6705 * 0.90 = 110.4035
+  normalization_factor=2.9957
+  total_raw_normalized=36.8536
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=35.5427
+
+  Graf Kategorileri (counts_g):
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    shell_exec: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 8 (weight=12, contribution=96.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    network: 1 (weight=4.5, contribution=4.50)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=35.5427, K=100.0, a=0.04) -> 94.4977
+
+================================================================================
+APK: 000635EEF5B02E5D32C3D067F386B8A136401779666CFC6C5B229A715CF80FC0.apk
+  N=380, E=983, size=5150.64KB, is_packed=False
+  sem_normed=115.6948
+  structural=11.9193
+  bonus=14.0000
+  mult=0.85
+  total_raw_unnormalized=141.6141 * 0.85 = 120.3720
+  normalization_factor=5.9402
+  total_raw_normalized=20.2641
+
+  Benign Library Hits: Weighted ratio = 0.53%
+  Benign Reduction Multiplier: 0.9633
+  FINAL total_raw=19.5210
+
+  Graf Kategorileri (counts_g):
+    network: 15 (weight=4.5, contribution=67.50)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    crypto: 5 (weight=4.0, contribution=20.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    location: 2 (weight=4, contribution=8.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    shared_prefs: 2 (weight=1.5, contribution=3.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    overlay: 1 (weight=8, contribution=8.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    content_provider: 1 (weight=4.0, contribution=4.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 4 (weight=12, contribution=48.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    file_operations: 1 (weight=3.0, contribution=3.00)
+    location: 1 (weight=4, contribution=4.00)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+
+  Squash Function:
+    _squash(total_raw=19.5210, K=100.0, a=0.04) -> 82.6594
+
+================================================================================
+APK: 00066DEF7121F255F2392168C8E3D796EC949222239F8715673FA88E02689CE1.apk
+  N=22, E=24, size=18984.69KB, is_packed=False
+  sem_normed=203.1936
+  structural=11.8023
+  bonus=0.0000
+  mult=0.90
+  total_raw_unnormalized=214.9959 * 0.90 = 193.4963
+  normalization_factor=3.0910
+  total_raw_normalized=62.5990
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=60.3723
+
+  Graf Kategorileri (counts_g):
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    shell_exec: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    admin_operations: 3 (weight=12.0, contribution=36.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    network: 3 (weight=4.5, contribution=13.50)
+    location: 2 (weight=4, contribution=8.00)
+    media_capture: 2 (weight=7.0, contribution=14.00)
+    privileged_ops: 2 (weight=6.5, contribution=13.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=60.3723, K=100.0, a=0.04) -> 99.2075
+
+================================================================================
+APK: 0007A823A2783F31BC9BD72B95662D79706F97F8C62B73C5C4A4FC41F627F769.apk
+  N=5560, E=18444, size=12056.21KB, is_packed=False
+  sem_normed=110.8394
+  structural=10.8062
+  bonus=28.0000
+  mult=0.90
+  total_raw_unnormalized=149.6456 * 0.90 = 134.6811
+  normalization_factor=8.6234
+  total_raw_normalized=15.6182
+
+  Benign Library Hits: Weighted ratio = 35.63%
+  Benign Reduction Multiplier: 0.7617
+  FINAL total_raw=11.8970
+
+  Graf Kategorileri (counts_g):
+    modern_libs: 162 (weight=0, contribution=0.00)
+    sqlite: 61 (weight=2.5, contribution=152.50)
+    content_provider: 20 (weight=4.0, contribution=80.00)
+    network: 15 (weight=4.5, contribution=67.50)
+    crypto: 10 (weight=4.0, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    shared_prefs: 10 (weight=1.5, contribution=15.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 4 (weight=4.0, contribution=16.00)
+    dynamic: 3 (weight=10.5, contribution=31.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    banking_targets: 2 (weight=6.5, contribution=13.00)
+    accessibility: 2 (weight=7.5, contribution=15.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    clipboard: 1 (weight=7.0, contribution=7.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    bluetooth: 1 (weight=4.0, contribution=4.00)
+    account: 1 (weight=4.8, contribution=4.80)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+    network: 1 (weight=4.5, contribution=4.50)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=11.8970, K=100.0, a=0.04) -> 72.1468
+
+================================================================================
+APK: 0007F44CD054FC243E6D313584331EE513AB5F153EBE53B6BF130A66C10582D5.apk
+  N=22, E=26, size=8259.87KB, is_packed=False
+  sem_normed=201.5559
+  structural=12.1965
+  bonus=0.0000
+  mult=0.85
+  total_raw_unnormalized=213.7524 * 0.85 = 181.6895
+  normalization_factor=3.0910
+  total_raw_normalized=58.7794
+
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=56.6885
+
+  Graf Kategorileri (counts_g):
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    dynamic: 1 (weight=10.5, contribution=10.50)
+    shell_exec: 1 (weight=5.5, contribution=5.50)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    file_operations: 2 (weight=3.0, contribution=6.00)
+    location: 2 (weight=4, contribution=8.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    network: 1 (weight=4.5, contribution=4.50)
+    overlay: 1 (weight=8, contribution=8.00)
+
+  Şüpheli API Kombinasyonları:
+    (Yok)
+
+  Squash Function:
+    _squash(total_raw=56.6885, K=100.0, a=0.04) -> 98.9388
 
 ================================================================================
 APK: 000860964328B084A2A06A2A863A009D209244D9932834476E12C2EE6656D3B0.apk
   N=22, E=26, size=5831.18KB, is_packed=False
   sem_normed=193.1513
   structural=12.1965
-  bonus=8.0000
-  mult=1.00
-  total_raw_unnormalized=213.3478 * 1.00 = 213.3478
+  bonus=0.0000
+  mult=0.85
+  total_raw_unnormalized=205.3478 * 0.85 = 174.5457
   normalization_factor=3.0910
-  total_raw_normalized=69.0213
+  total_raw_normalized=56.4682
 
-  Benign Library Hits: Weighted ratio = 100.00%
-  Benign Reduction Multiplier: 0.9900
-  FINAL total_raw=68.3311
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=54.4596
 
   Graf Kategorileri (counts_g):
     file_operations: 4 (weight=3.0, contribution=12.00)
@@ -202,148 +2680,75 @@ APK: 000860964328B084A2A06A2A863A009D209244D9932834476E12C2EE6656D3B0.apk
     (Yok)
 
   Squash Function:
-    _squash(total_raw=68.3311, K=100.0, a=0.04) -> 99.5792
+    _squash(total_raw=54.4596, K=100.0, a=0.04) -> 98.7342
 
 ================================================================================
-APK: 00149006D231783494698F27C7923ED6CF33773453061C2BCCA2ED7D24E5267A.apk
-  N=12, E=12, size=15044.28KB, is_packed=True
-  sem_normed=186.6029
-  structural=13.0231
-  bonus=80.0000
+APK: 0008AD471FEBC2BA04F07B2EE1D5BB28C1BF82858F29A6D02EF69EA6285C0D14.apk
+  N=53, E=107, size=14191.1KB, is_packed=False
+  sem_normed=131.7802
+  structural=12.9626
+  bonus=9.0000
   mult=0.90
-  total_raw_unnormalized=279.6260 * 0.90 = 251.6634
-  normalization_factor=2.4849
-  total_raw_normalized=101.2768
+  total_raw_unnormalized=153.7428 * 0.90 = 138.3685
+  normalization_factor=3.9703
+  total_raw_normalized=34.8510
 
-  Benign Library Hits: Weighted ratio = 100.00%
-  Benign Reduction Multiplier: 1.0000
-  FINAL total_raw=101.2768
+  Benign Library Hits: Weighted ratio = 0.00%
+  Benign Reduction Multiplier: 0.9644
+  FINAL total_raw=33.6113
 
   Graf Kategorileri (counts_g):
-    file_operations: 3 (weight=3.0, contribution=9.00)
-    vpn: 3 (weight=10.5, contribution=31.50)
-    content_provider: 1 (weight=4.0, contribution=4.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    network: 1 (weight=4.5, contribution=4.50)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
 
   Manifest Kategorileri (counts_m):
     dangerous_permissions: 12 (weight=12, contribution=144.00)
     file_operations: 3 (weight=3.0, contribution=9.00)
-    telephony: 2 (weight=9.8, contribution=19.60)
+    background_ops: 3 (weight=4.0, contribution=12.00)
     location: 2 (weight=4, contribution=8.00)
-    media_capture: 2 (weight=7.0, contribution=14.00)
-    background_ops: 2 (weight=4.0, contribution=8.00)
-    device_info: 2 (weight=5.0, contribution=10.00)
-    network: 2 (weight=4.5, contribution=9.00)
+    telephony: 1 (weight=9.8, contribution=9.80)
     admin_operations: 1 (weight=12.0, contribution=12.00)
+    network: 1 (weight=4.5, contribution=4.50)
     privileged_ops: 1 (weight=6.5, contribution=6.50)
     overlay: 1 (weight=8, contribution=8.00)
 
   Şüpheli API Kombinasyonları:
-    (Yok)
+    admin+network
 
   Squash Function:
-    _squash(total_raw=101.2768, K=100.0, a=0.04) -> 99.9697
+    _squash(total_raw=33.6113, K=100.0, a=0.04) -> 93.6369
 
 ================================================================================
-APK: 0018925B0F91E9EF9C04DC0BFA56997F420B453EFC4AD874D8AF38265E4E3290.apk
-  N=0, E=0, size=476.0KB, is_packed=False
-  sem_normed=0.0000
-  structural=0.0000
-  bonus=80.0000
-  mult=1.20
-  total_raw_unnormalized=80.0000 * 1.20 = 96.0000
-  normalization_factor=2.3026
-  total_raw_normalized=41.6923
-
-  Benign Library Hits: Weighted ratio = 0.00%
-  Benign Reduction Multiplier: 1.0000
-  FINAL total_raw=41.6923
-
-  Graf Kategorileri (counts_g):
-
-  Manifest Kategorileri (counts_m):
-
-  Şüpheli API Kombinasyonları:
-    (Yok)
-
-  Squash Function:
-    _squash(total_raw=41.6923, K=100.0, a=0.04) -> 96.5623
-
-================================================================================
-APK: 199015082974753A37E8529C13C1B0F209BC03C9453C8E6ABDB3364E6AF78E29.apk
-  N=6118, E=21265, size=12940.94KB, is_packed=False
-  sem_normed=782.6555
-  structural=11.6486
-  bonus=42.0000
+APK: 0008DE304B8A0D2D0ACD7490A2571888DFC63EF82CE50ECFE31A37E143872718.apk
+  N=8455, E=31118, size=10452.27KB, is_packed=False
+  sem_normed=89.9932
+  structural=11.5156
+  bonus=35.0000
   mult=0.90
-  total_raw_unnormalized=836.3041 * 0.90 = 752.6737
-  normalization_factor=8.7190
-  total_raw_normalized=86.3258
+  total_raw_unnormalized=136.5088 * 0.90 = 122.8580
+  normalization_factor=9.0425
+  total_raw_normalized=13.5867
 
-  Benign Library Hits: Weighted ratio = 14241.58%
-  Benign Reduction Multiplier: 0.0294
-  FINAL total_raw=2.5393
-
-  Graf Kategorileri (counts_g):
-    modern_libs: 4730 (weight=1, contribution=4730.00)
-    location: 122 (weight=4, contribution=488.00)
-    shell_exec: 48 (weight=5.5, contribution=264.00)
-    background_ops: 8 (weight=4.0, contribution=32.00)
-    reflection: 8 (weight=4.0, contribution=32.00)
-    network: 6 (weight=4.5, contribution=27.00)
-    content_provider: 6 (weight=4.0, contribution=24.00)
-    file_operations: 4 (weight=3.0, contribution=12.00)
-    sqlite: 4 (weight=2.5, contribution=10.00)
-    telephony: 2 (weight=9.8, contribution=19.60)
-    crypto: 2 (weight=4.0, contribution=8.00)
-    dynamic: 2 (weight=10.5, contribution=21.00)
-    accessibility: 2 (weight=7.5, contribution=15.00)
-    notifications: 2 (weight=6.5, contribution=13.00)
-    webview: 2 (weight=7.5, contribution=15.00)
-    overlay: 2 (weight=8, contribution=16.00)
-    clipboard: 2 (weight=7.0, contribution=14.00)
-    contacts: 2 (weight=4, contribution=8.00)
-    package_info: 2 (weight=6.0, contribution=12.00)
-    device_info: 1 (weight=5.0, contribution=5.00)
-    obfuscation: 1 (weight=4.0, contribution=4.00)
-    banking_targets: 1 (weight=6.5, contribution=6.50)
-    sensor: 1 (weight=3.5, contribution=3.50)
-    shared_prefs: 1 (weight=1.5, contribution=1.50)
-    intent_hijacking: 1 (weight=5.5, contribution=5.50)
-    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
-
-  Manifest Kategorileri (counts_m):
-    location: 2 (weight=4, contribution=8.00)
-    dangerous_permissions: 2 (weight=12, contribution=24.00)
-
-  Şüpheli API Kombinasyonları:
-    crypto+network
-
-  Squash Function:
-    _squash(total_raw=2.5393, K=100.0, a=0.04) -> 55.0611
-
-================================================================================
-APK: 19934535226CC35AABBA24E2FB79D3CD62EB3C4E3684DC6E369F1C24ED0D3BFE.apk
-  N=6401, E=21838, size=3433.38KB, is_packed=False
-  sem_normed=831.1883
-  structural=10.9121
-  bonus=54.0000
-  mult=1.00
-  total_raw_unnormalized=896.1004 * 1.00 = 896.1004
-  normalization_factor=8.7642
-  total_raw_normalized=102.2454
-
-  Benign Library Hits: Weighted ratio = 8424.46%
-  Benign Reduction Multiplier: 0.1318
-  FINAL total_raw=13.4760
+  Benign Library Hits: Weighted ratio = 33.97%
+  Benign Reduction Multiplier: 0.7794
+  FINAL total_raw=10.5889
 
   Graf Kategorileri (counts_g):
-    modern_libs: 2969 (weight=1, contribution=2969.00)
-    shell_exec: 355 (weight=5.5, contribution=1952.50)
-    network: 225 (weight=4.5, contribution=1012.50)
-    crypto: 5 (weight=4.0, contribution=20.00)
+    modern_libs: 1361 (weight=0, contribution=0.00)
+    native_code: 20 (weight=4.0, contribution=80.00)
+    shared_prefs: 20 (weight=1.5, contribution=30.00)
+    crypto: 12 (weight=4.0, contribution=48.00)
+    network: 10 (weight=4.5, contribution=45.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    emulator_detection: 7 (weight=5.8, contribution=40.60)
+    background_ops: 6 (weight=4.0, contribution=24.00)
     file_operations: 4 (weight=3.0, contribution=12.00)
-    background_ops: 4 (weight=4.0, contribution=16.00)
-    banking_targets: 3 (weight=6.5, contribution=19.50)
+    banking_targets: 4 (weight=6.5, contribution=26.00)
+    media_capture: 3 (weight=7.0, contribution=21.00)
     dynamic: 2 (weight=10.5, contribution=21.00)
     location: 2 (weight=4, contribution=8.00)
     reflection: 2 (weight=4.0, contribution=8.00)
@@ -352,26 +2757,145 @@ APK: 19934535226CC35AABBA24E2FB79D3CD62EB3C4E3684DC6E369F1C24ED0D3BFE.apk
     webview: 2 (weight=7.5, contribution=15.00)
     overlay: 2 (weight=8, contribution=16.00)
     clipboard: 2 (weight=7.0, contribution=14.00)
+    bluetooth: 2 (weight=4.0, contribution=8.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
     sqlite: 2 (weight=2.5, contribution=5.00)
     content_provider: 2 (weight=4.0, contribution=8.00)
     telephony: 1 (weight=9.8, contribution=9.80)
     device_info: 1 (weight=5.0, contribution=5.00)
     obfuscation: 1 (weight=4.0, contribution=4.00)
     contacts: 1 (weight=4, contribution=4.00)
-    sensor: 1 (weight=3.5, contribution=3.50)
-    account: 1 (weight=4.8, contribution=4.80)
-    package_info: 1 (weight=6.0, contribution=6.00)
-    shared_prefs: 1 (weight=1.5, contribution=1.50)
     intent_hijacking: 1 (weight=5.5, contribution=5.50)
     classloader_manipulation: 1 (weight=5.5, contribution=5.50)
 
   Manifest Kategorileri (counts_m):
-    dangerous_permissions: 3 (weight=12, contribution=36.00)
-    file_operations: 2 (weight=3.0, contribution=6.00)
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    network: 3 (weight=4.5, contribution=13.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
     background_ops: 1 (weight=4.0, contribution=4.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    reflection+native
+    admin+network
+    banking+overlay
+
+  Squash Function:
+    _squash(total_raw=10.5889, K=100.0, a=0.04) -> 69.9961
+
+================================================================================
+APK: 000AA7AC8DE37606FCCD3EA00E5EF9238D550514D61CAD48AC6F47D1D13F86D8.apk
+  N=4834, E=19147, size=9200.69KB, is_packed=False
+  sem_normed=90.8681
+  structural=11.3513
+  bonus=27.0000
+  mult=0.85
+  total_raw_unnormalized=129.2194 * 0.85 = 109.8365
+  normalization_factor=8.4834
+  total_raw_normalized=12.9472
+
+  Benign Library Hits: Weighted ratio = 25.51%
+  Benign Reduction Multiplier: 0.8544
+  FINAL total_raw=11.0622
+
+  Graf Kategorileri (counts_g):
+    network: 15 (weight=4.5, contribution=67.50)
+    crypto: 10 (weight=4.0, contribution=40.00)
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    background_ops: 7 (weight=4.0, contribution=28.00)
+    modern_libs: 5 (weight=0, contribution=0.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    accessibility: 3 (weight=7.5, contribution=22.50)
+    shared_prefs: 3 (weight=1.5, contribution=4.50)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    location: 2 (weight=4, contribution=8.00)
+    device_info: 2 (weight=5.0, contribution=10.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    sensor: 2 (weight=3.5, contribution=7.00)
+    package_info: 2 (weight=6.0, contribution=12.00)
+    sqlite: 2 (weight=2.5, contribution=5.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    obfuscation: 1 (weight=4.0, contribution=4.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+    classloader_manipulation: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 12 (weight=12, contribution=144.00)
+    file_operations: 3 (weight=3.0, contribution=9.00)
+    telephony: 2 (weight=9.8, contribution=19.60)
+    location: 2 (weight=4, contribution=8.00)
+    background_ops: 2 (weight=4.0, contribution=8.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    sms: 1 (weight=9.5, contribution=9.50)
+    admin_operations: 1 (weight=12.0, contribution=12.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    privileged_ops: 1 (weight=6.5, contribution=6.50)
+
+  Şüpheli API Kombinasyonları:
+    crypto+network
+    admin+network
+    sms+network
+
+  Squash Function:
+    _squash(total_raw=11.0622, K=100.0, a=0.04) -> 70.7852
+
+================================================================================
+APK: 000AF66DE27040AFB58B0AF9A00718C6B11C1545131F541330D44544F443BA0D.apk
+  N=1997, E=4846, size=1199.95KB, is_packed=True
+  sem_normed=67.5425
+  structural=9.4526
+  bonus=86.0000
+  mult=1.20
+  total_raw_unnormalized=162.9952 * 1.20 = 195.5942
+  normalization_factor=7.5994
+  total_raw_normalized=25.7381
+
+  Benign Library Hits: Weighted ratio = 57.84%
+  Benign Reduction Multiplier: 1.0000
+  FINAL total_raw=25.7381
+
+  Graf Kategorileri (counts_g):
+    shell_exec: 10 (weight=5.5, contribution=55.00)
+    network: 5 (weight=4.5, contribution=22.50)
+    crypto: 4 (weight=4.0, contribution=16.00)
+    file_operations: 4 (weight=3.0, contribution=12.00)
+    background_ops: 3 (weight=4.0, contribution=12.00)
+    accessibility: 3 (weight=7.5, contribution=22.50)
+    dynamic: 2 (weight=10.5, contribution=21.00)
+    reflection: 2 (weight=4.0, contribution=8.00)
+    notifications: 2 (weight=6.5, contribution=13.00)
+    webview: 2 (weight=7.5, contribution=15.00)
+    overlay: 2 (weight=8, contribution=16.00)
+    clipboard: 2 (weight=7.0, contribution=14.00)
+    content_provider: 2 (weight=4.0, contribution=8.00)
+    media_capture: 1 (weight=7.0, contribution=7.00)
+    device_info: 1 (weight=5.0, contribution=5.00)
+    contacts: 1 (weight=4, contribution=4.00)
+    package_info: 1 (weight=6.0, contribution=6.00)
+    shared_prefs: 1 (weight=1.5, contribution=1.50)
+    intent_hijacking: 1 (weight=5.5, contribution=5.50)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 3 (weight=12, contribution=36.00)
+    location: 2 (weight=4, contribution=8.00)
+    file_operations: 1 (weight=3.0, contribution=3.00)
 
   Şüpheli API Kombinasyonları:
     crypto+network
 
   Squash Function:
-    _squash(total_raw=13.4760, K=100.0, a=0.04) -> 74.6130
+    _squash(total_raw=25.7381, K=100.0, a=0.04) -> 88.6859
