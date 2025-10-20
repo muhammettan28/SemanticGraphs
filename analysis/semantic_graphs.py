@@ -34,7 +34,7 @@ def build_api_graph_compact(apk_path: str, min_weight: int = 1) -> tuple[dict, P
     Bir APK dosyasını analiz eder, sınıf tabanlı bir API çağrı grafiği oluşturur
     ve ilgili metadatayı çıkarır.
     """
-    out_dir = Path("../graph_files")
+    out_dir = Path("/graph_files")
     out_dir.mkdir(exist_ok=True)
     base_name = Path(apk_path).stem
     graph_path = out_dir / f"{base_name}.graphml"
