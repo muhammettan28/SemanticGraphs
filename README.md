@@ -12,3 +12,4 @@ How to run with just malware samples:
 
 python3.14 cicmaldroid_batch_scoring.py --module semantic_graphs --dataset data --subset malware --out results/androzoo_scores.csv
 
+
