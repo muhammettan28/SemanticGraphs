@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import List, Dict, Tuple
 import networkx as nx
 import json
+import sys
 from analysis import packing
 from analysis import constants as c
 
@@ -34,7 +35,7 @@ def build_api_graph_compact(apk_path: str, min_weight: int = 1) -> tuple[dict, P
     Bir APK dosyasını analiz eder, sınıf tabanlı bir API çağrı grafiği oluşturur
     ve ilgili metadatayı çıkarır.
     """
-    out_dir = Path("/graph_files")
+    out_dir = Path("./graph_files")
     out_dir.mkdir(exist_ok=True)
     base_name = Path(apk_path).stem
     graph_path = out_dir / f"{base_name}.graphml"
@@ -83,7 +84,7 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     Oluşturulan graf ve metadatayı analiz ederek bir zararlı yazılım skoru üretir.
     (Yeniden düzenlenmiş ve mantıksal hataları düzeltilmiş versiyon)
     """
-    
+
     # 1) VERİLERİ YÜKLE VE DEĞİŞKENLERİ AYARLA
     # ==================================================================
     graph_path = Path(graph_path)
@@ -97,7 +98,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
             meta = json.load(f)
     except Exception as e:
         print(f"[FATAL] Analiz verileri okunamadı: {graph_path} | Hata: {e}", file=sys.stderr)
-        # Hata durumunda nötr/başarısız skoru dön
         return {"apk_name": apk_path.name, "error": str(e)}, 50.0
 
     report = meta.copy()
@@ -105,10 +105,8 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     E = G.number_of_edges()
     apk_size_kb = meta.get("apk_size_kb", 1024)
 
-    # Paketleyici tespiti (Bonus ve Benign İndirimi için kritik)
     is_packed = packing.is_likely_packed_with_androguard(apk_path)
 
-    # Durumsal bayraklar
     is_small = apk_size_kb <= 2000
     is_large = apk_size_kb >= 10000
     benign_heavy = len(meta.get('all_permissions', [])) > 40 and \
@@ -118,13 +116,13 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     # ==================================================================
     counts_g = {k: 0 for k in c.CATEGORY_RULES}
     counts_m = {k: 0 for k in c.CATEGORY_RULES}
-    
+
     nodes_str = [str(n) for n in G.nodes()]
     for cat, patterns in c.CATEGORY_RULES.items():
         for node in nodes_str:
             if any(p in node for p in patterns):
                 counts_g[cat] += 1
-                
+
     for perm in meta.get('all_permissions', []):
         cat = c.PERM_TO_CATEGORY.get(perm.split('.')[-1])
         if cat:
@@ -138,43 +136,59 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
         for k in ("sms", "admin_operations"):
             if counts_g.get(k, 0) == 0:
                 counts_m[k] = 0
-    
-    # Kategori katkılarını sınırla (Tüm 'min' kuralları buraya gelir)
-    counts_g['network'] = min(counts_g.get('network', 0), 15)
-    counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 10) 
-    counts_g['location'] = min(counts_g.get('location', 0), 10) 
-    counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 20)
-    counts_g['crypto'] = min(counts_g.get('crypto', 0), 15)
-    counts_g['reflection'] = min(counts_g.get('reflection', 0), 15)
-    counts_g['package_info'] = min(counts_g.get('package_info', 0), 10)
-    counts_g['device_info'] = min(counts_g.get('device_info', 0), 10)
-    counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 10)
-    counts_g['shared_prefs'] = min(counts_g.get('shared_prefs', 0), 20)
-    counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 20)
 
-    counts_g['native_code'] = min(counts_g.get('native_code', 0), 20)
-    counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 15)
-    counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 10)
+    counts_g['network'] = min(counts_g.get('network', 0), 8)
+    counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 8)
+    counts_g['location'] = min(counts_g.get('location', 0), 8)
+    counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 6)
+    counts_g['crypto'] = min(counts_g.get('crypto', 0), 10)
+    counts_g['reflection'] = min(counts_g.get('reflection', 0), 10)
+    counts_g['package_info'] = min(counts_g.get('package_info', 0), 8)
+    counts_g['device_info'] = min(counts_g.get('device_info', 0), 8)
+    counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 8)
+    counts_g['shared_prefs'] = min(counts_g.get('shared_prefs', 0), 8)
+    counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 8)
+    counts_g['native_code'] = min(counts_g.get('native_code', 0), 8)
+    counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 10)
+    counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 8)
+    counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 8)
+    counts_g['contacts'] = min(counts_g.get('contacts', 0), 5)
+    counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 5)
+    counts_g['notifications'] = min(counts_g.get('notifications', 0), 5)
+    counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 5)
+    counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 5)
+    counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 5)
+    counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 5)
+    counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 5)
+    counts_g['media_capture'] = min(counts_g.get('media_capture', 0), 5)
+    counts_g['adware'] = min(counts_g.get('adware', 0), 5)
+    counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 5)
+    counts_g['overlay'] = min(counts_g.get('overlay', 0), 5)
+    counts_g['adware'] = min(counts_g.get('adware', 0), 5)
 
-    counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 12)
+    counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 10)
+    counts_m['file_operations'] = min(counts_m.get('file_operations', 0), 3)
+    counts_m['location'] = min(counts_m.get('location', 0), 3)
+    counts_m['media_capture'] = min(counts_m.get('media_capture', 0), 3)
+    counts_m['device_info'] = min(counts_m.get('device_info', 0), 3)
+    counts_m['background_ops'] = min(counts_m.get('background_ops', 0), 3)
 
     # 4) HAM SEMANTİK VE YAPISAL SKORLARI HESAPLA
     # ==================================================================
-    
-    # 4a. Semantik Skor (Henüz benign indirimi OLMADAN)
     sem_g_raw = sum(c.W.get(cat, 1.0) * count for cat, count in counts_g.items())
     sem_m_raw = sum(c.W.get(cat, 1.0) * count for cat, count in counts_m.items())
 
     beta = 1.0
-    if is_small: beta = 1.5
-    elif is_large: beta = 0.75
+    if is_small:
+        beta = 1.5
+    elif is_large:
+        beta = 0.75
     sem_raw = sem_g_raw + beta * sem_m_raw
 
     avg_degree = (2 * E) / N if N > 0 else 0
     norm = 1.0 + math.log1p(N / 1000) + math.log1p(E / 500) + (avg_degree / 10)
     sem_normed = sem_raw / norm if norm > 1 else sem_raw
 
-    # 4b. Yapısal Skor
     structural = 0.0
     if N > 10:
         max_out = max((d for _, d in G.out_degree()), default=0)
@@ -194,10 +208,13 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     # 5) SEZGİSEL BONUSLARI HESAPLA
     # ==================================================================
     bonus = 0.0
+    is_empty_graph = N <= 5 and E <= 5
 
-    is_empty_graph = N <= 5 and E <= 5 # Grafın neredeyse boş olup olmadığını kontrol et
-    
-    # Bayrakları ayarla
+    # --- BU BAYRAKLAR 6C BÖLÜMÜNDE KULLANILACAK ---
+    uses_admin = counts_g.get('admin_operations', 0) > 0
+    uses_accessibility = counts_g.get('accessibility', 0) > 0
+    # ---
+
     uses_reflection = counts_g.get('reflection', 0) > 0
     uses_native = counts_g.get('native_code', 0) > 0
     uses_crypto = counts_g.get('crypto', 0) > 1
@@ -207,8 +224,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     uses_contacts = counts_g.get('contacts', 0) > 0
     uses_device_info = counts_g.get('device_info', 0) > 0
     has_c2_comm = counts_g.get('network', 0) > 0
-    uses_admin = counts_g.get('admin_operations', 0) > 0
-    uses_accessibility = counts_g.get('accessibility', 0) > 0
     uses_overlay = counts_g.get('overlay', 0) > 0
     has_banking_targets = counts_g.get('banking_targets', 0) > 1
     uses_keylogging = counts_g.get('keylogging', 0) > 0
@@ -224,14 +239,12 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     if is_packed:
         bonus += 80.0
     elif is_empty_graph:
-        # EĞER packing.py bir şey bulamadıysa AMA graf boşsa,
-        # bu durumun kendisi bir paketleyici/obfuscator belirtisidir!
         print(f"[!] Düşük Karmaşıklık/Boş Graf tespiti (N={N}, E={E}). Ağır Obfuscation/Packing Cezası.")
-        bonus += 80.0 
+        bonus += 80.0
         report['warning'] = "Graph is empty (N<=5), applying packing penalty."
 
     if uses_reflection and uses_native and uses_crypto:
-        bonus += 4.0  # 10'dan 4'e düşürüldü
+        bonus += 4.0
     if has_boot_receiver and (uses_dynamic_code or uses_native):
         bonus += 10.0
 
@@ -253,7 +266,7 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     # Seviye 3 Bonuslar
     critical_flags = [
         uses_sms, uses_admin, uses_dynamic_code, uses_telephony,
-        has_emulator_detection, has_root_detection, uses_keylogging, 
+        has_emulator_detection, has_root_detection, uses_keylogging,
         has_banking_targets, uses_shell_exec, uses_device_info
     ]
     crit_hits = sum(critical_flags)
@@ -263,69 +276,88 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     # 6) NİHAİ SKORU HESAPLA (NORMALİZASYON & İNDİRİM)
     # ==================================================================
     mult = 1.0
-    if is_small: 
+    if is_small:
         mult = 1.2
-    elif is_large: 
+    elif is_large:
         mult = 0.9
     else:
-        mult = 0.85  # Yeni eklenen normal boyut çarpanı
-    
-    # 6a. Tüm ham skorları birleştir
-    total_raw_unnormalized = (sem_normed + structural + bonus) * mult
+        mult = 0.85
 
-    # 6b. Karmaşıklığa göre normalize et
+    total_raw_unnormalized = (sem_normed + structural + bonus) * mult
     normalization_factor = math.log(max(N, 10))
     total_raw_normalized = total_raw_unnormalized / normalization_factor
 
     # 6c. Benign Kütüphane İndirimini SADECE BİR KEZ UYGULA
-    benign_ratio = calculate_weighted_benign_ratio(nodes_str, N) # Bu artık 0.0-1.0 arası doğru oranı döner
-    
-    if not is_packed:
-        # Daha güçlü bir indirim için sigmoid fonksiyonu kullanalım
-        # Oran %50 (0.5) ise skoru 0.5 ile çarpar
-        # Oran %80 (0.8) ise skoru ~0.12 ile çarpar (Güçlü indirim)
-        # Oran %20 (0.2) ise skoru ~0.88 ile çarpar (Hafif indirim)
-        reduction_multiplier = 1.0 / (1.0 + math.exp(6 * (benign_ratio - 0.55))) # 0.65'ten 0.55'e düşürüldü
-    else:
-        # Paketleyici tespiti varsa, indirimi iptal et! (Bu örnekte bu oluyor)
-        reduction_multiplier = 1.0
+    # --- MANTIK HATASI DÜZELTMESİ BAŞLANGICI (False Negative'leri düzeltir) ---
 
+    benign_ratio = calculate_weighted_benign_ratio(nodes_str, N)
+
+    # YÜKSEK RİSK İSTİSNASI (KOMBİNASYON BAZLI):
+    # Bir API'yi tek başına kullanmak (örn: sadece accessibility) indirimi engellememeli.
+    # Ancak tehlikeli KOMBİNASYONLAR engellemeli.
+
+    high_threat_combo_1 = uses_accessibility and (uses_overlay or has_banking_targets)  # UI Spoofing/Clickjacking
+    high_threat_combo_2 = uses_admin and (uses_overlay or uses_crypto)  # Ransomware/Wiper
+    high_threat_combo_3 = uses_sms and has_c2_comm  # SMS Trojan
+    high_threat_combo_4 = uses_dynamic_code and (uses_shell_exec or uses_sms)
+
+    is_high_threat = (
+            high_threat_combo_1 or
+            high_threat_combo_2 or
+            high_threat_combo_3 or
+            high_threat_combo_4
+    )
+
+    # İndirimi İptal Etme Koşulları:
+    # 1. Paketleyici tespit edilmişse (is_packed)
+    # 2. VEYA paketleyici bulunmasa BİLE yüksek riskli API (is_high_threat) kullanıyorsa
+    if is_packed or is_high_threat:
+        # İndirimi iptal et!
+        reduction_multiplier = 1.0
+    else:
+        # SADECE 'paketlenmemiş' VE 'yüksek riskli olmayan'
+        # uygulamalara indirim yap. (Sigmoid fonksiyonu)
+        reduction_multiplier = 1.0 / (1.0 + math.exp(6 * (benign_ratio - 0.35)))
 
     total_raw = total_raw_normalized * reduction_multiplier
 
+    # --- MANTIK HATASI DÜZELTMESİ SONU ---
+
     # 7) SQUASH UYGULA VE LOGLA
     # ==================================================================
-    K_val = 100.0 
+    K_val = 100.0
     a_val = 0.04
     total = _squash(total_raw, K=K_val, a=a_val)
-    
-    # --- Loglama (Tüm yazma işlemleri tek bir yerde) ---
+
     try:
         with debug_file.open("a", encoding="utf-8") as f:
-            f.write(f"\n{'='*80}\n")
+            f.write(f"\n{'=' * 80}\n")
             f.write(f"APK: {meta['apk_name']}\n")
             f.write(f"  N={N}, E={E}, size={apk_size_kb}KB, is_packed={is_packed}\n")
             f.write(f"  sem_normed={sem_normed:.4f}\n")
             f.write(f"  structural={structural:.4f}\n")
             f.write(f"  bonus={bonus:.4f}\n")
             f.write(f"  mult={mult:.2f}\n")
-            f.write(f"  total_raw_unnormalized={(sem_normed + structural + bonus):.4f} * {mult:.2f} = {total_raw_unnormalized:.4f}\n")
+            f.write(
+                f"  total_raw_unnormalized={(sem_normed + structural + bonus):.4f} * {mult:.2f} = {total_raw_unnormalized:.4f}\n")
             f.write(f"  normalization_factor={normalization_factor:.4f}\n")
             f.write(f"  total_raw_normalized={total_raw_normalized:.4f}\n")
             f.write(f"\n  Benign Library Hits: Weighted ratio = {benign_ratio:.2%}\n")
             f.write(f"  Benign Reduction Multiplier: {reduction_multiplier:.4f}\n")
             f.write(f"  FINAL total_raw={total_raw:.4f}\n")
-            
+
             f.write(f"\n  Graf Kategorileri (counts_g):\n")
             for cat, count in sorted(counts_g.items(), key=lambda x: x[1], reverse=True):
                 if count > 0:
-                    f.write(f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
-            
+                    f.write(
+                        f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
+
             f.write(f"\n  Manifest Kategorileri (counts_m):\n")
             for cat, count in sorted(counts_m.items(), key=lambda x: x[1], reverse=True):
                 if count > 0:
-                    f.write(f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
-            
+                    f.write(
+                        f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
+
             f.write("\n  Şüpheli API Kombinasyonları:\n")
             if detected_combos:
                 for combo in detected_combos:
@@ -338,11 +370,11 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
             f.flush()
     except Exception as e:
         print(f"[HATA] Debug dosyası yazılamadı: {e}", file=sys.stderr)
-    
+
     # 8) RAPORU GÜNCELLE VE DÖNDÜR
     # ==================================================================
     report.update({
-        'node_count': N, 
+        'node_count': N,
         'edge_count': E,
         'sem_score_normed': round(sem_normed, 4),
         'structural_score': round(structural, 4),
@@ -350,7 +382,7 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
         'total_raw': round(total_raw, 4),
         'malware_score': round(total, 4)
     })
-    
+
     return report, round(total, 4)
 
 def analyze_api_frequencies(cg) -> Dict[str, int]:
