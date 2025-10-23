@@ -288,40 +288,51 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path) -
     total_raw_normalized = total_raw_unnormalized / normalization_factor
 
     # 6c. Benign Kütüphane İndirimini SADECE BİR KEZ UYGULA
-    # --- MANTIK HATASI DÜZELTMESİ BAŞLANGICI (False Negative'leri düzeltir) ---
 
     benign_ratio = calculate_weighted_benign_ratio(nodes_str, N)
 
-    # YÜKSEK RİSK İSTİSNASI (KOMBİNASYON BAZLI):
-    # Bir API'yi tek başına kullanmak (örn: sadece accessibility) indirimi engellememeli.
-    # Ancak tehlikeli KOMBİNASYONLAR engellemeli.
-
-    high_threat_combo_1 = uses_accessibility and (uses_overlay or has_banking_targets)  # UI Spoofing/Clickjacking
-    high_threat_combo_2 = uses_admin and (uses_overlay or uses_crypto)  # Ransomware/Wiper
-    high_threat_combo_3 = uses_sms and has_c2_comm  # SMS Trojan
-    high_threat_combo_4 = uses_dynamic_code and (uses_shell_exec or uses_sms)
-
-    is_high_threat = (
-            high_threat_combo_1 or
-            high_threat_combo_2 or
-            high_threat_combo_3 or
-            high_threat_combo_4
+    # YÜKSEK RİSK KOMBİNASYONLARI (Bunlar indirimi her zaman iptal eder)
+    very_high_threat_combo_1 = uses_accessibility and uses_overlay and has_banking_targets
+    very_high_threat_combo_2 = uses_admin and uses_crypto
+    very_high_threat_combo_3 = uses_sms and has_c2_comm and uses_dynamic_code
+    very_high_threat_combo_4 = uses_dynamic_code and uses_shell_exec
+    is_very_high_threat = (
+            very_high_threat_combo_1 or
+            very_high_threat_combo_2 or
+            very_high_threat_combo_3 or
+            very_high_threat_combo_4
     )
 
     # İndirimi İptal Etme Koşulları:
-    # 1. Paketleyici tespit edilmişse (is_packed)
-    # 2. VEYA paketleyici bulunmasa BİLE yüksek riskli API (is_high_threat) kullanıyorsa
-    if is_packed or is_high_threat:
-        # İndirimi iptal et!
+    # ORTA RİSK KOMBİNASYONU (Yüksek benign_ratio'ya rağmen şüpheli)
+    # Eğer dinamik kod VARSA VE (Accessibility VEYA Keylogging VARSA)
+    is_medium_threat_combo = uses_dynamic_code and (uses_accessibility or uses_keylogging)
+    # --- YENİ ELIF BLOĞU SONU ---
+
+    # İndirimi İptal Etme Koşulları:
+    if is_packed:
+        # 1. Paketleyici varsa İPTAL
         reduction_multiplier = 1.0
+
+    elif is_very_high_threat:
+        # 2. EN KRİTİK kombinasyon varsa İPTAL
+        reduction_multiplier = 1.0
+
+    elif is_medium_threat_combo and benign_ratio > 0.5:  # 0.5 eşiği ayarlanabilir
+        # 3. ORTA RİSK kombinasyonu VARSA VE benign_ratio YÜKSEKSE (%50+) İPTAL
+        #    (Düşük benign_ratio'lu orta riskliler indirime girebilir - False Positive önlemi)
+        print(f"[!] Orta Risk + Yüksek Benign Ratio ({benign_ratio:.1%}) -> İndirim İptal Edildi.")
+        reduction_multiplier = 1.0
+
     else:
-        # SADECE 'paketlenmemiş' VE 'yüksek riskli olmayan'
-        # uygulamalara indirim yap. (Sigmoid fonksiyonu)
-        reduction_multiplier = 1.0 / (1.0 + math.exp(6 * (benign_ratio - 0.35)))
+        # Diğer tüm durumlar (çoğunlukla benign'lar veya düşük riskli malware'ler)
+        # İNDİRİME GİRER
+        eğim = 4.0  # veya 5.0
+        merkez = 0.55
+        reduction_multiplier = 1.0 / (1.0 + math.exp(eğim * (benign_ratio - merkez)))
 
     total_raw = total_raw_normalized * reduction_multiplier
 
-    # --- MANTIK HATASI DÜZELTMESİ SONU ---
 
     # 7) SQUASH UYGULA VE LOGLA
     # ==================================================================
@@ -398,7 +409,6 @@ def analyze_api_frequencies(cg) -> Dict[str, int]:
 def check_suspicious_combinations(counts_g: dict, counts_m: dict) -> Tuple[float, List[str]]:
     """
     Şüpheli API kombinasyonlarını KATEGORİ SAYIMLARINA göre kontrol eder.
-    (nodes_str taraması kaldırıldı, artık daha güvenilir.)
     """
     suspicious_score = 0.0
     detected_combinations = []
@@ -451,9 +461,8 @@ def calculate_weighted_benign_ratio(nodes_str: List[str], N: int) -> float:
     """
     if N == 0:
         return 0.0
-    
-    # constants.py dosyasındaki asıl listeyi kullan
-    # (constants zaten 'c' olarak import edilmişti)
+
+    # (constants 'c' olarak import edilmişti)
     
     benign_hits = 0
     for node in nodes_str:
