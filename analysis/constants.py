@@ -71,6 +71,22 @@ DANGEROUS_PERMISSIONS = frozenset([
 
 # API/Sınıf isimlerini anlamsal kategorilere eşleyen kurallar
 CATEGORY_RULES = {
+'benign_ui': (
+    'Landroid/widget/',
+    'Landroidx/recyclerview/widget/RecyclerView',
+    'Landroidx/viewpager/widget/ViewPager',
+    'Landroidx/appcompat/widget/Toolbar',
+    'Lcom/google/android/material/',
+    'Landroidx/constraintlayout/',
+    'Landroid/view/Menu',
+    'Landroid/widget/ImageView',
+    'Landroid/widget/TextView',
+    'onClick',
+    'setContentView',
+    'Landroidx/activity/ComponentActivity',
+        'Landroidx/appcompat/app/ActionBar',
+        'onCreate', 'onStart', 'onResume', 'onPause', 'onStop', 'onDestroy',
+),
 'sms': (
 'Landroid/telephony/SmsManager;',
 'Landroid/telephony/SmsMessage;',
@@ -143,6 +159,10 @@ CATEGORY_RULES = {
 'generateSecret',
 'SHA-1',
 'ECDH',
+'javax/crypto/SecretKey',
+'javax/crypto/SecretKeyFactory',
+'javax/crypto/CipherOutputStream',
+'javax/crypto/CipherInputStream',
 ),
 'dynamic': (
 'Ldalvik/system/DexClassLoader;',
@@ -168,6 +188,12 @@ CATEGORY_RULES = {
 'loadDexFile',
 'getDexClassLoader',
 'defineClassN',
+'Ljava/lang/Class;->forName',  # reflection-related loadClass patterns
+'Ljava/lang/Runtime;->exec',
+'Ljava/lang/Class;->forName',
+    'Ljava/lang/Runtime;->exec',
+    'invoke',
+    'dalvik.system.VMStack',
 ),
 'admin_operations': (
 'Landroid/app/admin/DevicePolicyManager;',
@@ -234,23 +260,28 @@ CATEGORY_RULES = {
 'isProviderEnabled',
 'LocationServices',
 'Lcom/google/android/gms/location/LocationServices;',
+'Lcom/google/android/gms/location/FusedLocationProviderClient;',
+        'FusedLocationProviderClient',
+        'getLastLocation',
 ),
-'media_capture': (
-'Landroid/hardware/Camera;',
-'Landroid/hardware/camera2/',
-'Landroid/media/MediaRecorder;',
-'Landroid/media/AudioRecord;',
-'takePicture',
-'startRecording',
-'setOutputFile',
-'setAudioSource',
-'setVideoSource',
-'prepare',
-'stop',
-'release',
-'setPreviewDisplay',
-'Landroid/media/MediaRecorder;->prepare',
-'Landroid/hardware/Camera;->setPreviewCallback',
+'camera_capture': (
+    'Landroid/hardware/Camera;',
+    'Landroid/hardware/camera2/',
+    'takePicture',
+    'setPreviewDisplay',
+    'Landroid/hardware/Camera;->setPreviewCallback',
+    # İzinlerden 'CAMERA'yı da buraya ekleyebiliriz (gerçi PERM_TO_CATEGORY'de var)
+),
+# YENİ KATEGORİ 2: Sadece Mikrofon/Ses
+'microphone_capture': (
+    'Landroid/media/MediaRecorder;',
+    'Landroid/media/AudioRecord;',
+    'startRecording',
+    'setAudioSource',
+    'setOutputFile',
+    'prepare',
+    'Landroid/media/MediaRecorder;->prepare',
+    # İzinlerden 'RECORD_AUDIO'yu da buraya ekleyebiliriz
 ),
 'root_detection': (
 '/system/bin/su',
@@ -286,6 +317,7 @@ CATEGORY_RULES = {
 'onHandleWork',
 'enqueueUniquePeriodicWork',
 'Landroidx/work/WorkManager;->enqueueUniquePeriodicWork',
+'Landroid/os/PowerManager$WakeLock;->acquire',
 ),
 'device_info': (
 'Landroid/os/Build;',
@@ -337,6 +369,22 @@ CATEGORY_RULES = {
 'POST',
 'GET',
 'User-Agent',
+'Lokhttp3/OkHttpClient;',         # ekleme
+'Lokhttp3/Request;',              # ekleme
+'Lokhttp3/Response;',             # ekleme
+'Lokhttp3/Interceptor;',          # ekleme
+'Lretrofit2/Retrofit;',           # ekleme
+'Lretrofit2/Call;',               # ekleme
+'Lcom/android/volley/',                    # Volley networking
+    'Lio/ktor/client/',                        # Ktor client
+    'Landroidx/work/NetworkType',              # WorkManager network conditions
+    'Lcom/github/nkzawa/socketio/',            # Socket.IO client
+    'Lio/socket/client/Socket',                # Socket.IO
+    'Lcom/squareup/okhttp3/websocket/',
+    'Lcom/squareup/okhttp3/websocket/',
+    'Lio/socket/client/Socket', 
+    'Lorg/eclipse/paho/client/mqttv3/',
+    'Ljava/net/Socket;->connect',  
 ),
 'reflection': (
 'Ljava/lang/Class;->forName',
@@ -469,6 +517,29 @@ CATEGORY_RULES = {
 'Lcom/google/gson/',
 'Lio/realm/',
 'Lcom/airbnb/lottie/',
+'Lcom/google/firebase/messaging/',
+        'Lcom/google/firebase/analytics/',
+        'Lcom/google/firebase/installations/',
+        'Lcom/google/android/exoplayer2/',
+        'Lcom/squareup/okhttp3/',
+        'Lcom/squareup/retrofit2/',
+        'Lcom/google/android/play/core/',          # App Bundle/Dynamic Features
+    'Lcom/google/android/play/core/splitinstall/',
+    'Lcom/google/android/play/core/review/',   # In-App Reviews
+    'Lcom/google/android/play/core/appupdate/', # In-App Updates
+    'Landroidx/biometric/',                    # Biometric auth
+    'Landroidx/camera/core/',                  # CameraX
+    'Landroidx/room/',                         # Room Database
+    'Landroidx/navigation/',                   # Navigation component
+    'Landroidx/paging/',                       # Paging library
+    'Landroidx/security/crypto/',
+    'Landroidx/security/crypto/',
+    'Landroidx/compose/ui/', 
+    'Lcom/google/mlkit/', 
+    'Lcom/google/ar/core/',
+    'Lio/ktor/', 
+    'Lorg/koin/',
+    'Lio/coil-kt/',
 ),
 'accessibility': (
 'Landroid/accessibilityservice/AccessibilityService;',
@@ -501,6 +572,9 @@ CATEGORY_RULES = {
 'createNotificationChannel',
 'deleteNotificationChannel',
 'Landroid/app/NotificationManager;->createNotificationChannel',
+'Landroidx/core/app/NotificationCompat;',
+        'Landroidx/core/app/NotificationManagerCompat;',
+        'NotificationCompat',
 ),
 'webview': (
 'Landroid/webkit/WebView;',
@@ -519,6 +593,9 @@ CATEGORY_RULES = {
 'onReceivedError',
 'shouldInterceptRequest',
 'Landroid/webkit/WebResourceRequest;',
+'Landroid/webkit/WebSettings;',
+        'setJavaScriptEnabled',
+        'addJavascriptInterface'
 ),
 'overlay': (
 'Landroid/view/WindowManager;',
@@ -685,6 +762,28 @@ CATEGORY_RULES = {
 'inTransaction',
 'SQLiteStatement',
 'execute',
+'Landroidx/room/Database;',                # Room Database
+    'Landroidx/room/Dao;',
+    'Landroidx/room/Entity;',
+    'Landroidx/room/Query;',
+    'Lio/realm/RealmObject;',                  # Realm Database
+    'Lio/objectbox/Box;',
+    'Lio/realm/RealmObject;',
+    'Lio/objectbox/Box;',
+    'Landroidx/room/RoomDatabase;',
+),
+'analytics': (                                 # Yeni kategori
+    'Lcom/google/firebase/analytics/',
+    'Lcom/google/android/gms/analytics/',
+    'Lcom/flurry/android/',
+    'Lcom/mixpanel/android/',
+    'Lcom/amplitude/api/',
+    'Lcom/crashlytics/android/Crashlytics;',
+    'Lcom/google/firebase/crashlytics/',
+    'Lcom/microsoft/appcenter/analytics/',
+    'Lcom/segment/analytics/',
+    'Lcom/newrelic/agent/android/',
+    'Lcom/datadog/android/',
 ),
 'shared_prefs': (
 'Landroid/content/SharedPreferences;',
@@ -859,6 +958,11 @@ CATEGORY_RULES = {
 'pay bitcoin',
 'file locked',
 'your files are encrypted',
+'your files are encrypted',
+    'README_FOR_DECRYPT.txt', 
+    '.locked',
+    '.encrypted',
+    'AES/CBC/PKCS5Padding',
 ),
 'spyware': (
 'trackUser',
@@ -867,6 +971,13 @@ CATEGORY_RULES = {
 'logCalls',
 'keylogger',
 'screen record',
+'logCalls',
+    'keylogger',
+    'screen record',
+    'whatsapp/Databases', 
+    'com.facebook.katana', 
+    'com.facebook.orca',
+    'getRunningAppProcesses',
 ),
 'permission_abuse': (
 'requestPermissions',
@@ -875,6 +986,21 @@ CATEGORY_RULES = {
 'READ_SMS',
 'WRITE_EXTERNAL_STORAGE',
 'Landroid/app/Activity;->requestPermissions',
+),
+'payment_sdk': (
+    'Lcom/stripe/android/',
+    'Lcom/paypal/android/',
+    'Lcom/braintreepayments/api/',
+    'Lcom/adyen/checkout/',
+    'com/google/android/gms/wallet/',
+),
+'permissions': (
+    'Landroidx/core/app/ActivityCompat;',
+    'Landroidx/core/content/ContextCompat;',
+    'checkSelfPermission',
+    'requestPermissions',
+    'shouldShowRequestPermissionRationale',
+    'onRequestPermissionsResult',
 ),
 }
 
@@ -958,63 +1084,116 @@ BENIGN_LIBRARIES = frozenset([
     'Lcom/google/ads/', 'Lcom/google/android/ump/',
     'Lcom/facebook/ads/', 'Lcom/mopub/', 'Lcom/applovin/',
     'Lcom/unity3d/ads/', 'Lcom/vungle/', 'Lcom/chartboost/',
-    'Lcom/inmobi/', 'Lcom/ironsource/', 'Lcom/tapjoy/',
+    'Lcom/inmobi/', 'Lcom/ironsource/', 'Lcom/tapjoy/','Lcom/stripe/android/',
+    'Lcom/paypal/android/',
+    'Lcom/braintreepayments/',
+    'Lcom/twitter/sdk/',
+    'Lcom/linkedin/android/',
+    'Lcom/microsoft/appcenter/',
+    'Lcom/amazonaws/',
+    'Lio/grpc/',
+    'Lorg/greenrobot/eventbus/',
+    'Lcom/afollestad/material-dialogs/',
+    'Lio/coil-kt/',
+    'Lorg/koin/',
+    'Lcom/google/android/flexbox/'
 ])
 
+BENIGN_LIBRARY_WEIGHTS = {
+    'Lcom/google/ads/': 3.0,
+    'Lcom/facebook/ads/': 3.0,
+    'Lcom/mopub/': 3.0,
+    'Lcom/applovin/': 3.0,
+    'Lcom/unity3d/ads/': 3.0,
+    'Lcom/adjust/sdk/': 2.5,
+    'Lcom/appsflyer/': 2.5,
+    'Lcom/mixpanel/android/': 2.5,      # EKLENDİ
+    'Lcom/amplitude/': 2.5,
+    'Lcom/segment/analytics/': 2.5,     # EKLENDİ
+    'Lcom/stripe/android/': 2.0,        # EKLENDİ
+    'Lcom/paypal/android/': 2.0,        # EKLENDİ
+    'Lcom/braintreepayments/': 2.0,     # EKLENDİ
+    'Lcom/twitter/sdk/': 2.0,           # EKLENDİ
+    'Lcom/linkedin/android/': 2.0,      # EKLENDİ
+    'Landroidx/': 1.5,
+    'Lcom/google/android/material/': 2.0,
+    'Lbutterknife/': 2.0,
+    'Lcom/bumptech/glide/': 2.0,
+    'Lcom/airbnb/lottie/': 2.0,
+    'Lkotlin/': 1.0,
+    'Lokhttp3/': 1.0,
+    'Lcom/google/gson/': 1.0,
+}
 
+CRITICAL_APIS_HIGH_CONFIDENCE = (
+    'Landroid/app/admin/DevicePolicyManager;->wipeData',
+    'dispatchGesture',
+    'injectSmsPdu',
+    'su -c',
+    'pm install',
+    'Landroid/os/Process;->killProcess',
+    'abortBroadcast',
+    'setMobileDataEnabled',
+    'setWifiEnabled'
+)
 # Anlamsal kategorilere atanan risk ağırlıkları
 W = {
-    "accessibility": 5.5,
-    "overlay": 6,
+    "accessibility": 5.0,
+    "overlay": 5,
     "notifications": 4.50,
-    "dangerous_permissions": 10,
-    "sms": 7.5,
-    "admin_operations": 10.0,
-    "dynamic": 8.5,
-    "vpn": 8.5,
-    "telephony": 7.5,
-    "keylogging": 7.5,
-    "root_detection": 7.5,
-    "banking_targets": 5.5,
-    "media_capture": 5.0,
-    "screenshot": 5.5,
-    "clipboard": 5.0,
-    "webview": 5.5,
+    "dangerous_permissions": 8,
+    "sms": 6.5,
+    "admin_operations": 6.0,
+    "dynamic": 3.5,
+    "vpn": 6.5,
+    "telephony": 5.5,
+    "keylogging": 5,
+    "root_detection": 4,
+    "banking_targets": 4.5,
+    "camera_capture": 3.5,
+    "microphone_capture": 3.5,
+    "screenshot": 4.5,
+    "clipboard": 4.0,
+    "webview": 4.5,
     "shell_exec": 4.5,
     "privileged_ops": 4.5,
     "hooking_frameworks": 4.5,
     "package_info": 5.0,
-    "emulator_detection": 4.8,
+    "emulator_detection": 5,
     "contacts": 4,
     "device_info": 4.0,
     "account": 3.8,
     "classloader_manipulation": 4.5,
     "intent_hijacking": 4.5,
-    "crypto": 4.0,
-    "network": 4.0,
+    "crypto": 3.0,
+    "network": 2.0,
     "location": 4,
-    "anti_debug": 4.5,
+    "anti_debug": 5,
     "native_code": 4.0,
-    "content_provider": 4.0,
-    "background_ops": 4.0,
-    "reflection": 4.0,
+    "content_provider": 0.75,
+    "background_ops": 2.0,
+    "reflection": 2.5,
     "obfuscation": 4.0,
-    "bluetooth": 4.0,
-    "nfc": 3.8,
-    "sensor": 3.5,
+    "bluetooth": 1.0,
+    "nfc": 1,
+    "sensor": 1,
     "calendar": 3.2,
-    "file_operations": 3.0,
-    "sqlite": 2.5,
-    "shared_prefs": 1.5,
+    "file_operations": 1.0,
+    "sqlite": 1,
+    "shared_prefs": 0.5,
     "modern_libs": 0,
-    "exfiltration": 6.0,
+    "exfiltration": 8.5,
     "persistence": 4.5,
     "ui_injection": 7.0,
-    "data_theft": 6.5,
+    "data_theft": 8.5,
     "anti_vm": 4.0,         # emulator_detection ile benzer
-    "c2_communication": 5.0, # network ile ilişkili ama daha spesifik
-    "adware": 2.0,          # Genellikle daha az riskli
-    "ransomware": 10.0,       # Yüksek risk
+    "c2_communication": 8.5, # network ile ilişkili ama daha spesifik
+    "adware": 1.0,          # Genellikle daha az riskli
+    "ransomware": 8.0,       # Yüksek risk
     "spyware": 8.0,         # Yüksek risk
     "permission_abuse": 5.5,
+    "analytics": 1.0,
+    "payment_sdk": 0.5,     # Yeni: Ödeme SDK'ları genellikle güvenilirdir
+    "permissions": 2.0,
+    "benign_ui": -0.01,
 }

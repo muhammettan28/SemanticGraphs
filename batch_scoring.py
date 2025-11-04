@@ -111,7 +111,7 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                     continue
 
                 # 2) Semantic analiz
-                report, score = analyze_fn(graph_path, str(apk_path))
+                report, score = analyze_fn(graph_path, str(apk_path),subset)
                 
                 # CSV'ye yaz ve flush et
                 row = [apk_path.name, f"{score:.4f}", label]

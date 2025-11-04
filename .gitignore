@@ -5,3 +5,6 @@
 /data
 /data copy
 analysis/.DS_Store
+*.graphml
+*.json
+/graph_files
