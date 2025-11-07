@@ -1006,6 +1006,16 @@ CATEGORY_RULES = {
 
 # İzinleri anlamsal kategorilere eşle
 PERM_TO_CATEGORY = {
+    "android.permission.READ_SMS": "sms",
+    "android.permission.RECEIVE_SMS": "sms",
+    "android.permission.SEND_SMS": "sms",
+    "android.permission.READ_CONTACTS": "contacts",
+    "android.permission.WRITE_EXTERNAL_STORAGE": "file_operations",
+    "android.permission.READ_EXTERNAL_STORAGE": "file_operations",
+    "android.permission.INTERNET": "network",
+    "android.permission.ACCESS_NETWORK_STATE": "network",
+    "android.permission.WRITE_LOGS": "dangerous_permissions",
+
     'READ_SMS': 'sms', 'SEND_SMS': 'sms', 'RECEIVE_SMS': 'sms', 'WRITE_SMS': 'sms',
     'READ_PHONE_STATE': 'telephony', 'CALL_PHONE': 'telephony', 'READ_CALL_LOG': 'telephony',
     'WRITE_CALL_LOG': 'telephony', 'ADD_VOICEMAIL': 'telephony', 'USE_SIP': 'telephony',
@@ -1099,6 +1109,47 @@ BENIGN_LIBRARIES = frozenset([
     'Lcom/google/android/flexbox/'
 ])
 
+BENIGN_LIBRARIES_EXTRA = frozenset([
+    # AndroidX / Jetpack
+    'Landroidx/activity/', 'Landroidx/fragment/', 'Landroidx/lifecycle/',
+    'Landroidx/room/', 'Landroidx/work/', 'Landroidx/navigation/',
+    'Landroidx/recyclerview/', 'Landroidx/constraintlayout/', 'Landroidx/paging/',
+    'Landroidx/databinding/', 'Landroidx/startup/', 'Landroidx/browser/',
+    'Landroidx/security/', 'Landroidx/camera/', 'Landroidx/hilt/', 'Landroidx/compose/',
+    # DI
+    'Ldagger/', 'Ldagger/hilt/', 'Lcom/google/dagger/hilt/',
+    # Net/JSON/Serdes
+    'Lorg/jsoup/', 'Lorg/simpleframework/xml/', 'Lcom/google/flatbuffers/', 'Lkotlinx/serialization/',
+    'Lcom/squareup/okhttp/', 'Lcom/squareup/okhttp3/', 'Lio/reactivex/android/',
+    # Görsel/Medya/UI
+    'Lcom/facebook/fresco/', 'Ljp/wasabeef/glide/transformations/', 'Lcom/github/chrisbanes/photoview/',
+    'Lcom/facebook/shimmer/', 'Lcom/airbnb/epoxy/',
+    # Harita
+    'Lcom/mapbox/mapboxsdk/', 'Lcom/google/maps/android/',
+    # Huawei
+    'Lcom/huawei/hms/', 'Lcom/huawei/hms/ads/',
+    # Ödeme/kimlik
+    'Lcom/adyen/', 'Lcom/squareup/reader/', 'Lcom/microsoft/identity/', 'Lcom/azure/', 'Lcom/google/android/gms/wallet/',
+    # Analitik/Crash/Push/Flags
+    'Lio/sentry/', 'Lcom/bugsnag/android/', 'Lcom/instabug/', 'Lcom/onesignal/',
+    'Lcom/optimizely/', 'Lcom/launchdarkly/sdk/',
+    # Reklam ağları
+    'Lcom/bytedance/sdk/openadsdk/', 'Lcom/yandex/mobile/ads/', 'Lcom/mintegral/', 'Lcom/startapp/', 'Lcom/applovin/mediation/',
+    # ML/Media
+    'Lorg/tensorflow/lite/', 'Lcom/google/mediapipe/',
+    # Güvenlik/şifreleme yardımcıları
+    'Lcom/google/tink/', 'Lorg/bouncycastle/', 'Lorg/brotli/dec/', 'Lcom/github/luben/zstd/',
+    # PDF/Office
+    'Lcom/github/barteksc/pdfviewer/', 'Lcom/itextpdf/',
+    # Eski ama benign
+    'Lorg/apache/http/',
+    # DB
+    'Lio/realm/',
+])
+
+# mevcut listenle birleştir:
+BENIGN_LIBRARIES = frozenset(set(BENIGN_LIBRARIES) | set(BENIGN_LIBRARIES_EXTRA))
+
 BENIGN_LIBRARY_WEIGHTS = {
     'Lcom/google/ads/': 3.0,
     'Lcom/facebook/ads/': 3.0,
@@ -1144,7 +1195,7 @@ W = {
     "dangerous_permissions": 8,
     "sms": 6.5,
     "admin_operations": 6.0,
-    "dynamic": 3.5,
+    "dynamic": 5.5,
     "vpn": 6.5,
     "telephony": 5.5,
     "keylogging": 5,
@@ -1196,4 +1247,43 @@ W = {
     "payment_sdk": 0.5,     # Yeni: Ödeme SDK'ları genellikle güvenilirdir
     "permissions": 2.0,
     "benign_ui": -0.01,
+}
+
+
+BONUS_CONFIG = {
+    "packing_severity": 0.9,
+    "empty_graph_severity": 0.85,
+    "min_graph_nodes": 5,
+    "min_graph_edges": 5,
+    "density_threshold_low": 0.05,
+    "density_threshold_high": 0.5,
+    "combo_scale": 10.0,
+    "severity_weights": {
+        "admin_operations": 0.8,
+        "accessibility": 0.7,
+        "reflection": 0.6,
+        "native_code": 0.6,
+        "crypto": 0.7,
+        "dynamic": 0.7,
+        "telephony": 0.5,
+        "sms": 0.6,
+        "contacts": 0.6,
+        "device_info": 0.5,
+        "network": 0.6,
+        "overlay": 0.7,
+        "banking_targets": 0.9,
+        "keylogging": 0.9,
+        "screenshot": 0.6,
+        "clipboard": 0.6,
+        "root_detection": 0.4,
+        "anti_debug": 0.5,
+        "emulator_detection": 0.5,
+        "shell_exec": 0.75,
+        "spyware": 0.9,
+        "ransomware": 0.95,
+    },
+    "max_bonus_raw": 500.0,
+    "final_scale": 100.0,
+    "benign_ratio_shield": 0.7,
+    "benign_shield_factor": 0.5,
 }
