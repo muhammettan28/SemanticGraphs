@@ -1769,13 +1769,43 @@ BENIGN_LIBRARIES_ADDITIONAL_V4 = frozenset([
     'Landroidx/media3/',
 ])
 
+BENIGN_LIBRARIES_ADDITIONAL_V5 = frozenset([
+    # Google Android genel alt paketleri
+    'Lcom/google/android/',
+
+    # Netty (Java networking framework)
+    'Lio/netty/',
+    'Lio/netty/handler/',
+    'Lio/netty/util/',
+    'Lio/netty/channel/',
+    'Lio/netty/buffer/',
+
+    # Java 8+ desugar stream API (benign, toolchain kaynaklı)
+    'Lj$/util/stream/',
+    'Lj$/util/concurrent/',
+    'Ljava/util/concurrent/',
+    'Ljava/util/function/',
+
+    # Java 8+ desugar time API
+    'Lj$/time/',
+    'Lj$/time/chrono/',
+    'Lj$/time/format/',
+
+    # Android SDK core benign paketleri
+    'Landroid/graphics/drawable/',
+
+    # Diğer benign kütüphaneler
+    'Lme/zhanghai/android/',
+])
+
 BENIGN_LIBRARIES = frozenset(
     set(BENIGN_LIBRARIES) |
     set(BENIGN_LIBRARIES_EXTRA) |
     set(BENIGN_LIBRARIES_ADDITIONAL) |
     set(BENIGN_LIBRARIES_ADDITIONAL_V2) |
     set(BENIGN_LIBRARIES_ADDITIONAL_V3) |
-    set(BENIGN_LIBRARIES_ADDITIONAL_V4)
+    set(BENIGN_LIBRARIES_ADDITIONAL_V4) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V5)
 )
 
 BENIGN_LIBRARY_WEIGHTS = {
