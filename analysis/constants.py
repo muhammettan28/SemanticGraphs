@@ -1131,8 +1131,652 @@ BENIGN_LIBRARIES_EXTRA = frozenset([
     'Lio/realm/',
 ])
 
-# mevcut listenle birleştir:
-BENIGN_LIBRARIES = frozenset(set(BENIGN_LIBRARIES) | set(BENIGN_LIBRARIES_EXTRA))
+BENIGN_LIBRARIES_ADDITIONAL = frozenset([
+    # ===== Hybrid (Karma) ve Cross-Platform Frameworkler =====
+    # Bu platformlarla yazılan uygulamaların temel paketleridir.
+    'Lio/flutter/',                  # Flutter
+    'Lcom/facebook/react/',          # React Native
+    'Lorg/apache/cordova/',          # Cordova
+    'Lcom/telerik/nativeandroid/',   # NativeScript
+    'Lmono/android/',                # Xamarin/MAUI
+
+    # ===== Test Kütüphaneleri =====
+    # Genellikle son 'release' APK'da bulunmasalar da, analiz ettiğiniz set
+    # debug/test build'leri içeriyorsa bunları 'benign' saymak önemlidir.
+    'Ljunit/',
+    'Lorg/junit/',
+    'Lorg/mockito/',
+    'Landroidx/test/',               # AndroidX Test kütüphaneleri (Espresso, Runner, vb.)
+    'Lorg/robolectric/',             # Robolectric
+    'Lio/mockk/',                    # MockK (Kotlin mocking kütüphanesi)
+    'Lorg/hamcrest/',                # Hamcrest (Matcher kütüphanesi)
+
+    # ===== Diğer Yaygın Java/Kotlin Yardımcı Kütüphaneleri =====
+    'Lcom/google/guava/',            # Google Guava (Listenizde 'common' var ama 'guava' daha spesifik)
+    'Lcom/fasterxml/jackson/',       # Jackson (JSON kütüphanesi, GSON/Moshi alternatifi)
+    'Lorg/jetbrains/',               # JetBrains (Annotations vb. için)
+    'Lio/objectbox/',                # ObjectBox (Alternatif bir veritabanı)
+
+    # ===== Platforma Özel (WearOS, TV, Auto) =====
+    'Landroidx/wear/',               # Wear OS
+    'Landroidx/tv/',                 # Android TV
+    'Landroidx/car/',                # Android Auto
+    'Lcom/google/android/horologist/', # Wear OS için yardımcı kütüphane
+
+    # ===== Kimlik Doğrulama (Authentication) SDK'ları =====
+    'Lcom/auth0/android/',           # Auth0
+    'Lcom/okta/android/',            # Okta
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V2 = frozenset([
+    # ===== DI (Dependency Injection) - Hilt, Koin, Dagger =====
+    'Ldagger/hilt/android/', 'Lcom/google/dagger/hilt/android/',
+    'Lorg/koin/core/', 'Lorg/koin/android/',
+
+    # ===== Serialization & JSON Alternatives =====
+    'Lcom/fasterxml/jackson/core/',
+    'Lcom/fasterxml/jackson/databind/',
+    'Lkotlinx/serialization/json/',
+
+    # ===== Networking (Advanced) =====
+    'Lio/ktor/',                     # Ktor (Kotlin multiplatform HTTP client)
+    'Lcom/squareup/retrofit2/converter/',
+
+    # ===== Image Loading & Processing =====
+    'Lcom/github/bumptech/glide/',
+    'Lcoil/compose/', 'Lio/coil/kt/',
+
+    # ===== Reactive Extensions (RxJava 3, Kotlin Flow) =====
+    'Lio/reactivex/rxjava3/',
+    'Lkotlinx/coroutines/',
+
+    # ===== Logging =====
+    'Lorg/slf4j/',
+    'Ltimber/log/',                  # Timber (popüler Android logging)
+    'Lcom/orhanobut/logger/',        # Logger
+
+    # ===== Permissions & Runtime =====
+    'Lcom/karumi/dexter/',           # Dexter (permissions)
+    'Landroidx/permissions/',
+
+    # ===== View Binding & Data Binding Helpers =====
+    'Landroidx/databinding/',
+    'Lcom/github/skydoves/binding/',
+
+    # ===== Lottie & Animation =====
+    'Lcom/airbnb/lottie/',
+
+    # ===== Navigation & Deep Linking =====
+    'Landroidx/navigation/safeargs/',
+
+    # ===== Google Play Services (More Specific) =====
+    'Lcom/google/android/gms/auth/',
+    'Lcom/google/android/gms/location/',
+    'Lcom/google/android/gms/maps/',
+    'Lcom/google/android/gms/common/',
+    'Lcom/google/android/gms/tasks/',
+
+    # ===== Firebase (More Granular) =====
+    'Lcom/google/firebase/auth/',
+    'Lcom/google/firebase/firestore/',
+    'Lcom/google/firebase/storage/',
+    'Lcom/google/firebase/messaging/',
+    'Lcom/google/firebase/analytics/',
+    'Lcom/google/firebase/remoteconfig/',
+    'Lcom/google/firebase/perf/',
+
+    # ===== Huawei Mobile Services (HMS) =====
+    'Lcom/huawei/hms/push/',
+    'Lcom/huawei/hms/location/',
+    'Lcom/huawei/hms/maps/',
+
+    # ===== Analytics & Attribution (More) =====
+    'Lcom/google/analytics/',
+    'Lcom/crashlytics/android/',
+    'Lio/sentry/android/',
+
+    # ===== Ads (More Mediation & Networks) =====
+    'Lcom/google/android/gms/ads/',
+    'Lcom/facebook/ads/',
+    'Lcom/mopub/mobileads/',
+    'Lcom/applovin/sdk/',
+    'Lcom/unity3d/services/ads/',
+
+    # ===== Testing & Mocking (More) =====
+    'Lorg/mockito/kotlin/',
+    'Lcom/nhaarman/mockitokotlin2/',
+    'Landroidx/arch/core/',
+
+    # ===== Kotlin Stdlib & Extensions =====
+    'Lkotlin/', 'Lkotlinx/', 'Lkotlin/jvm/',
+
+    # ===== ProGuard / R8 / Shrinker Rules (Debug) =====
+    'Lcom/android/tools/r8/',
+
+    # ===== LeakCanary & Debugging Tools =====
+    'Lcom/squareup/leakcanary/',
+
+    # ===== ViewPager2, RecyclerView, CardView =====
+    'Landroidx/viewpager2/',
+    'Landroidx/cardview/',
+
+    # ===== WorkManager, AlarmManager Alternatives =====
+    'Landroidx/work/runtime/',
+
+    # ===== Biometric & Security =====
+    'Landroidx/biometric/',
+
+    # ===== CameraX =====
+    'Landroidx/camera/camera2/',
+
+    # ===== ML Kit (More Specific) =====
+    'Lcom/google/mlkit/vision/',
+
+    # ===== ARCore =====
+    'Lcom/google/ar/core/',
+
+    # ===== Compose (More Specific) =====
+    'Landroidx/compose/runtime/',
+    'Landroidx/compose/ui/',
+    'Landroidx/compose/material/',
+
+    # ===== Accompanist (Compose Helpers) =====
+    'Lcom/google/accompanist/',
+
+    # ===== Hilt Worker, ViewModel =====
+    'Ldagger/hilt/android/lifecycle/',
+
+    # ===== Moshi & Kotlin Reflection =====
+    'Lcom/squareup/moshi/kotlin/',
+
+    # ===== Room (More Specific) =====
+    'Landroidx/room/runtime/',
+    'Landroidx/room/paging/',
+
+    # ===== Paging 3 =====
+    'Landroidx/paging/runtime/',
+
+    # ===== EncryptedSharedPreferences =====
+    'Landroidx/security/crypto/',
+
+    # ===== ExoPlayer (More Specific) =====
+    'Lcom/google/android/exoplayer2/ui/',
+    'Lcom/google/android/exoplayer2/offline/',
+
+    # ===== Datastore =====
+    'Landroidx/datastore/',
+
+    # ===== App Startup =====
+    'Landroidx/startup/runtime/',
+
+    # ===== Fragment =====
+    'Landroidx/fragment/app/',
+
+    # ===== Lifecycle (ViewModel, LiveData) =====
+    'Landroidx/lifecycle/viewmodel/',
+    'Landroidx/lifecycle/livedata/',
+
+    # ===== Navigation Component =====
+    'Landroidx/navigation/runtime/',
+
+    # ===== ConstraintLayout =====
+    'Landroidx/constraintlayout/core/',
+
+    # ===== Shimmer, Lottie, Epoxy =====
+    'Lcom/facebook/shimmer/',
+    'Lcom/airbnb/epoxy/',
+
+    # ===== Mapbox, Google Maps Android Utils =====
+    'Lcom/mapbox/mapboxsdk/',
+    'Lcom/google/maps/android/',
+
+    # ===== OneSignal, Firebase Cloud Messaging =====
+    'Lcom/onesignal/',
+
+    # ===== AWS Amplify, Cognito =====
+    'Lcom/amplifyframework/',
+
+    # ===== Microsoft App Center (More) =====
+    'Lcom/microsoft/appcenter/analytics/',
+    'Lcom/microsoft/appcenter/crashes/',
+
+    # ===== Stripe, PayPal, Braintree (More Specific) =====
+    'Lcom/stripe/android/payments/',
+    'Lcom/braintreepayments/api/',
+
+    # ===== PDF & Document Viewers =====
+    'Lcom/github/barteksc/androidpdfviewer/',
+
+    # ===== Realm (MongoDB Realm) =====
+    'Lio/realm/kotlin/',
+
+    # ===== EventBus Alternatives =====
+    'Lorg/greenrobot/eventbus/kotlin/',
+
+    # ===== Otto (Legacy but still used) =====
+    'Lcom/squareup/otto/',
+
+    # ===== Gson TypeAdapter, etc. =====
+    'Lcom/google/gson/internal/',
+
+    # ===== OkHttp Interceptors (Common) =====
+    'Lcom/squareup/okhttp3/logging/',
+
+    # ===== Retrofit CallAdapter, Converter =====
+    'Lcom/squareup/retrofit2/adapter/rxjava3/',
+
+    # ===== Coroutines Test =====
+    'Lorg/jetbrains/kotlinx/kotlinx-coroutines-test/',
+
+    # ===== Truth (Google Testing) =====
+    'Lcom/google/common/truth/',
+
+    # ===== Espresso Contrib =====
+    'Landroidx/test/espresso/contrib/',
+
+    # ===== Turbine (Flow Testing) =====
+    'Lapp/cash/turbine/',
+
+    # ===== Stetho (Facebook Debug Bridge) =====
+    'Lcom/facebook/stetho/',
+
+    # ===== Flipper (Facebook Debug) =====
+    'Lcom/facebook/flipper/',
+
+    # ===== Chuck (OkHttp Interceptor UI) =====
+    'Lcom/readystatesoftware/chuck/',
+
+    # ===== Lynx (Android Debug) =====
+    'Lcom/github/pedrovgs/lynx/',
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V3 = frozenset([
+    # ===== Database & ORM =====
+    'Lio/objectbox/',  # ObjectBox
+    'Lio/realm/',  # Realm
+    'Lcom/github/andrewoma/dex/',  # Dex
+    'Lcom/raizlabs/android/dbflow/',  # DBFlow
+    'Lcom/j256/ormlite/',  # ORMLite
+
+    # ===== Async & Background Processing =====
+    'Lcom/path/android/',  # Android Priority Job Queue
+    'Landroidx/concurrent/',  # AndroidX Concurrent
+    'Lcom/birbit/android/',  # Android Priority Job Queue
+
+    # ===== UI Components & Custom Views =====
+    'Lcom/google/android/flexbox/',  # Flexbox Layout
+    'Lcom/github/rubensousa/',  # Various UI libraries
+    'Lcom/ramotion/',  # RAMotion components
+    'Lcom/tbuonomo/',  # Various view libraries
+    'Lcom/romandanylyk/',  # Page Indicator
+    'Lcom/booking/',  # RTL ViewPager
+
+    # ===== Animation & Transitions =====
+    'Lcom/transitionseverywhere/',  # Transitions Everywhere
+    'Lcom/dawn/android/',  # Various animations
+    'Lcom/github/florent37/',  # View animators
+
+    # ===== Dependency Injection =====
+    'Ltoothpick/',  # Toothpick DI
+    'Ljavax/inject/',  # JSR-330
+
+    # ===== Serialization & Parsing =====
+    'Lcom/ryanharter/auto/value/',  # AutoValue
+    'Lme/dm7/barcodescanner/',  # Barcode scanning
+    'Lcom/google/zxing/',  # QR/Barcode processing
+
+    # ===== Networking Enhancements =====
+    'Lcom/facebook/stetho/',  # Stetho debug bridge
+    'Lcom/facebook/flipper/',  # Flipper debugger
+    'Lcom/jakewharton/picasso/',  # Picasso extensions
+    'Lcom/squareup/tape/',  # Queue file
+
+    # ===== Security & Cryptography =====
+    'Lnet/openid/appauth/',  # OAuth2/OpenID
+    'Lcom/auth0/',  # Auth0
+    'Lcom/microsoft/identity/',  # MSAL
+
+    # ===== Utility & Helper Libraries =====
+    'Lcom/jakewharton/timber/',  # Timber logging
+    'Lcom/orhanobut/logger/',  # Logger
+    'Lcom/github/ajalt/',  # Various utilities
+
+    # ===== Testing & Debugging =====
+    'Landroidx/benchmark/',  # Benchmarking
+    'Lcom/facebook/screenshot/',  # Screenshot tests
+    'Lcom/karumi/',  # Various test helpers
+
+    # ===== Architecture Components =====
+    'Landroidx/lifecycle/extensions/',
+    'Landroidx/savedstate/',
+    'Landroidx/loader/',
+
+    # ===== Google Play & Billing =====
+    'Lcom/android/billingclient/api/',
+    'Lcom/google/android/play/core/',
+
+    # ===== Push Notifications =====
+    'Lcom/urbanairship/',  # Urban Airship
+    'Lcom/onesignal/',  # OneSignal
+    'Lcom/pusher/',  # Pusher
+
+    # ===== Analytics & Monitoring =====
+    'Lcom/newrelic/',  # New Relic
+    'Lcom/datadog/',  # Datadog
+    'Lcom/splunk/',  # Splunk
+
+    # ===== Maps & Location Services =====
+    'Lcom/mapbox/',  # Mapbox
+    'Lorg/osmdroid/',  # OpenStreetMap
+    'Lcom/google/maps/',  # Google Maps Web API
+
+    # ===== Media & Image Processing =====
+    'Lcom/yalantis/',  # UCrop & other image tools
+    'Lcom/davemorrissey/',  # Subsampling Scale Image View
+    'Lcom/github/chrisbanes/',  # PhotoView
+
+    # ===== Payment Processors =====
+    'Lcom/adyen/',  # Adyen
+    'Lcom/braintree/',  # Braintree
+    'Lcom/stripe/stripeandroid/',
+
+    # ===== Social Media Integration =====
+    'Lcom/facebook/',  # Facebook SDK
+    'Lcom/twitter/',  # Twitter SDK
+    'Lcom/linkedin/',  # LinkedIn SDK
+
+    # ===== Cross-Platform Frameworks =====
+    'Lorg/apache/cordova/',  # Cordova/PhoneGap
+    'Lio/flutter/plugins/',  # Flutter plugins
+    'Lcom/getcapacitor/',  # Capacitor
+
+    # ===== Build Tools & Gradle Plugins =====
+    'Lcom/android/tools/build/',  # Android build tools
+    'Lorg/gradle/',  # Gradle
+    'Lcom/google/devtools/',  # Various Google tools
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V4 = frozenset([
+    # ===== Material Design & UI Components =====
+    'Lcom/google/android/material/textfield/',
+    'Lcom/google/android/material/button/',
+    'Lcom/google/android/material/bottomsheet/',
+    'Lcom/google/android/material/snackbar/',
+    'Lcom/google/android/material/dialog/',
+    'Lme/zhanghai/android/materialprogressbar/',
+    'Lcom/afollestad/materialdialogs/',
+
+    # ===== Image & Media Libraries =====
+    'Lcom/github/bumptech/glide/load/',
+    'Lcom/github/bumptech/glide/request/',
+    'Lcom/nostra13/universalimageloader/',  # Universal Image Loader
+    'Lcom/facebook/drawee/',  # Fresco Drawee
+    'Lcom/squareup/picasso2/',
+    'Lcom/caverock/androidsvg/',  # SVG support
+    'Lpl/droidsonroids/gif/',  # GIF support
+
+    # ===== Reactive Programming =====
+    'Lio/reactivex/rxjava2/',
+    'Lio/reactivex/subjects/',
+    'Lio/reactivex/disposables/',
+    'Lio/reactivex/schedulers/',
+    'Lcom/jakewharton/rxbinding/',
+    'Lcom/jakewharton/rxrelay/',
+
+    # ===== Networking & HTTP =====
+    'Lorg/apache/http/client/',
+    'Lorg/apache/http/impl/',
+    'Lretrofit2/',
+    'Lokhttp3/internal/',
+    'Lokio/',
+    'Lcom/squareup/okhttp/internal/',
+
+    # ===== JSON & XML Processing =====
+    'Lorg/json/simple/',
+    'Lcom/google/gson/annotations/',
+    'Lcom/google/gson/stream/',
+    'Lcom/fasterxml/jackson/annotation/',
+    'Lorg/simpleframework/',
+    'Lorg/xmlpull/',
+
+    # ===== Dependency Injection (More) =====
+    'Ljavax/inject/Provider/',
+    'Lcom/google/inject/',  # Guice
+    'Ltoothpick/config/',
+
+    # ===== Annotations & Code Generation =====
+    'Lcom/google/auto/value/',
+    'Lcom/google/auto/factory/',
+    'Lcom/squareup/javapoet/',
+    'Lcom/squareup/kotlinpoet/',
+    'Lorg/jetbrains/annotations/',
+    'Landroidx/annotation/',
+
+    # ===== Coroutines & Flow =====
+    'Lkotlinx/coroutines/flow/',
+    'Lkotlinx/coroutines/channels/',
+    'Lkotlinx/coroutines/android/',
+
+    # ===== Storage & Preferences =====
+    'Landroidx/preference/',
+    'Lcom/chibatching/kotpref/',  # Kotlin preferences
+    'Lcom/orhanobut/hawk/',  # Secure storage
+    'Lcom/github/pwittchen/reactivenetwork/',
+
+    # ===== Permissions Management =====
+    'Lcom/karumi/dexter/',
+    'Lcom/github/permissions/',
+    'Lpub/devrel/easypermissions/',
+
+    # ===== Date & Time =====
+    'Lorg/joda/time/',  # Joda Time
+    'Lnet/danlew/android/joda/',
+    'Lorg/threeten/',  # ThreeTen (JSR-310 backport)
+
+    # ===== Background Processing =====
+    'Lcom/evernote/android/job/',  # Android Job
+    'Lcom/firebase/jobdispatcher/',
+    'Landroidx/work/impl/',
+
+    # ===== WebView & Browser =====
+    'Landroidx/webkit/',
+    'Lorg/chromium/',
+    'Lcom/google/androidbrowserhelper/',
+
+    # ===== ViewPager & Indicators =====
+    'Lcom/viewpagerindicator/',
+    'Lme/relex/',  # CircleIndicator
+    'Lcom/rd/animation/',  # Page indicator
+
+    # ===== RecyclerView Extensions =====
+    'Lcom/mikepenz/fastadapter/',
+    'Leu/davidea/flexibleadapter/',
+    'Lcom/h6ah4i/android/widget/advrecyclerview/',
+
+    # ===== Charts & Graphs =====
+    'Lcom/github/mikephil/charting/',  # MPAndroidChart
+    'Lcom/github/aachartmodel/',
+    'Lim/dacer/androidcharts/',
+
+    # ===== QR & Barcode =====
+    'Lcom/journeyapps/barcodescanner/camera/',
+    'Lcom/google/zxing/client/',
+    'Lme/dm7/barcodescanner/zxing/',
+
+    # ===== Camera & Video =====
+    'Lcom/otaliastudios/cameraview/',
+    'Lcom/google/android/cameraview/',
+    'Landroidx/camera/core/',
+    'Landroidx/camera/lifecycle/',
+
+    # ===== Location & Maps =====
+    'Lcom/google/android/gms/location/places/',
+    'Lcom/google/maps/android/clustering/',
+    'Lcom/google/maps/android/heatmaps/',
+
+    # ===== Social Sharing =====
+    'Lcom/sharethrough/',
+    'Lcom/tumblr/',
+    'Lcom/pinterest/',
+
+    # ===== Crash Reporting (More) =====
+    'Lcom/crashlytics/sdk/',
+    'Lio/sentry/core/',
+    'Lcom/microsoft/appcenter/crashes/',
+    'Lacra/sender/',  # ACRA
+
+    # ===== A/B Testing & Feature Flags =====
+    'Lcom/optimizely/ab/',
+    'Lcom/launchdarkly/',
+    'Lcom/google/firebase/abt/',
+
+    # ===== In-App Purchases =====
+    'Lcom/android/vending/billing/',
+    'Lcom/google/android/play/core/appupdate/',
+    'Lcom/google/android/play/core/review/',
+
+    # ===== Ads Mediation =====
+    'Lcom/google/ads/mediation/',
+    'Lcom/facebook/ads/internal/',
+    'Lcom/applovin/mediation/adapters/',
+    'Lcom/google/android/gms/ads/mediation/',
+
+    # ===== Logging Frameworks =====
+    'Lorg/apache/log4j/',
+    'Lch/qos/logback/classic/',
+    'Lcom/jakewharton/timber/log/',
+
+    # ===== Validation & Forms =====
+    'Lcom/mobsandgeeks/saripaar/',  # Android Saripaar
+    'Lbr/com/ilhasoft/support/validation/',
+
+    # ===== Keyboard & Input =====
+    'Lnet/yslibrary/android/keyboardvisibilityevent/',
+    'Lcom/github/javiersantos/',
+
+    # ===== Swipe & Gesture =====
+    'Lcom/daimajia/swipe/',
+    'Lcom/daimajia/androidanimations/',
+    'Lcom/github/nisrulz/sensey/',
+
+    # ===== Markdown & Rich Text =====
+    'Lio/noties/markwon/',
+    'Lru/noties/markwon/',
+    'Lcom/commonsware/cwac/richedit/',
+
+    # ===== File Operations =====
+    'Lcom/nononsenseapps/filepicker/',
+    'Lcom/github/angads25/filepicker/',
+    'Landroidx/documentfile/',
+
+    # ===== Bluetooth & NFC =====
+    'Lcom/polidea/rxandroidble/',
+    'Lno/nordicsemi/android/ble/',
+    'Landroidx/nfc/',
+
+    # ===== Kotlin Extensions =====
+    'Lorg/jetbrains/kotlin/android/',
+    'Lkotlin/collections/',
+    'Lkotlin/sequences/',
+    'Lkotlin/text/',
+
+    # ===== AndroidX Core =====
+    'Landroidx/core/app/',
+    'Landroidx/core/content/',
+    'Landroidx/core/graphics/',
+    'Landroidx/core/util/',
+    'Landroidx/core/view/',
+
+    # ===== AppCompat =====
+    'Landroidx/appcompat/app/',
+    'Landroidx/appcompat/widget/',
+    'Landroidx/appcompat/view/',
+
+    # ===== Architecture Components (More) =====
+    'Landroidx/lifecycle/process/',
+    'Landroidx/lifecycle/service/',
+    'Landroidx/arch/core/executor/',
+
+    # ===== Palette & Colors =====
+    'Landroidx/palette/',
+    'Lcom/github/QuadFlask/colorpicker/',
+
+    # ===== Transitions & Animations =====
+    'Landroidx/transition/',
+    'Lcom/github/florent37/viewanimator/',
+
+    # ===== Shimmer & Loading Effects =====
+    'Lcom/facebook/shimmer/shimmer/',
+    'Lcom/ethanhua/skeleton/',
+
+    # ===== Bottom Navigation & Tabs =====
+    'Lcom/google/android/material/tabs/',
+    'Lcom/google/android/material/bottomnavigation/',
+    'Lcom/aurelhubert/ahbottomnavigation/',
+
+    # ===== Emoji & Stickers =====
+    'Landroidx/emoji/',
+    'Lio/github/vanpra/emoji/',
+
+    # ===== Video Players =====
+    'Lcom/google/android/exoplayer2/source/',
+    'Lcom/google/android/exoplayer2/extractor/',
+    'Lcom/google/android/exoplayer2/upstream/',
+
+    # ===== PDF Rendering =====
+    'Landroid/graphics/pdf/',
+    'Lcom/tom_roush/pdfbox/',
+
+    # ===== Encryption & Hashing =====
+    'Ljavax/crypto/',
+    'Ljava/security/',
+    'Lorg/spongycastle/',  # SpongyCastle (Android BC fork)
+
+    # ===== Utilities =====
+    'Lorg/apache/commons/lang/',
+    'Lorg/apache/commons/io/',
+    'Lorg/apache/commons/codec/',
+    'Lorg/apache/commons/collections/',
+
+    # ===== Kotlin Standard Library =====
+    'Lkotlin/io/',
+    'Lkotlin/random/',
+    'Lkotlin/ranges/',
+    'Lkotlin/jvm/functions/',
+    'Lkotlin/jvm/internal/',
+
+    # ===== Accompanist (Compose) =====
+    'Lcom/google/accompanist/permissions/',
+    'Lcom/google/accompanist/navigation/',
+    'Lcom/google/accompanist/pager/',
+    'Lcom/google/accompanist/systemuicontroller/',
+
+    # ===== Compose UI (More) =====
+    'Landroidx/compose/foundation/',
+    'Landroidx/compose/animation/',
+    'Landroidx/compose/material3/',
+
+    # ===== WorkManager (More) =====
+    'Landroidx/work/multiprocess/',
+
+    # ===== Splash Screen API =====
+    'Landroidx/core/splashscreen/',
+
+    # ===== Window Manager =====
+    'Landroidx/window/',
+
+    # ===== Media3 (ExoPlayer successor) =====
+    'Landroidx/media3/',
+])
+
+BENIGN_LIBRARIES = frozenset(
+    set(BENIGN_LIBRARIES) |
+    set(BENIGN_LIBRARIES_EXTRA) |
+    set(BENIGN_LIBRARIES_ADDITIONAL) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V2) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V3) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V4)
+)
 
 BENIGN_LIBRARY_WEIGHTS = {
     'Lcom/google/ads/': 3.0,
@@ -1171,7 +1815,7 @@ CRITICAL_APIS_HIGH_CONFIDENCE = (
     'setMobileDataEnabled',
     'setWifiEnabled'
 )
-# Anlamsal kategorilere atanan risk ağırlıkları
+
 W = {
     "accessibility": 5.0,
     "overlay": 5,
