@@ -85,16 +85,30 @@ Optional flags:
 
 ## 📊 Output Format
 
-| apk_name | malware_score | semantic_risk_score | hybrid_score | label |
-|-----------|----------------|--------------------|---------------|--------|
-| 0002FB40...apk | 87.3997 | 0.7580 | 95.3062 | 1 |
-| 00041CB2...apk | 74.5190 | 0.7920 | 88.4918 | 1 |
-| ... | ... | ... | ... | ... |
+The framework outputs a detailed CSV file summarizing the risk analysis for each APK sample.
 
-- `label=1` → malware  
-- `label=0` → benign  
-- `hybrid_score` is the final decision metric (typically >70 indicates high risk)
+| apk_name | malware_score | semantic_risk_score | hybrid_score | reduction_reason | benign_ratio | label |
+|-----------|----------------|--------------------|---------------|------------------|---------------|--------|
+| 0000511D5C2A99B303AFD14D2ACDE3EBBAD5C3426039679B25F24510A87B381C.apk | 78.6625 | 0.6000 | 81.8314 | Default (no reduction applied) | 0.0000 | 1 |
+| 000109A075DC3AFA88C45523A3EDF2039177386C58A48936FEAFEE9716F7BCBB.apk | 94.9996 | 0.7650 | 100.0000 | Default (no reduction applied) | 0.0000 | 1 |
+| 00013E39079F820CC8010FA9B6DEB57290B6BEE75365DFBE36B9348052760D08.apk | 82.0658 | 0.6910 | 78.8243 | Default (no reduction applied) | 0.5257 | 1 |
+| 00016FA3B94E1B117851EAC18D639873B892AB833D027A41243BAEE04AA49309.apk | 93.3083 | 0.7650 | 99.8325 | Default (no reduction applied) | 0.0000 | 1 |
 
+### Column descriptions
+
+| Column | Description |
+|--------|-------------|
+| **apk_name** | The SHA-256-based filename of the analyzed APK |
+| **malware_score** | Base risk derived from graph-based and structural indicators |
+| **semantic_risk_score** | Risk estimated from semantic graph analysis (normalized 0–1) |
+| **hybrid_score** | Final fused score combining structural + semantic + benign ratios |
+| **reduction_reason** | The applied reduction policy (e.g., *Sigmoid reduction*, *High benign ratio*, etc.) |
+| **benign_ratio** | Weighted ratio of benign libraries detected in the APK |
+| **label** | `1` = malware, `0` = benign |
+
+> **Interpretation:**  
+> Higher `hybrid_score` values indicate stronger evidence of malicious behavior.  
+> In typical evaluations, scores **above 70** are considered high-risk.
 ---
 
 
