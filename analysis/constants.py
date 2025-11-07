@@ -1798,6 +1798,200 @@ BENIGN_LIBRARIES_ADDITIONAL_V5 = frozenset([
     'Lme/zhanghai/android/',
 ])
 
+BENIGN_LIBRARIES_ADDITIONAL_V6 = frozenset([
+    'Lcom/google/android/',
+    'Lio/netty/',
+    'Lj$/util/stream/',
+    'Lj$/time/',
+    'Landroid/graphics/drawable/',
+    'Ljava/util/concurrent/',
+    'Lcom/unity3d/',
+    'Lcom/squareup/okhttp/',
+    'Lcom/squareup/retrofit2/',
+    'Lorg/xmlpull/',
+    'Ljavax/net/ssl/',
+    'Lcom/google/android/exoplayer2/',
+    'Lcom/google/ads/',
+    'Lorg/apache/commons/',
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V7 = frozenset([
+    'Lcom/geka000/digitron/',      # App-specific benign package (optional)
+    'Ljava/util/concurrent/',      # Core Java concurrency
+    'Lj$/time/chrono/',            # Java desugar time
+    'Lj$/time/format/',            # Java desugar time format
+    'Lj$/time/temporal/',          # Java desugar temporal API
+    'Landroid/graphics/drawable/', # Android SDK
+    'Landroid/view/inputmethod/',  # Keyboard / input handling (benign)
+    'Landroid/text/style/',        # Text styling (benign)
+    'Ljava/lang/reflect/',         # Java reflection API (benign, common)
+    'Landroid/content/pm/',        # PackageManager (benign usage)
+    'Landroid/view/accessibility/',# Android accessibility API
+    'Ljava/util/zip/',             # ZIP/Deflate (benign compression)
+    'Lj$/time/zone/',              # Java desugar time zones
+    'Ljavax/net/ssl/',             # SSL networking
+    'Landroid/database/sqlite/',   # Local database (benign)
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V8 = frozenset([
+    'Lcom/yandex/mobile/',
+    'Lio/appmetrica/analytics/',
+    'Lorg/bouncycastle/jcajce/',
+    'Lcom/my/target/',
+    'Lcom/my/tracker/',
+    'Lcom/monetization/ads/',
+    'Lorg/bouncycastle/jce/',
+    'Lcom/iab/omid/',
+    'Ljava/util/concurrent/',
+    'Lio/ktor/utils/',
+    'Ljava/security/cert/',
+    'Lorg/bouncycastle/crypto/',
+    'Lcom/yandex/varioqub/',
+    'Landroid/graphics/drawable/',
+    'Ljava/security/spec/',
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V9 = frozenset([
+    'Lcom/revenuecat/purchases/',
+    'Lcom/google/android/',
+    'Ljava/util/concurrent/',
+    'Lone4studio/wallpaper/one4wall/',
+    'Landroid/graphics/drawable/',
+    'Landroid/text/style/',
+    'Lcom/onesignal/shortcutbadger/',
+    'Ljava/lang/reflect/',
+    'Landroid/content/pm/',
+    'Ljava/util/zip/',
+    'Landroid/view/accessibility/',
+    'Landroid/view/animation/',
+    'Ljavax/net/ssl/',
+    'Landroid/view/inputmethod/',
+    'Landroid/app/job/',
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V10 = frozenset([
+    'Lcom/google/mlkit/vision/',
+    'Lcom/google/mlkit/common/',
+    'Lcom/google/mlkit/translate/',
+    'Lcom/google/mlkit/nl/',
+    'Lcom/google/mlkit/text/',
+    'Lcom/google/mlkit/image/',
+    'Lcom/google/android/gms/ads/',
+    'Lcom/google/android/gms/vision/',
+    'Lcom/google/android/gms/location/',
+    'Lcom/google/android/gms/maps/',
+    'Lcom/google/android/gms/common/',
+    'Lcom/google/android/gms/auth/',
+    'Lcom/google/android/gms/tasks/',
+    'Lcom/google/android/exoplayer2/',
+    'Lcom/google/android/exoplayer2/ui/',
+    'Lcom/google/android/exoplayer2/offline/',
+    'Landroidx/camera/core/',
+    'Landroidx/camera/lifecycle/',
+    'Landroidx/camera/view/',
+    'Landroidx/camera/video/',
+    'Landroidx/camera/extensions/',
+    'Lcom/google/tflite/support/',
+    'Lorg/tensorflow/lite/task/',
+    'Lorg/tensorflow/lite/examples/',
+    'Lorg/tensorflow/lite/support/',
+    'Lcom/google/mediapipe/',
+    'Lcom/google/mediapipe/framework/',
+    'Lcom/google/mediapipe/tasks/',
+    'Lcom/google/mediapipe/solutions/',
+    'Lcom/github/barteksc/pdfviewer/',
+    'Lcom/itextpdf/text/',
+    'Lcom/itextpdf/kernel/',
+    'Landroidx/core/app/',
+    'Landroidx/core/content/',
+    'Landroidx/core/view/',
+    'Landroidx/core/widget/',
+    'Landroidx/lifecycle/viewmodel/',
+    'Landroidx/lifecycle/livedata/',
+    'Landroidx/datastore/preferences/',
+    'Landroidx/security/crypto/',
+    'Landroidx/work/impl/',
+    'Landroidx/work/runtime/',
+    'Landroidx/startup/runtime/',
+    'Lcom/onesignal/',
+    'Lcom/facebook/shimmer/',
+    'Lcom/airbnb/epoxy/',
+    'Lcom/yandex/metrica/',
+    'Lio/appmetrica/analytics/',
+    'Lcom/bumptech/glide/',
+    'Lio/reactivex/',
+    'Lio/reactivex/rxjava3/',
+    'Lkotlinx/coroutines/',
+    'Ljava/util/concurrent/',
+    'Landroid/app/job/',
+    'Ljavax/net/ssl/',
+    'Ljava/security/spec/',
+])
+
+BENIGN_LIBRARIES_ADDITIONAL_V11 = frozenset([
+    'Lcom/mapbox/maps/',
+    'Lcom/mapbox/common/',
+    'Lcom/mapbox/android/',
+    'Lcom/mapbox/geojson/',
+    'Lcom/mapbox/turf/',
+    'Lcom/mapbox/api/',
+    'Lcom/mapbox/annotations/',
+    'Lcom/mapbox/navigation/',
+    'Lcom/mapbox/gestures/',
+    'Lcom/mapbox/plugins/',
+    'Lcom/mapbox/android/telemetry/',
+    'Lcom/mapbox/core/',
+    'Lcom/mapbox/extensions/',
+    'Lcom/google/android/libraries/places/',
+    'Lcom/google/android/libraries/maps/',
+    'Lcom/google/maps/utils/',
+    'Lcom/google/maps/android/data/',
+    'Lcom/google/maps/android/ui/',
+    'Lcom/google/maps/android/clustering/',
+    'Lcom/google/maps/android/heatmaps/',
+    'Landroidx/core/location/',
+    'Landroidx/lifecycle/service/',
+    'Landroidx/lifecycle/runtime/',
+    'Landroidx/lifecycle/process/',
+    'Landroidx/work/',
+    'Landroidx/work/impl/',
+    'Landroidx/work/runtime/',
+    'Landroidx/startup/',
+    'Landroidx/appcompat/',
+    'Landroidx/core/app/',
+    'Landroidx/core/content/',
+    'Landroidx/core/util/',
+    'Landroidx/core/view/',
+    'Landroidx/annotation/',
+    'Landroidx/constraintlayout/',
+    'Landroidx/fragment/',
+    'Landroidx/lifecycle/viewmodel/',
+    'Landroidx/lifecycle/livedata/',
+    'Landroidx/lifecycle/viewmodel/ktx/',
+    'Landroidx/navigation/',
+    'Landroidx/room/',
+    'Landroidx/recyclerview/',
+    'Landroidx/datastore/',
+    'Landroidx/work/coroutines/',
+    'Landroidx/datastore/preferences/',
+    'Landroidx/security/',
+    'Landroidx/security/crypto/',
+    'Lcom/squareup/okio/',
+    'Lcom/squareup/moshi/',
+    'Lcom/squareup/okhttp3/',
+    'Lcom/squareup/retrofit2/',
+    'Lcom/squareup/retrofit2/converter/',
+    'Lkotlinx/coroutines/',
+    'Lkotlinx/serialization/',
+    'Lkotlinx/serialization/json/',
+    'Lkotlin/jvm/',
+    'Ljava/util/concurrent/',
+    'Ljavax/net/ssl/',
+    'Ljava/security/cert/',
+    'Lorg/json/',
+])
+
+
 BENIGN_LIBRARIES = frozenset(
     set(BENIGN_LIBRARIES) |
     set(BENIGN_LIBRARIES_EXTRA) |
@@ -1805,7 +1999,13 @@ BENIGN_LIBRARIES = frozenset(
     set(BENIGN_LIBRARIES_ADDITIONAL_V2) |
     set(BENIGN_LIBRARIES_ADDITIONAL_V3) |
     set(BENIGN_LIBRARIES_ADDITIONAL_V4) |
-    set(BENIGN_LIBRARIES_ADDITIONAL_V5)
+    set(BENIGN_LIBRARIES_ADDITIONAL_V5) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V6) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V7) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V8) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V9) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V10) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V11)
 )
 
 BENIGN_LIBRARY_WEIGHTS = {
