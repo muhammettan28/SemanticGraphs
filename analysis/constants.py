@@ -762,17 +762,17 @@ CATEGORY_RULES = {
 'inTransaction',
 'SQLiteStatement',
 'execute',
-'Landroidx/room/Database;',                # Room Database
+'Landroidx/room/Database;',
     'Landroidx/room/Dao;',
     'Landroidx/room/Entity;',
     'Landroidx/room/Query;',
-    'Lio/realm/RealmObject;',                  # Realm Database
+    'Lio/realm/RealmObject;',
     'Lio/objectbox/Box;',
     'Lio/realm/RealmObject;',
     'Lio/objectbox/Box;',
     'Landroidx/room/RoomDatabase;',
 ),
-'analytics': (                                 # Yeni kategori
+'analytics': (
     'Lcom/google/firebase/analytics/',
     'Lcom/google/android/gms/analytics/',
     'Lcom/flurry/android/',
@@ -1004,7 +1004,7 @@ CATEGORY_RULES = {
 ),
 }
 
-# İzinleri anlamsal kategorilere eşle
+
 PERM_TO_CATEGORY = {
     "android.permission.READ_SMS": "sms",
     "android.permission.RECEIVE_SMS": "sms",
@@ -1046,7 +1046,7 @@ PERM_TO_CATEGORY = {
     'CAPTURE_AUDIO_OUTPUT': 'media_capture', 'MODIFY_PHONE_STATE': 'telephony',
 }
 
-# Varlığı uygulamanın zararsız olma ihtimalini artıran izinler
+
 BENIGN_HINT_PERMS = frozenset([
     "USE_FINGERPRINT", "USE_BIOMETRIC", "BLUETOOTH", "NFC",
     "VIBRATE", "FLASHLIGHT", "ACCESS_NOTIFICATION_POLICY",
@@ -1062,8 +1062,6 @@ BENIGN_HINT_PERMS = frozenset([
     "READ_MEDIA_AUDIO", "ACCESS_MEDIA_LOCATION",
 ])
 
-
-# Varlığı skoru düşürmesi gereken, yaygın ve güvenilir kütüphaneler
 BENIGN_LIBRARIES = frozenset([
     'Landroidx/', 'Lcom/google/android/gms/', 'Lcom/google/firebase/',
     'Lokhttp3/', 'Lkotlin/', 'Lkotlinx/', 'Lcom/facebook/',
@@ -1110,40 +1108,26 @@ BENIGN_LIBRARIES = frozenset([
 ])
 
 BENIGN_LIBRARIES_EXTRA = frozenset([
-    # AndroidX / Jetpack
     'Landroidx/activity/', 'Landroidx/fragment/', 'Landroidx/lifecycle/',
     'Landroidx/room/', 'Landroidx/work/', 'Landroidx/navigation/',
     'Landroidx/recyclerview/', 'Landroidx/constraintlayout/', 'Landroidx/paging/',
     'Landroidx/databinding/', 'Landroidx/startup/', 'Landroidx/browser/',
     'Landroidx/security/', 'Landroidx/camera/', 'Landroidx/hilt/', 'Landroidx/compose/',
-    # DI
     'Ldagger/', 'Ldagger/hilt/', 'Lcom/google/dagger/hilt/',
-    # Net/JSON/Serdes
     'Lorg/jsoup/', 'Lorg/simpleframework/xml/', 'Lcom/google/flatbuffers/', 'Lkotlinx/serialization/',
     'Lcom/squareup/okhttp/', 'Lcom/squareup/okhttp3/', 'Lio/reactivex/android/',
-    # Görsel/Medya/UI
     'Lcom/facebook/fresco/', 'Ljp/wasabeef/glide/transformations/', 'Lcom/github/chrisbanes/photoview/',
     'Lcom/facebook/shimmer/', 'Lcom/airbnb/epoxy/',
-    # Harita
     'Lcom/mapbox/mapboxsdk/', 'Lcom/google/maps/android/',
-    # Huawei
     'Lcom/huawei/hms/', 'Lcom/huawei/hms/ads/',
-    # Ödeme/kimlik
     'Lcom/adyen/', 'Lcom/squareup/reader/', 'Lcom/microsoft/identity/', 'Lcom/azure/', 'Lcom/google/android/gms/wallet/',
-    # Analitik/Crash/Push/Flags
     'Lio/sentry/', 'Lcom/bugsnag/android/', 'Lcom/instabug/', 'Lcom/onesignal/',
     'Lcom/optimizely/', 'Lcom/launchdarkly/sdk/',
-    # Reklam ağları
     'Lcom/bytedance/sdk/openadsdk/', 'Lcom/yandex/mobile/ads/', 'Lcom/mintegral/', 'Lcom/startapp/', 'Lcom/applovin/mediation/',
-    # ML/Media
     'Lorg/tensorflow/lite/', 'Lcom/google/mediapipe/',
-    # Güvenlik/şifreleme yardımcıları
     'Lcom/google/tink/', 'Lorg/bouncycastle/', 'Lorg/brotli/dec/', 'Lcom/github/luben/zstd/',
-    # PDF/Office
     'Lcom/github/barteksc/pdfviewer/', 'Lcom/itextpdf/',
-    # Eski ama benign
     'Lorg/apache/http/',
-    # DB
     'Lio/realm/',
 ])
 
