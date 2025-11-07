@@ -1027,7 +1027,7 @@ PERM_TO_CATEGORY = {
     'MANAGE_EXTERNAL_STORAGE': 'file_operations', 'MOUNT_UNMOUNT_FILESYSTEMS': 'file_operations',
     'ACCESS_FINE_LOCATION': 'location', 'ACCESS_COARSE_LOCATION': 'location',
     'ACCESS_BACKGROUND_LOCATION': 'location',
-    'CAMERA': 'media_capture', 'RECORD_AUDIO': 'media_capture', 'BODY_SENSORS': 'media_capture',
+    'CAMERA': 'camera_capture', 'RECORD_AUDIO': 'microphone_capture', 'BODY_SENSORS': 'camera_capture',
     'RECEIVE_BOOT_COMPLETED': 'background_ops', 'WAKE_LOCK': 'background_ops',
     'REQUEST_IGNORE_BATTERY_OPTIMIZATIONS': 'background_ops', 'FOREGROUND_SERVICE': 'background_ops',
     'REQUEST_COMPANION_RUN_IN_BACKGROUND': 'background_ops',
@@ -1043,7 +1043,7 @@ PERM_TO_CATEGORY = {
     'BIND_VPN_SERVICE': 'network', 'CHANGE_NETWORK_STATE': 'network',
     'CHANGE_WIFI_STATE': 'network', 'BLUETOOTH_ADMIN': 'network',
     'NFC': 'network',
-    'CAPTURE_AUDIO_OUTPUT': 'media_capture', 'MODIFY_PHONE_STATE': 'telephony',
+    'CAPTURE_AUDIO_OUTPUT': 'microphone_capture', 'MODIFY_PHONE_STATE': 'telephony',
 }
 
 

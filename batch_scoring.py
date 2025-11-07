@@ -16,7 +16,7 @@ from pathlib import Path
 import importlib
 import traceback
 
-CSV_HEADER = ["apk_name", "malware_score", "semantic_risk_score", "hybrid_score", "label"]  # label: benign=0, malware=1
+CSV_HEADER = ["apk_name", "malware_score", "semantic_risk_score", "hybrid_score","reduction_reason","benign_ratio", "label"]  # label: benign=0, malware=1
 
 
 def ensure_header(csv_path: Path) -> None:
@@ -92,6 +92,8 @@ def ensure_header(out_csv: Path):
                 "malware_score",
                 "semantic_risk_score",
                 "hybrid_score",
+                "reduction_reason",
+                "benign_ratio",
                 "label"
             ])
 
@@ -185,12 +187,16 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                 )
                 semantic_risk = float(report.get("semantic_risk_score", 0.0))
                 hybrid_score = float(report.get("hybrid_score", 0.0))
+                reduction_reason=report.get("reduction_reason")
+                benign_ratio=float(report.get("benign_ratio", 0.0))
 
                 writer.writerow([
                     apk_path.name,
                     f"{malware_score:.4f}",
                     f"{semantic_risk:.4f}",
                     f"{hybrid_score:.4f}",
+                    f"{reduction_reason}",
+                    f"{benign_ratio}",
                     label
                 ])
                 f.flush()

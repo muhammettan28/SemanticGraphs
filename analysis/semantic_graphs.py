@@ -430,37 +430,37 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 10)
         counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 10)
 
-        # 6) HAM SEMANTİK VE YAPISAL SKORLARI HESAPLA
-        # ==================================================================
-        sem_g_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_g.items())
-        sem_m_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_m.items())
+    # 6) HAM SEMANTİK VE YAPISAL SKORLARI HESAPLA
+    # ==================================================================
+    sem_g_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_g.items())
+    sem_m_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_m.items())
 
-        beta = 1.0
-        if is_small:
-            beta = 1.5
-        elif is_large:
-            beta = 0.75
-        sem_raw = sem_g_raw + beta * sem_m_raw
+    beta = 1.0
+    if is_small:
+        beta = 1.5
+    elif is_large:
+        beta = 0.75
+    sem_raw = sem_g_raw + beta * sem_m_raw
 
-        avg_degree = (2 * E) / N if N > 0 else 0
-        norm = 1.0 + math.log1p(N / 1000) + math.log1p(E / 500) + (avg_degree / 10)
-        sem_normed = sem_raw / norm if norm > 1 else sem_raw
+    avg_degree = (2 * E) / N if N > 0 else 0
+    norm = 1.0 + math.log1p(N / 1000) + math.log1p(E / 500) + (avg_degree / 10)
+    sem_normed = sem_raw / norm if norm > 1 else sem_raw
 
-        structural = 0.0
-        if N > 10:
-            max_out = max((d for _, d in G.out_degree()), default=0)
-            max_in = max((d for _, d in G.in_degree()), default=0)
-            density = nx.density(G)
-            hub_score = (max_out + max_in) / (2 * N) if N > 0 else 0
-            mod_penalty = 0
-            try:
-                if N > 20:
-                    communities = nx.community.greedy_modularity_communities(G.to_undirected())
-                    modularity = nx.community.modularity(G.to_undirected(), communities)
-                    mod_penalty = (1 - modularity) * 5
-            except Exception:
-                pass
-            structural = math.log1p(max_out) * 2 + hub_score * 15 + density * 8 + mod_penalty
+    structural = 0.0
+    if N > 10:
+        max_out = max((d for _, d in G.out_degree()), default=0)
+        max_in = max((d for _, d in G.in_degree()), default=0)
+        density = nx.density(G)
+        hub_score = (max_out + max_in) / (2 * N) if N > 0 else 0
+        mod_penalty = 0
+        try:
+            if N > 20:
+                communities = nx.community.greedy_modularity_communities(G.to_undirected())
+                modularity = nx.community.modularity(G.to_undirected(), communities)
+                mod_penalty = (1 - modularity) * 5
+        except Exception:
+            pass
+        structural = math.log1p(max_out) * 2 + hub_score * 15 + density * 8 + mod_penalty
 
         # 7) SEZGİSEL BONUSLARI HESAPLA
         # ==================================================================
@@ -509,17 +509,23 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
 
         is_medium_threat_combo = uses_dynamic_code and (uses_accessibility or uses_keylogging)
 
+        report["benign_ratio"] = benign_ratio
+        reduction_multiplier = 1.0
+        reduction_reason = "Default (no reduction applied)"
+
+        total_raw = total_raw_normalized * reduction_multiplier
+        report["reduction_reason"] = reduction_reason
+
         if is_packed or is_very_high_threat:
-            reduction_multiplier = 1.0
+            reduction_reason = f"Packed : ${is_packed} or total_raw ({total_raw:.1%}) → reduction disabled"
         elif is_medium_threat_combo and benign_ratio > 0.7:
-            print(f"[!] Orta Risk + Yüksek Benign Ratio ({benign_ratio:.1%}) -> İndirim İptal Edildi.")
-            reduction_multiplier = 1.0
+            print(f"[!] Medium Risk + High Benign Ratio ({benign_ratio:.1%}) → reduction cancelled.")
+            reduction_reason = "Medium threat + high benign ratio → reduction cancelled"
         else:
             slope = 5.0
             center = 0.55
             reduction_multiplier = 1.0 / (1.0 + math.exp(slope * (benign_ratio - center)))
-
-        total_raw = total_raw_normalized * reduction_multiplier
+            reduction_reason = f"Sigmoid reduction applied (benign_ratio={benign_ratio:.2f})"
 
     # 9) SİGMOİD SQUASH (DÜŞÜK total_raw İÇİN UYARLANDI)
     # ==================================================================
@@ -559,11 +565,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
                         f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
 
             f.write("\n  Şüpheli API Kombinasyonları:\n")
-            if detected_combos:
-                for combo in detected_combos:
-                    f.write(f"    {combo}\n")
-            else:
-                f.write(f"    (Yok)\n")
 
             f.write(f"\n  Squash Function:\n")
             f.write(f"    _squash(total_raw={total_raw:.4f}, K={K}, a={a}) -> {total:.4f}\n")
