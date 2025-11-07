@@ -152,7 +152,6 @@ def compute_api_combo_intensity(log_text: str) -> float:
                  0.3 * temporal_factor)
     return round(min(intensity, 1.0), 3)
 
-
 def compute_semantic_risk_score(benign_ratio: float, log_text: str) -> float:
     api_intensity = compute_api_combo_intensity(log_text)
     cat_entropy = compute_category_entropy(log_text)
@@ -162,8 +161,6 @@ def compute_semantic_risk_score(benign_ratio: float, log_text: str) -> float:
             0.25 * (1 - cat_entropy)
     )
     return round(min(score, 1.0), 3)
-
-
 
 def compute_semantic_bonus(counts_g, counts_m, N, E, is_packed, benign_ratio, meta, sc):
     cfg = c.BONUS_CONFIG
@@ -241,7 +238,6 @@ def compute_semantic_bonus(counts_g, counts_m, N, E, is_packed, benign_ratio, me
     }
     return final_score, debug
 
-
 def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,subset) -> tuple[dict, float]:
     """
     Oluşturulan graf ve metadatayı analiz ederek bir zararlı yazılım skoru üretir.
@@ -249,7 +245,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
     """
 
     # 1) VERİLERİ YÜKLE VE DEĞİŞKENLERİ AYARLA
-    # ==================================================================
     graph_path = Path(graph_path)
     apk_path = Path(apk_path)
     meta_path = graph_path.with_suffix(".meta.json")
@@ -271,11 +266,9 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
     is_packed = packing.is_likely_packed_with_androguard(apk_path)
     is_small = apk_size_kb <= 2000
     is_large = apk_size_kb >= 10000
-    benign_heavy = len(meta.get('all_permissions', [])) > 40 and \
-                   len(c.BENIGN_HINT_PERMS.intersection(meta.get('all_permissions', []))) >= 1
 
     # 2) nodes_str ve KATEGORİ SAYIMLARI (counts_g, counts_m)
-    # ==================================================================
+
     nodes_str = [str(n) for n in G.nodes()]
     counts_g = {k: 0 for k in c.CATEGORY_RULES}
     counts_m = {k: 0 for k in c.CATEGORY_RULES}
@@ -293,13 +286,13 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_m['dangerous_permissions'] = len(meta['dangerous_permissions'])
 
     # 3) BENIGN RATIO'yu ÖNCE HESAPLA (AĞIRLIK İNDİRİMİ İÇİN GEREKLİ!)
-    # ==================================================================
+
     benign_ratio = calculate_weighted_benign_ratio(nodes_str, N)
 
-    # 4) AĞIRLIKLARI BENIGN RATIO'YA GÖRE DÜŞÜR
-    # ==================================================================
-    effective_W = c.W
 
+
+    effective_W = c.W
+    # 4) Categori caps leri BENIGN RATIO'YA göre sınırla
     if benign_ratio >= 0.7:
         # ==========================
         # 1) TAM BENIGN (SAFE ZONE)
@@ -342,7 +335,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 2)
         counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 2)
         counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 2)
-
 
     elif benign_ratio >= 0.3:
         # ==========================
@@ -387,7 +379,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 4)
         counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 4)
 
-
     else:
         # ==========================
         # 3) ZARARLI (MALWARE ZONE)
@@ -431,7 +422,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 10)
 
     # 6) HAM SEMANTİK VE YAPISAL SKORLARI HESAPLA
-    # ==================================================================
     sem_g_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_g.items())
     sem_m_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_m.items())
 
@@ -447,6 +437,7 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
     sem_normed = sem_raw / norm if norm > 1 else sem_raw
 
     structural = 0.0
+    total_raw = 0.0
     if N > 10:
         max_out = max((d for _, d in G.out_degree()), default=0)
         max_in = max((d for _, d in G.in_degree()), default=0)
@@ -528,13 +519,11 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
             reduction_reason = f"Sigmoid reduction applied (benign_ratio={benign_ratio:.2f})"
 
     # 9) SİGMOİD SQUASH (DÜŞÜK total_raw İÇİN UYARLANDI)
-    # ==================================================================
     a=0.04
     K=100.0
     total = _squash(total_raw, K, a)
 
     # 10) DEBUG LOG
-    # ==================================================================
     try:
         with debug_file.open("a", encoding="utf-8") as f:
             f.write(f"\n{'=' * 80}\n")
@@ -564,7 +553,7 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
                     f.write(
                         f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
 
-            f.write("\n  Şüpheli API Kombinasyonları:\n")
+            f.write("\n  Suspicous API Combinations:\n")
 
             f.write(f"\n  Squash Function:\n")
             f.write(f"    _squash(total_raw={total_raw:.4f}, K={K}, a={a}) -> {total:.4f}\n")
@@ -573,7 +562,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         print(f"[HATA] Debug dosyası yazılamadı: {e}", file=sys.stderr)
 
     # 8) RAPORU GÜNCELLE VE DÖNDÜR
-    # ==================================================================
     report.update({
         'node_count': N,
         'edge_count': E,
