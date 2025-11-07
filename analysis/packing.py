@@ -3,9 +3,7 @@ import zipfile
 from androguard.misc import AnalyzeAPK
 import os
 
-# -----------------------------------------------------------
-# Yardımcı: ZIP içeriğini özetle (hızlı tarama)
-# -----------------------------------------------------------
+
 def inspect_apk_zip_minimal(apk_path: str):
     info = {"total_files": 0, "dex_files": [], "libs": [], "assets": [], "large_files": []}
     with zipfile.ZipFile(apk_path, "r") as z:
@@ -23,9 +21,7 @@ def inspect_apk_zip_minimal(apk_path: str):
     return info
 
 
-# -----------------------------------------------------------
-# Yardımcı: Tüm stringleri Dex analizinden çıkar
-# -----------------------------------------------------------
+
 def _all_strings_from_dx(d_list):
     all_strings = set()
     for d in d_list:
@@ -39,9 +35,7 @@ def _all_strings_from_dx(d_list):
             continue
     return all_strings
 
-# -----------------------------------------------------------
-# Heuristik: DexClassLoader + native / reflection kombinasyonları
-# -----------------------------------------------------------
+
 def has_suspicious_combination(dx) -> bool:
     """Şüpheli kombinasyonları kontrol et"""
     try:
@@ -71,12 +65,7 @@ def has_suspicious_combination(dx) -> bool:
         return False
 
 
-# -----------------------------------------------------------
-# Ana fonksiyon: APK'nin pack edilmiş olup olmadığını tahmin et
-# -----------------------------------------------------------
-# -----------------------------------------------------------
-# Ana fonksiyon: APK'nin pack edilmiş olup olmadığını tahmin et
-# -----------------------------------------------------------
+
 def is_likely_packed_with_androguard(apk_path: str) -> bool:
     """
     Androguard kullanarak bir APK'nın paketlenmiş veya gizlenmiş olma olasılığını
@@ -160,10 +149,9 @@ def is_likely_packed_with_androguard(apk_path: str) -> bool:
                 except Exception:
                     pass
         
-        # --- DÜZELTME SONU ---
+
 
     except Exception as e:
         print(f"[Androguard Analiz Hatası] {apk_path}: {e}", file=sys.stderr)
 
-    # Yukarıdaki kuralların hiçbiri tetiklenmezse
     return False
