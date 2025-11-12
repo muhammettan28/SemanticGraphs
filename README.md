@@ -43,12 +43,12 @@ python3.14 batch_scoring.py --module semantic_graphs --dataset data --out result
 
 ### Run on **only benign samples**
 ```bash
-python3.14 batch_scoring.py --module semantic_graphs --dataset data --subset benign --out results/benign_scores.csv
+python3.14 batch_scoring.py --module semantic_graphs --dataset data --subset benign --out results/benign_scores-.csv
 ```
 
 ### Run on **only malware samples**
 ```bash
-python3.14 batch_scoring.py --module semantic_graphs --dataset data --subset malware --out results/malware_scores.csv
+python3.14 batch_scoring.py --module semantic_graphs --dataset data --subset malware --out results/malware_scores-.csv
 ```
 
 Optional flags:

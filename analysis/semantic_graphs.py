@@ -222,10 +222,10 @@ def compute_semantic_bonus(counts_g, counts_m, N, E, is_packed, benign_ratio, me
 
     # 6) Squash/normalize into 0..final_scale using logistic-like squash
     K = cfg["max_bonus_raw"]
-    a = 0.03
+    a = cfg.get("bonus_a", 0.01)
     # logistic-like mapping: final = final_scale * (1 - exp(-a * total_raw))
     # but guard negatives
-    total_raw_pos = max(0.0, total_raw)
+    total_raw_pos = max(0.0, total_raw / K)
     final_score = cfg["final_scale"] * (1.0 - math.exp(-a * total_raw_pos))
 
     # optional debug info
@@ -293,133 +293,133 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
 
     effective_W = c.W
     # 4) Categori caps leri BENIGN RATIO'YA göre sınırla
-    if benign_ratio >= 0.7:
+    if benign_ratio >= 0.75:
         # ==========================
         # 1) TAM BENIGN (SAFE ZONE)
         # ==========================
-        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 1)
-        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 1)
+        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 2)
+        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 2)
         counts_g['network'] = min(counts_g.get('network', 0), 5)
-        counts_g['crypto'] = min(counts_g.get('crypto', 0), 4)
-        counts_g['native_code'] = min(counts_g.get('native_code', 0), 4)
-        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 4)
-        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 4)
-        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 4)
-        counts_g['location'] = min(counts_g.get('location', 0), 4)
-        counts_g['reflection'] = min(counts_g.get('reflection', 0), 4)
-        counts_g['package_info'] = min(counts_g.get('package_info', 0), 4)
-        counts_g['device_info'] = min(counts_g.get('device_info', 0), 4)
-        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 4)
-        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 4)
-        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 4)
-        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 4)
-        counts_g['contacts'] = min(counts_g.get('contacts', 0), 4)
-        counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 4)
-        counts_g['notifications'] = min(counts_g.get('notifications', 0), 4)
-        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 4)
-        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 4)
-        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 4)
-        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 4)
-        counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 3)
-        counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 4)
-        counts_g['adware'] = min(counts_g.get('adware', 0), 3)
-        counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 3)
-        counts_g['overlay'] = min(counts_g.get('overlay', 0), 4)
-        counts_g['analytics'] = min(counts_g.get('analytics', 0), 5)
-        counts_g['webview'] = min(counts_g.get('webview', 0), 3)
-        counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 3)
-        counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 3)
-        counts_g['telephony'] = min(counts_g.get('telephony', 0), 3)
-        counts_g['sms'] = min(counts_g.get('sms', 0), 1)
-        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 2)
-        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 2)
-        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 2)
-        counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 2)
-
-    elif benign_ratio >= 0.3:
-        # ==========================
-        # 2) YARI BENIGN (GRAY ZONE)
-        # ==========================
-        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 5)
-        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 5)
-        counts_g['network'] = min(counts_g.get('network', 0), 8)
-        counts_g['crypto'] = min(counts_g.get('crypto', 0), 8)
-        counts_g['native_code'] = min(counts_g.get('native_code', 0), 8)
-        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 7)
-        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 8)
-        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 8)
-        counts_g['location'] = min(counts_g.get('location', 0), 8)
-        counts_g['reflection'] = min(counts_g.get('reflection', 0), 8)
-        counts_g['package_info'] = min(counts_g.get('package_info', 0), 8)
-        counts_g['device_info'] = min(counts_g.get('device_info', 0), 8)
-        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 8)
-        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 8)
-        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 8)
-        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 8)
-        counts_g['contacts'] = min(counts_g.get('contacts', 0), 6)
-        counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 6)
-        counts_g['notifications'] = min(counts_g.get('notifications', 0), 6)
-        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 6)
-        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 6)
-        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 6)
-        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 6)
+        counts_g['crypto'] = min(counts_g.get('crypto', 0), 5)
+        counts_g['native_code'] = min(counts_g.get('native_code', 0), 5)
+        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 5)
+        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 5)
+        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 5)
+        counts_g['location'] = min(counts_g.get('location', 0), 5)
+        counts_g['reflection'] = min(counts_g.get('reflection', 0), 5)
+        counts_g['package_info'] = min(counts_g.get('package_info', 0), 5)
+        counts_g['device_info'] = min(counts_g.get('device_info', 0), 5)
+        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 5)
+        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 5)
+        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 5)
+        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 5)
+        counts_g['contacts'] = min(counts_g.get('contacts', 0), 5)
+        counts_g['c5_communication'] = min(counts_g.get('c5_communication', 0), 5)
+        counts_g['notifications'] = min(counts_g.get('notifications', 0), 5)
+        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 5)
+        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 5)
+        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 5)
+        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 5)
         counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 5)
         counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 5)
         counts_g['adware'] = min(counts_g.get('adware', 0), 5)
         counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 5)
         counts_g['overlay'] = min(counts_g.get('overlay', 0), 5)
-        counts_g['analytics'] = min(counts_g.get('analytics', 0), 8)
-        counts_g['telephony'] = min(counts_g.get('telephony', 0), 4)
-        counts_g['sms'] = min(counts_g.get('sms', 0), 3)
+        counts_g['analytics'] = min(counts_g.get('analytics', 0), 5)
         counts_g['webview'] = min(counts_g.get('webview', 0), 5)
         counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 5)
         counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 5)
-        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 4)
-        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 4)
-        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 4)
-        counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 4)
+        counts_g['telephony'] = min(counts_g.get('telephony', 0), 5)
+        counts_g['sms'] = min(counts_g.get('sms', 0), 5)
+        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 5)
+        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 5)
+        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 5)
+        counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 5)
+
+    elif benign_ratio >= 0.3:
+        # ==========================
+        # 2) YARI BENIGN (GRAY ZONE)
+        # ==========================
+        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 20)
+        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 20)
+        counts_g['network'] = min(counts_g.get('network', 0), 40)
+        counts_g['crypto'] = min(counts_g.get('crypto', 0), 40)
+        counts_g['native_code'] = min(counts_g.get('native_code', 0), 40)
+        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 40)
+        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 40)
+        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 40)
+        counts_g['location'] = min(counts_g.get('location', 0), 40)
+        counts_g['reflection'] = min(counts_g.get('reflection', 0), 40)
+        counts_g['package_info'] = min(counts_g.get('package_info', 0), 40)
+        counts_g['device_info'] = min(counts_g.get('device_info', 0), 40)
+        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 40)
+        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 40)
+        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 40)
+        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 40)
+        counts_g['contacts'] = min(counts_g.get('contacts', 0), 40)
+        counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 40)
+        counts_g['notifications'] = min(counts_g.get('notifications', 0), 40)
+        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 40)
+        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 40)
+        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 40)
+        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 40)
+        counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 40)
+        counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 40)
+        counts_g['adware'] = min(counts_g.get('adware', 0), 40)
+        counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 40)
+        counts_g['overlay'] = min(counts_g.get('overlay', 0), 40)
+        counts_g['analytics'] = min(counts_g.get('analytics', 0), 40)
+        counts_g['telephony'] = min(counts_g.get('telephony', 0), 40)
+        counts_g['sms'] = min(counts_g.get('sms', 0), 40)
+        counts_g['webview'] = min(counts_g.get('webview', 0), 40)
+        counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 40)
+        counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 40)
+        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 40)
+        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 40)
+        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 40)
+        counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 40)
 
     else:
         # ==========================
         # 3) ZARARLI (MALWARE ZONE)
         # ==========================
-        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 20)
-        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 20)
-        counts_g['network'] = min(counts_g.get('network', 0), 30)
-        counts_g['crypto'] = min(counts_g.get('crypto', 0), 12)
-        counts_g['native_code'] = min(counts_g.get('native_code', 0), 12)
-        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 10)
-        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 20)
-        counts_g['location'] = min(counts_g.get('location', 0), 12)
-        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 20)
-        counts_g['reflection'] = min(counts_g.get('reflection', 0), 12)
-        counts_g['package_info'] = min(counts_g.get('package_info', 0), 12)
-        counts_g['device_info'] = min(counts_g.get('device_info', 0), 12)
-        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 12)
-        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 12)
-        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 12)
-        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 12)
-        counts_g['contacts'] = min(counts_g.get('contacts', 0), 8)
-        counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 8)
-        counts_g['notifications'] = min(counts_g.get('notifications', 0), 8)
-        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 8)
-        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 8)
-        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 8)
-        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 8)
-        counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 5)
-        counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 5)
-        counts_g['adware'] = min(counts_g.get('adware', 0), 6)
-        counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 6)
-        counts_g['overlay'] = min(counts_g.get('overlay', 0), 6)
-        counts_g['analytics'] = min(counts_g.get('analytics', 0), 20)
-        counts_g['telephony'] = min(counts_g.get('telephony', 0), 5)
-        counts_g['sms'] = min(counts_g.get('sms', 0), 10)
-        counts_g['webview'] = min(counts_g.get('webview', 0), 10)
-        counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 10)
-        counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 10)
-        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 10)
-        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 10)
-        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 10)
+        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 30)
+        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 30)
+        counts_g['network'] = min(counts_g.get('network', 0), 60)
+        counts_g['crypto'] = min(counts_g.get('crypto', 0), 60)
+        counts_g['native_code'] = min(counts_g.get('native_code', 0), 60)
+        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 60)
+        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 60)
+        counts_g['location'] = min(counts_g.get('location', 0), 60)
+        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 60)
+        counts_g['reflection'] = min(counts_g.get('reflection', 0), 60)
+        counts_g['package_info'] = min(counts_g.get('package_info', 0), 60)
+        counts_g['device_info'] = min(counts_g.get('device_info', 0), 60)
+        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 60)
+        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 60)
+        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 60)
+        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 60)
+        counts_g['contacts'] = min(counts_g.get('contacts', 0), 60)
+        counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 60)
+        counts_g['notifications'] = min(counts_g.get('notifications', 0), 60)
+        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 60)
+        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 60)
+        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 60)
+        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 60)
+        counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 60)
+        counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 60)
+        counts_g['adware'] = min(counts_g.get('adware', 0), 60)
+        counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 60)
+        counts_g['overlay'] = min(counts_g.get('overlay', 0), 60)
+        counts_g['analytics'] = min(counts_g.get('analytics', 0), 60)
+        counts_g['telephony'] = min(counts_g.get('telephony', 0), 60)
+        counts_g['sms'] = min(counts_g.get('sms', 0), 60)
+        counts_g['webview'] = min(counts_g.get('webview', 0), 60)
+        counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 60)
+        counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 60)
+        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 60)
+        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 60)
+        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 60)
 
     # 6) HAM SEMANTİK VE YAPISAL SKORLARI HESAPLA
     sem_g_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_g.items())
@@ -454,14 +454,13 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         structural = math.log1p(max_out) * 2 + hub_score * 15 + density * 8 + mod_penalty
 
         # 7) SEZGİSEL BONUSLARI HESAPLA
-        # ==================================================================
         bonus, bonus_debug = compute_semantic_bonus(
             counts_g, counts_m, N, E, is_packed, benign_ratio, meta, sc
         )
-        report["bonus_debug"] = bonus_debug
+        report["bonus_debug"] = bonus_debug["final_bonus"]
 
         # 8) NİHAİ SKORU HESAPLA (DİNAMİK NORMALİZASYON + BENIGN İNDİRİMİ)
-        # ==================================================================
+
         mult = 1.0
         if is_small:
             mult = 1.2
@@ -501,25 +500,51 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         is_medium_threat_combo = uses_dynamic_code and (uses_accessibility or uses_keylogging)
 
         report["benign_ratio"] = benign_ratio
+
+        # ==============================================================
+        # BENIGN REDUCTION SHIELD (tek ve tutarlı blok)
+        # ==============================================================
+
         reduction_multiplier = 1.0
         reduction_reason = "Default (no reduction applied)"
 
-        total_raw = total_raw_normalized * reduction_multiplier
-        report["reduction_reason"] = reduction_reason
+        # Packed veya çok yüksek tehdit -> sadece düşük benign_ratio ise kapat
+        if is_packed or (is_very_high_threat and benign_ratio < 0.65):
+            reduction_reason = f"Packed: {is_packed} or high threat (benign_ratio={benign_ratio:.2f}) → reduction disabled"
 
-        if is_packed or is_very_high_threat:
-            reduction_reason = f"Packed : ${is_packed} or total_raw ({total_raw:.1%}) → reduction disabled"
-        elif is_medium_threat_combo and benign_ratio > 0.7:
-            print(f"[!] Medium Risk + High Benign Ratio ({benign_ratio:.1%}) → reduction cancelled.")
-            reduction_reason = "Medium threat + high benign ratio → reduction cancelled"
-        else:
-            slope = 5.0
-            center = 0.55
+        # Orta tehdit ama benign_ratio çok yüksek -> sınırlı kırpma uygula
+        elif is_medium_threat_combo and benign_ratio > 0.65:
+            reduction_reason = (
+                f"Medium threat combo + benign_ratio={benign_ratio:.2f} → partial reduction"
+            )
+            slope = 6.0
+            center = 0.7
             reduction_multiplier = 1.0 / (1.0 + math.exp(slope * (benign_ratio - center)))
-            reduction_reason = f"Sigmoid reduction applied (benign_ratio={benign_ratio:.2f})"
+
+        # Normal benign senaryosu
+        else:
+            slope = 6.0
+            center = c.BONUS_CONFIG["benign_ratio_shield"]  # 0.7
+            sigmoid_factor = 1.0 / (1.0 + math.exp(slope * (benign_ratio - center)))
+
+            if benign_ratio >= center:
+                reduction_multiplier = min(sigmoid_factor, c.BONUS_CONFIG["benign_shield_factor"])
+                reduction_reason = (
+                    f"Benign ratio {benign_ratio:.2f} ≥ {center} → applied shield {reduction_multiplier:.2f}"
+                )
+            else:
+                reduction_multiplier = sigmoid_factor
+                reduction_reason = f"Sigmoid reduction applied (benign_ratio={benign_ratio:.2f})"
+
+        # normalize edilmiş skor üzerine uygula
+        total_raw = total_raw_normalized * reduction_multiplier
+
+        # debug raporları
+        report["reduction_reason"] = reduction_reason
+        report["reduction_multiplier"] = reduction_multiplier
 
     # 9) SİGMOİD SQUASH (DÜŞÜK total_raw İÇİN UYARLANDI)
-    a=0.04
+    a=0.07
     K=100.0
     total = _squash(total_raw, K, a)
 

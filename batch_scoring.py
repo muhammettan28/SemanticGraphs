@@ -16,7 +16,7 @@ from pathlib import Path
 import importlib
 import traceback
 
-CSV_HEADER = ["apk_name", "malware_score", "semantic_risk_score", "hybrid_score","reduction_reason","benign_ratio", "label"]  # label: benign=0, malware=1
+CSV_HEADER = ["apk_name", "malware_score", "semantic_risk_score", "hybrid_score","reduction_reason","benign_ratio","bonus" ,"label"]  # label: benign=0, malware=1
 
 
 def ensure_header(csv_path: Path) -> None:
@@ -58,7 +58,6 @@ def load_done_set(csv_path: Path) -> set[str]:
                 pass
     return done
 
-
 def iter_dataset_apks(dataset_dir: Path, subset: str | None = None):
     """Benign/malware klasörlerini gezer, (path, label) döner. benign=0, malware=1"""
     benign_dir = dataset_dir / "benign"
@@ -70,7 +69,6 @@ def iter_dataset_apks(dataset_dir: Path, subset: str | None = None):
     if subset in (None, "malware") and malware_dir.exists():
         for p in sorted(malware_dir.glob("*.apk")):
             yield p, 1
-
 
 import os
 import sys
@@ -94,6 +92,7 @@ def ensure_header(out_csv: Path):
                 "hybrid_score",
                 "reduction_reason",
                 "benign_ratio",
+                "bonus",
                 "label"
             ])
 
@@ -189,6 +188,7 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                 hybrid_score = float(report.get("hybrid_score", 0.0))
                 reduction_reason=report.get("reduction_reason")
                 benign_ratio=float(report.get("benign_ratio", 0.0))
+                bonus_debug=float(report.get("bonus_debug", 0.0))
 
                 writer.writerow([
                     apk_path.name,
@@ -197,10 +197,18 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                     f"{hybrid_score:.4f}",
                     f"{reduction_reason}",
                     f"{benign_ratio}",
+                    f"{bonus_debug:.4f}",
                     label
                 ])
                 f.flush()
                 appended += 1
+
+
+                sayi:any = 10.0
+
+
+
+
 
                 print(f"[OK] {apk_path.name} -> malware: {malware_score:.3f}, semantic: {semantic_risk:.3f}, hybrid: {hybrid_score:.3f}")
 
