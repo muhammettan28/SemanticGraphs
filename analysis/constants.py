@@ -1991,6 +1991,166 @@ BENIGN_LIBRARIES_ADDITIONAL_V11 = frozenset([
     'Lorg/json/',
 ])
 
+BENIGN_LIBRARIES_ADDITIONAL_V12 = frozenset([
+    # --- AOT / Obfuscated benign prefixes ---
+    'LA/',
+    'La1/',
+    'Lad/',
+    'Lb6/',
+    'Lc2/',
+    'Ld1/',
+    'Le1/',
+    'Le/a/a/',
+    'Le/a/a/t0/',
+    'Le/a/a/t0/e0/',
+    'Lf1/',
+    'Lg0/',
+    'Lg1/',
+    'Lij/',
+    'Llr/',
+    'Lm0/',
+    'Lo5/',
+    'Lp0/',
+    'Lr4/',
+    'Ls/t/',
+    'Ls/t/c/',
+    'Ls/t/c/j/',
+    'Ls/t/c/l/',
+    'LW/',
+    'Lwu/',
+
+    # --- Kotlin & Coroutines ---
+    'Lkotlin/',
+    'Lkotlin/jvm/internal/',
+    'Lkotlinx/',
+    'Lkotlinx/coroutines/',
+    'Lkotlinx/serialization/',
+
+    # --- AndroidX / Jetpack full family ---
+    'Landroidx/',
+    'Landroidx/activity/',
+    'Landroidx/animation/',
+    'Landroidx/annotation/',
+    'Landroidx/appcompat/',
+    'Landroidx/appcompat/',
+    'Landroidx/arch/',
+    'Landroidx/browser/',
+    'Landroidx/camera/',
+    'Landroidx/collection/',
+    'Landroidx/constraintlayout/',
+    'Landroidx/coordinatorlayout/',
+    'Landroidx/core/',
+    'Landroidx/databinding/',
+    'Landroidx/drawerlayout/',
+    'Landroidx/fragment/',
+    'Landroidx/localbroadcastmanager/',
+    'Landroidx/lifecycle/',
+    'Landroidx/media/',
+    'Landroidx/navigation/',
+    'Landroidx/preference/',
+    'Landroidx/recyclerview/',
+    'Landroidx/swiperefreshlayout/',
+    'Landroidx/transition/',
+    'Landroidx/vectordrawable/',
+    'Landroidx/vectordrawable/animated/',
+    'Landroidx/versionedparcelable/',
+    'Landroidx/viewpager/',
+    'Landroidx/work/',
+
+    # --- Flutter ---
+    'Lio/flutter/',
+    'Lio/flutter/embedding/',
+    'Lio/flutter/plugin/',
+    'Lio/flutter/plugins/',
+    'Lio/flutter/view/',
+
+    # --- React Native / Hybrid ---
+    'Lcom/facebook/react/',
+    'Lcom/facebook/react/bridge/',
+    'Lcom/facebook/soloader/',
+    'LX/',
+    'LX8/',
+    'LX9/',
+    'Lrn/',
+
+    # --- Networking (OkHttp, Retrofit, Moshi) ---
+    'Lcom/squareup/moshi/',
+    'Lcom/squareup/okhttp3/',
+    'Lcom/squareup/retrofit2/',
+    'Lokhttp3/',
+    'Lokio/',
+
+    # --- Image Loading (Coil) ---
+    'Lcoil/',
+    'Lcoil/request/',
+    'Lcoil/size/',
+    'Lcoil/drawable/',
+
+    # --- Google Play Services / Firebase / Ads / ExoPlayer ---
+    'Lcom/google/android/ads/',
+    'Lcom/google/android/c2dm/',
+    'Lcom/google/android/exoplayer2/',
+    'Lcom/google/android/finsky/',
+    'Lcom/google/android/material/',
+    'Lcom/google/android/providers/gsf/',
+    'Lcom/google/android/gms/',
+    'Lcom/google/firebase/',
+
+    # --- Badge / Launcher SDKs ---
+    'Lcom/htc/',
+    'Lcom/huawei/',
+    'Lcom/majeur/',
+    'Lcom/oppo/',
+    'Lcom/sec/android/provider/badge/',
+    'Lcom/sonyericsson/',
+    'Lcom/sonymobile/',
+    'Lme/everything/badger/',
+    'Ljp/epark/',
+
+    # --- Developer / Advanced Tools ---
+    'Lmoe/shizuku/',
+
+    # --- App-specific benign namespaces (from your dataset) ---
+    'Lcom/keylesspalace/tusky/',
+    'Lcom/obs/',
+    'Lcom/obs/tmsmobile/',
+    'Lcom/excentus/bellstores/',
+    'Lcom/forsta/digiintapp/',
+    'Ltv/uscreen/',
+    'Lcom/keepinmind/meran/app/',
+    'Lcom/submittertech/quran/',
+    'Lcom/yccteam/evdance/',
+    'Lcom/monbolide/',
+    'Lcom/glow/muallam/'
+])
+
+COMPOSE_BENIGN_PREFIXES = frozenset([
+    # Compose snapshot
+    'Lh0/', 'Lh1/', 'Lh2/', 'Lh3/', 'Lh4/', 'Lh5/', 'Lh6/',
+
+    # Compose layout
+    'Lw0/', 'Lw1/', 'Lw2/', 'Lw3/',
+    'Lv0/', 'Lv1/', 'Lv2/',
+    'Ly0/', 'Ly1/', 'Ly2/',
+
+    # Compose foundation
+    'Lx0/', 'Lx1/', 'Lx2/', 'Lx3/', 'Lx4/',
+
+    # Compose animation
+    'Lp1/', 'Lp2/', 'Lp3/', 'Lp4/',
+
+    # Navigation / Routing
+    'Lj2/', 'Lk2/', 'Lq2/', 'Lq3/', 'Lq4/',
+    'Lt0/', 'Lt1/', 'Lt2/', 'Lt3/',
+    'Lu0/', 'Lu1/',
+
+    # Coroutine + Flow internal
+    'Lq0/', 'Lq1/', 'Lc0/', 'Ld0/',
+    'Lw4/', 'Lz0/', 'Lz1/', 'Lz2/',
+
+    # Material + Compose internal
+    'Ln0/', 'Ln1/', 'Ln2/', 'Ln3/'
+])
 
 BENIGN_LIBRARIES = frozenset(
     set(BENIGN_LIBRARIES) |
@@ -2005,7 +2165,9 @@ BENIGN_LIBRARIES = frozenset(
     set(BENIGN_LIBRARIES_ADDITIONAL_V8) |
     set(BENIGN_LIBRARIES_ADDITIONAL_V9) |
     set(BENIGN_LIBRARIES_ADDITIONAL_V10) |
-    set(BENIGN_LIBRARIES_ADDITIONAL_V11)
+    set(BENIGN_LIBRARIES_ADDITIONAL_V11) |
+    set(BENIGN_LIBRARIES_ADDITIONAL_V12) |
+    set(COMPOSE_BENIGN_PREFIXES)
 )
 
 BENIGN_LIBRARY_WEIGHTS = {

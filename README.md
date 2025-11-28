@@ -19,7 +19,7 @@ The framework performs static analysis on Android APKs, extracting graph-based f
 │   ├── packing.py                 # Detects APK packing, obfuscation, and native code usage
 │   ├── semantic_graphs.py         # Core pipeline for semantic + structural risk computation
 │   ├── suspicious_combinations.py # Detects suspicious API behavior chains (C2, overlay, keylogging, etc.)
-│   └── results_analysis.ipynb     # Notebook for visualization and post-analysis
+│   
 │
 ├── data/
 │   ├── benign/                    # Benign APK samples
