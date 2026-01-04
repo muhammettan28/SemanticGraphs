@@ -505,11 +505,6 @@ CATEGORY_RULES = {
 'cryptocurrency',
 ),
 'modern_libs': (
-'Landroidx/',
-'Lcom/google/firebase/',
-'Lcom/google/android/gms/',
-'Lkotlin/',
-'Lkotlinx/coroutines/',
 'Lio/reactivex/',
 'Lretrofit2/',
 'Lcom/squareup/',
@@ -518,11 +513,8 @@ CATEGORY_RULES = {
 'Lio/realm/',
 'Lcom/airbnb/lottie/',
 'Lcom/google/firebase/messaging/',
-        'Lcom/google/firebase/analytics/',
         'Lcom/google/firebase/installations/',
         'Lcom/google/android/exoplayer2/',
-        'Lcom/squareup/okhttp3/',
-        'Lcom/squareup/retrofit2/',
         'Lcom/google/android/play/core/',          # App Bundle/Dynamic Features
     'Lcom/google/android/play/core/splitinstall/',
     'Lcom/google/android/play/core/review/',   # In-App Reviews
@@ -1063,8 +1055,6 @@ BENIGN_HINT_PERMS = frozenset([
 ])
 
 BENIGN_LIBRARIES = frozenset([
-    'Landroidx/', 'Lcom/google/android/gms/', 'Lcom/google/firebase/',
-    'Lokhttp3/', 'Lkotlin/', 'Lkotlinx/', 'Lcom/facebook/',
     'Lorg/json/', 'Lcom/google/gson/', 'Lcom/google/dagger/',
     'Lcom/squareup/retrofit2/', 'Lcom/squareup/picasso/', 'Lcom/squareup/okio/',
     'Lcom/squareup/moshi/', 'Lcom/squareup/leakcanary/',
@@ -1088,7 +1078,6 @@ BENIGN_LIBRARIES = frozenset([
     'Lbutterknife/', 'Lcom/jakewharton/butterknife/',
     'Lcom/trello/rxlifecycle/', 'Lcom/uber/autodispose/',
     'Lcom/google/android/exoplayer2/', 'Lcom/google/android/datatransport/',
-    'Lcom/android/support/', 'Landroid/support/v4/', 'Landroid/support/v7/',
     'Lcom/google/ads/', 'Lcom/google/android/ump/',
     'Lcom/facebook/ads/', 'Lcom/mopub/', 'Lcom/applovin/',
     'Lcom/unity3d/ads/', 'Lcom/vungle/', 'Lcom/chartboost/',
@@ -1121,7 +1110,7 @@ BENIGN_LIBRARIES_EXTRA = frozenset([
     'Lcom/mapbox/mapboxsdk/', 'Lcom/google/maps/android/',
     'Lcom/huawei/hms/', 'Lcom/huawei/hms/ads/',
     'Lcom/adyen/', 'Lcom/squareup/reader/', 'Lcom/microsoft/identity/', 'Lcom/azure/', 'Lcom/google/android/gms/wallet/',
-    'Lio/sentry/', 'Lcom/bugsnag/android/', 'Lcom/instabug/', 'Lcom/onesignal/',
+    'Lio/sentry/', 'Lcom/bugsnag/android/', 'Lcom/instabug/',
     'Lcom/optimizely/', 'Lcom/launchdarkly/sdk/',
     'Lcom/bytedance/sdk/openadsdk/', 'Lcom/yandex/mobile/ads/', 'Lcom/mintegral/', 'Lcom/startapp/', 'Lcom/applovin/mediation/',
     'Lorg/tensorflow/lite/', 'Lcom/google/mediapipe/',
@@ -1209,26 +1198,7 @@ BENIGN_LIBRARIES_ADDITIONAL_V2 = frozenset([
     # ===== Navigation & Deep Linking =====
     'Landroidx/navigation/safeargs/',
 
-    # ===== Google Play Services (More Specific) =====
-    'Lcom/google/android/gms/auth/',
-    'Lcom/google/android/gms/location/',
-    'Lcom/google/android/gms/maps/',
-    'Lcom/google/android/gms/common/',
-    'Lcom/google/android/gms/tasks/',
 
-    # ===== Firebase (More Granular) =====
-    'Lcom/google/firebase/auth/',
-    'Lcom/google/firebase/firestore/',
-    'Lcom/google/firebase/storage/',
-    'Lcom/google/firebase/messaging/',
-    'Lcom/google/firebase/analytics/',
-    'Lcom/google/firebase/remoteconfig/',
-    'Lcom/google/firebase/perf/',
-
-    # ===== Huawei Mobile Services (HMS) =====
-    'Lcom/huawei/hms/push/',
-    'Lcom/huawei/hms/location/',
-    'Lcom/huawei/hms/maps/',
 
     # ===== Analytics & Attribution (More) =====
     'Lcom/google/analytics/',
@@ -1246,9 +1216,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V2 = frozenset([
     'Lorg/mockito/kotlin/',
     'Lcom/nhaarman/mockitokotlin2/',
     'Landroidx/arch/core/',
-
-    # ===== Kotlin Stdlib & Extensions =====
-    'Lkotlin/', 'Lkotlinx/', 'Lkotlin/jvm/',
 
     # ===== ProGuard / R8 / Shrinker Rules (Debug) =====
     'Lcom/android/tools/r8/',
@@ -1330,8 +1297,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V2 = frozenset([
     'Lcom/mapbox/mapboxsdk/',
     'Lcom/google/maps/android/',
 
-    # ===== OneSignal, Firebase Cloud Messaging =====
-    'Lcom/onesignal/',
 
     # ===== AWS Amplify, Cognito =====
     'Lcom/amplifyframework/',
@@ -1457,7 +1422,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V3 = frozenset([
 
     # ===== Push Notifications =====
     'Lcom/urbanairship/',  # Urban Airship
-    'Lcom/onesignal/',  # OneSignal
     'Lcom/pusher/',  # Pusher
 
     # ===== Analytics & Monitoring =====
@@ -1527,7 +1491,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V4 = frozenset([
     'Lorg/apache/http/client/',
     'Lorg/apache/http/impl/',
     'Lretrofit2/',
-    'Lokhttp3/internal/',
     'Lokio/',
     'Lcom/squareup/okhttp/internal/',
 
@@ -1805,7 +1768,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V6 = frozenset([
     'Lj$/time/',
     'Landroid/graphics/drawable/',
     'Ljava/util/concurrent/',
-    'Lcom/unity3d/',
     'Lcom/squareup/okhttp/',
     'Lcom/squareup/retrofit2/',
     'Lorg/xmlpull/',
@@ -1876,13 +1838,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V10 = frozenset([
     'Lcom/google/mlkit/nl/',
     'Lcom/google/mlkit/text/',
     'Lcom/google/mlkit/image/',
-    'Lcom/google/android/gms/ads/',
-    'Lcom/google/android/gms/vision/',
-    'Lcom/google/android/gms/location/',
-    'Lcom/google/android/gms/maps/',
-    'Lcom/google/android/gms/common/',
-    'Lcom/google/android/gms/auth/',
-    'Lcom/google/android/gms/tasks/',
     'Lcom/google/android/exoplayer2/',
     'Lcom/google/android/exoplayer2/ui/',
     'Lcom/google/android/exoplayer2/offline/',
@@ -2019,43 +1974,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V12 = frozenset([
     'LW/',
     'Lwu/',
 
-    # --- Kotlin & Coroutines ---
-    'Lkotlin/',
-    'Lkotlin/jvm/internal/',
-    'Lkotlinx/',
-    'Lkotlinx/coroutines/',
-    'Lkotlinx/serialization/',
-
-    # --- AndroidX / Jetpack full family ---
-    'Landroidx/',
-    'Landroidx/activity/',
-    'Landroidx/animation/',
-    'Landroidx/annotation/',
-    'Landroidx/appcompat/',
-    'Landroidx/appcompat/',
-    'Landroidx/arch/',
-    'Landroidx/browser/',
-    'Landroidx/camera/',
-    'Landroidx/collection/',
-    'Landroidx/constraintlayout/',
-    'Landroidx/coordinatorlayout/',
-    'Landroidx/core/',
-    'Landroidx/databinding/',
-    'Landroidx/drawerlayout/',
-    'Landroidx/fragment/',
-    'Landroidx/localbroadcastmanager/',
-    'Landroidx/lifecycle/',
-    'Landroidx/media/',
-    'Landroidx/navigation/',
-    'Landroidx/preference/',
-    'Landroidx/recyclerview/',
-    'Landroidx/swiperefreshlayout/',
-    'Landroidx/transition/',
-    'Landroidx/vectordrawable/',
-    'Landroidx/vectordrawable/animated/',
-    'Landroidx/versionedparcelable/',
-    'Landroidx/viewpager/',
-    'Landroidx/work/',
 
     # --- Flutter ---
     'Lio/flutter/',
@@ -2077,7 +1995,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V12 = frozenset([
     'Lcom/squareup/moshi/',
     'Lcom/squareup/okhttp3/',
     'Lcom/squareup/retrofit2/',
-    'Lokhttp3/',
     'Lokio/',
 
     # --- Image Loading (Coil) ---
@@ -2093,8 +2010,6 @@ BENIGN_LIBRARIES_ADDITIONAL_V12 = frozenset([
     'Lcom/google/android/finsky/',
     'Lcom/google/android/material/',
     'Lcom/google/android/providers/gsf/',
-    'Lcom/google/android/gms/',
-    'Lcom/google/firebase/',
 
     # --- Badge / Launcher SDKs ---
     'Lcom/htc/',
@@ -2152,7 +2067,7 @@ COMPOSE_BENIGN_PREFIXES = frozenset([
     'Ln0/', 'Ln1/', 'Ln2/', 'Ln3/'
 ])
 
-BENIGN_LIBRARIES = frozenset(
+_ALL_BENIGN_CANDIDATES = frozenset(
     set(BENIGN_LIBRARIES) |
     set(BENIGN_LIBRARIES_EXTRA) |
     set(BENIGN_LIBRARIES_ADDITIONAL) |
@@ -2170,14 +2085,59 @@ BENIGN_LIBRARIES = frozenset(
     set(COMPOSE_BENIGN_PREFIXES)
 )
 
+NOISY_COMMON_LIBS = {
+    # --- Google Servisleri (Zararlılar harita, reklam ve lokasyon için kullanır) ---
+    'Lcom/google/android/gms/',  # GMS Core (En büyük gürültü kaynağı)
+    'Lcom/google/firebase/',  # Analytics, Messaging
+    'Lcom/google/ads/',  # AdMob
+    'Lcom/google/android/ads/',  # Ads
+
+    # --- Modern Android Yapıtaşları (Neredeyse her uygulamada var) ---
+    'Landroidx/',  # AndroidX (Tüm modern app'lerde standart)
+    'Landroid/support/',  # Eski Support Library
+    'Lcom/google/android/material/',  # Material Design UI
+
+    # --- Diller ve Çekirdek Kütüphaneler ---
+    'Lkotlin/',  # Kotlin standart kütüphanesi
+    'Lkotlinx/',  # Kotlin eklentileri (Coroutines vb.)
+
+    # --- Ağ Kütüphaneleri (Zararlılar C2 iletişimi için kullanır) ---
+    'Lokhttp3/',  # OkHttp
+    'Lcom/squareup/okhttp3/',
+    'Lcom/squareup/retrofit2/',  # Retrofit
+
+    # --- Diğer Riskli "Temiz" Kütüphaneler ---
+    'Lcom/unity3d/',  # Oyun motoru (Gizlenme amaçlı kullanılabiliyor)
+    'Lcom/onesignal/',  # Push bildirimi (Spam/Zararlı yaygındır)
+    'Lcom/facebook/ads/',  # Facebook Reklamları
+    'Lio/flutter/',  # Flutter Framework (Gürültü çok yüksek)
+    'Lcom/facebook/react/',  # React Native
+}
+
+# 2. Gürültülü olanları havuzdan çıkar
+# (Filtreleme mantığı: Eğer benign kütüphane, NOISY listesindeki bir prefix ile başlıyorsa at)
+FINAL_BENIGN_SET = set()
+for lib in _ALL_BENIGN_CANDIDATES:
+    is_noisy = False
+    for noise in NOISY_COMMON_LIBS:
+        if lib.startswith(noise):
+            is_noisy = True
+            break
+    if not is_noisy:
+        FINAL_BENIGN_SET.add(lib)
+
+# 3. Sonuç kümesini dondur
+BENIGN_LIBRARIES = frozenset(FINAL_BENIGN_SET)
+
+
 BENIGN_LIBRARY_WEIGHTS = {
-    'Lcom/google/ads/': 3.0,
-    'Lcom/facebook/ads/': 3.0,
-    'Lcom/mopub/': 3.0,
-    'Lcom/applovin/': 3.0,
-    'Lcom/unity3d/ads/': 3.0,
-    'Lcom/adjust/sdk/': 2.5,
-    'Lcom/appsflyer/': 2.5,
+    'Lcom/google/ads/': 1.0,
+    'Lcom/facebook/ads/': 1.0,
+    'Lcom/mopub/': 1.0,
+    'Lcom/applovin/': 1.0,
+    'Lcom/unity3d/ads/': 1.0,
+    'Lcom/adjust/sdk/': 1.5,
+    'Lcom/appsflyer/': 1.5,
     'Lcom/mixpanel/android/': 2.5,      # EKLENDİ
     'Lcom/amplitude/': 2.5,
     'Lcom/segment/analytics/': 2.5,     # EKLENDİ
@@ -2186,7 +2146,6 @@ BENIGN_LIBRARY_WEIGHTS = {
     'Lcom/braintreepayments/': 2.0,     # EKLENDİ
     'Lcom/twitter/sdk/': 2.0,           # EKLENDİ
     'Lcom/linkedin/android/': 2.0,      # EKLENDİ
-    'Landroidx/': 1.5,
     'Lcom/google/android/material/': 2.0,
     'Lbutterknife/': 2.0,
     'Lcom/bumptech/glide/': 2.0,
@@ -2209,62 +2168,73 @@ CRITICAL_APIS_HIGH_CONFIDENCE = (
 )
 
 W = {
-    'permission_abuse': 16.43,
-    'emulator_detection': 15.44,
-    'network': 15.21,
-    'classloader_manipulation': 15.06,
-    'location': 13.68,
-    'sensor': 13.13,
-    'permissions': 11.69,
-    'exfiltration': 10.78,
-    'microphone_capture': 10.44,
-    'analytics': 10.43,
-    'keylogging': 10.29,
-    'screenshot': 10.09,
-    'dynamic': 10.08,
-    'content_provider': 9.47,
-    'telephony': 9.37,
-    'camera_capture': 8.69,
-    'notifications': 8.68,
-    'anti_debug': 8.45,
-    'data_theft': 7.75,
-    'obfuscation': 7.1,
-    'dangerous_permissions': 6.87,
-    'webview': 6.73,
-    'adware': 6.67,
-    'overlay': 6.42,
-    'native_code': 6.21,
-    'contacts': 4.78,
-    'account': 4.58,
-    'privileged_ops': 4.42,
-    'accessibility': 4.22,
-    'background_ops': 3.72,
-    'vpn': 3.59,
-    'calendar': 3.39,
-    'device_info': 3.17,
-    'reflection': 2.97,
-    'admin_operations': 2.49,
-    'c2_communication': 1.78,
-    'shell_exec': 1.15,
-    'package_info': 1.08,
-    'sms': 0.63,
-    'intent_hijacking': -0.04,
-    'nfc': -0.46,
-    'file_operations': -0.71,
-    'ui_injection': -0.84,
-    'hooking_frameworks': -1.64,
-    'modern_libs': -2.14,
-    'bluetooth': -2.26,
-    'shared_prefs': -2.28,
-    'crypto': -3.42,
-    'payment_sdk': -3.73,
-    'benign_ui': -4.22,
-    'clipboard': -4.78,
-    'spyware': -4.92,
-    'sqlite': -5.04,
-    'banking_targets': -5.77,
-    'ransomware': 8.0, 
-    'anti_vm': 4.0,
+    # Very high risk (6.5–7.0)
+    'exfiltration': 7.0,
+    'data_theft': 6.8,
+    'keylogging': 6.6,
+    'permission_abuse': 6.6,
+    'classloader_manipulation': 6.4,
+    'dynamic': 6.4,
+    'admin_operations': 6.2,
+    'shell_exec': 6.2,
+    'overlay': 6.1,
+    'accessibility': 6.0,
+
+    # High risk (5.0–6.0)
+    'c2_communication': 5.8,
+    'sms': 5.6,
+    'telephony': 5.2,
+    'dangerous_permissions': 5.2,
+    'anti_debug': 5.1,
+    'obfuscation': 5.0,
+    'emulator_detection': 5.0,
+    'anti_vm': 5.0,
+
+    # Medium-high (4.0–5.0)
+    'network': 4.8,
+    'banking_targets': 4.8,
+    'clipboard': 4.2,
+    'screenshot': 4.2,
+    'camera_capture': 4.0,
+    'microphone_capture': 4.0,
+    'location': 4.0,
+    'privileged_ops': 4.4,
+    'ui_injection': 4.4,
+
+    # Medium (3.0–4.0)
+    'device_info': 3.6,
+    'reflection': 3.4,
+    'contacts': 3.4,
+    'account': 3.2,
+    'content_provider': 3.2,
+    'intent_hijacking': 3.1,
+    'hooking_frameworks': 3.6,
+    'vpn': 3.0,
+    'sensor': 3.0,
+    'crypto': 3.2,
+    'sqlite': 3.0,
+
+    # Low (1.5–3.0)  -> benignlerde de sık görülebilir sinyaller
+    'file_operations': 2.4,
+    'shared_prefs': 2.2,
+    'package_info': 2.0,
+    'bluetooth': 1.8,
+    'calendar': 1.8,
+    'nfc': 1.6,
+    'analytics': 1.8,
+    'notifications': 1.8,
+    'adware': 2.6,          # (ad SDK gürültüsü var diye aşırı yükseltmedim)
+    'background_ops': 2.2,
+    'native_code': 2.6,     # (benign/native libs yüzünden orta-alt)
+
+    # Special labels / families (keep moderate unless truly confident)
+    'spyware': 4.8,
+    'ransomware': 6.6,
+    'payment_sdk': 1.5,
+
+    # Benign leaning (negative)
+    'modern_libs': -1.2,
+    'benign_ui': -1.6,
 }
 
 
@@ -2299,10 +2269,44 @@ BONUS_CONFIG = {
         "shell_exec": 0.75,
         "spyware": 0.9,
         "ransomware": 0.95,
+
+        "c2_communication": 0.85,
+        "exfiltration": 0.85,
+        "data_theft": 0.90,
+        "dangerous_permissions": 0.65,
+        "permission_abuse": 0.70,
+        "privileged_ops": 0.80,
+        "obfuscation": 0.75,
+        "classloader_manipulation": 0.75,
+        "hooking_frameworks": 0.80,
+        "intent_hijacking": 0.70,
+        "microphone_capture": 0.70,
+        "camera_capture": 0.65,
+        "location": 0.40,
+        "webview": 0.30,          # phishing / JS bridge / exploit yüzeyi
+        "vpn": 0.35,
+        "file_operations": 0.45,
+        "background_ops": 0.40,
+        "account": 0.35,
+        "payment_sdk": 0.35,
+        "content_provider": 0.25,
+        "shared_prefs": 0.20,
+        "package_info": 0.20,
+        "bluetooth": 0.20,
+        "sqlite": 0.15,
+        "sensor": 0.15,
+        "nfc": 0.15,
+        "notifications": 0.15,
+        "permissions": 0.10,
+        "analytics": 0.10,
+        "modern_libs": -0.10,
+        "benign_ui": -0.15,
+        "adware": 0.55,
     },
     "max_bonus_raw": 200.0,
     "final_scale": 100.0,
     "benign_ratio_shield": 0.65,
     "benign_shield_factor": 0.80,
-    "bonus_a": 0.01,
+    "total_raw_cap": 60.0,
+    "bonus_a": 0.05,
 }

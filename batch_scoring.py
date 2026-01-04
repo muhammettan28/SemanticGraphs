@@ -5,27 +5,28 @@
 CICMalDroid Batch Scoring (resume destekli)
 - dataset/{benign,malware} altındaki .apk dosyalarını işler
 - Önce graph (build_api_graph_compact), sonra analiz (analyze_malware_semantically)
-- CSV'ye sadece: apk_name,malware_score,label yazar
 - Resume: CSV'de apk_name görülenler atlanır (append modunda devam eder)
 """
 
 import argparse
-import csv
+import os
 import sys
-from pathlib import Path
-import importlib
+import csv
 import traceback
+import importlib
+import zipfile
+from pathlib import Path
 
-CSV_HEADER = ["apk_name", "malware_score", "semantic_risk_score", "hybrid_score","reduction_reason","benign_ratio","bonus" ,"label"]  # label: benign=0, malware=1
+CSV_HEADER = ["apk_name", "malware_score", "semantic_risk_score", "hybrid_score","benign_ratio","bonus" ,"label"]  # label: benign=0, malware=1
 
-
-def ensure_header(csv_path: Path) -> None:
-    """CSV yoksa başlıkla oluşturur."""
-    if not csv_path.exists():
-        csv_path.parent.mkdir(parents=True, exist_ok=True)
-        with csv_path.open("w", newline="", encoding="utf-8") as f:
-            csv.writer(f).writerow(CSV_HEADER)
-
+# Yardımcı fonksiyonlar
+def ensure_header(out_csv: Path):
+    """CSV başlık satırı yoksa oluştur."""
+    if not out_csv.exists():
+        out_csv.parent.mkdir(parents=True, exist_ok=True)
+        with out_csv.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(CSV_HEADER)
 
 def load_done_set(csv_path: Path) -> set[str]:
     """
@@ -70,39 +71,14 @@ def iter_dataset_apks(dataset_dir: Path, subset: str | None = None):
         for p in sorted(malware_dir.glob("*.apk")):
             yield p, 1
 
-import os
-import sys
-import csv
-import traceback
-import importlib
-import zipfile
-from pathlib import Path
 
-# Yardımcı fonksiyonlar
-def ensure_header(out_csv: Path):
-    """CSV başlık satırı yoksa oluştur."""
-    if not out_csv.exists():
-        out_csv.parent.mkdir(parents=True, exist_ok=True)
-        with out_csv.open("w", newline="", encoding="utf-8") as f:
-            writer = csv.writer(f)
-            writer.writerow([
-                "apk_name",
-                "malware_score",
-                "semantic_risk_score",
-                "hybrid_score",
-                "reduction_reason",
-                "benign_ratio",
-                "bonus",
-                "label"
-            ])
-
-def load_done_set(out_csv: Path):
-    """Önceden işlenmiş APK isimlerini döndür (resume desteği için)."""
+"""def load_done_set(out_csv: Path):
+    #Önceden işlenmiş APK isimlerini döndür (resume desteği için).
     if not out_csv.exists():
         return set()
     with out_csv.open("r", encoding="utf-8") as f:
         next(f, None)
-        return {line.split(",")[0] for line in f}
+        return {line.split(",")[0] for line in f}"""
 
 def is_valid_zip(path: Path) -> bool:
     """ZIP yapısını kontrol et."""
@@ -137,7 +113,6 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                 break
             processed += 1
 
-            # 0️⃣ Boyut kontrolü
             try:
                 size = os.path.getsize(apk_path)
                 if size < 50 * 1024:  # 50 KB altı dosyaları atla
@@ -186,7 +161,6 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                 )
                 semantic_risk = float(report.get("semantic_risk_score", 0.0))
                 hybrid_score = float(report.get("hybrid_score", 0.0))
-                reduction_reason=report.get("reduction_reason")
                 benign_ratio=float(report.get("benign_ratio", 0.0))
                 bonus_debug=float(report.get("bonus_debug", 0.0))
 
@@ -195,21 +169,12 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                     f"{malware_score:.4f}",
                     f"{semantic_risk:.4f}",
                     f"{hybrid_score:.4f}",
-                    f"{reduction_reason}",
                     f"{benign_ratio}",
                     f"{bonus_debug:.4f}",
                     label
                 ])
                 f.flush()
                 appended += 1
-
-
-                sayi:any = 10.0
-
-
-
-
-
                 print(f"[OK] {apk_path.name} -> malware: {malware_score:.3f}, semantic: {semantic_risk:.3f}, hybrid: {hybrid_score:.3f}")
 
             except Exception as e:
@@ -220,7 +185,6 @@ def stream_score_dataset(module_name: str, dataset_dir: Path, out_csv: Path,
                 other_err_count += 1
                 continue
 
-    # --- Son Özet ---
     print("\n========== [SUMMARY] ==========")
     print(f"📦 Processed: {processed}")
     print(f"✅ Appended:  {appended}")

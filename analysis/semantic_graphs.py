@@ -18,8 +18,10 @@ import sys
 from analysis import packing
 from analysis import constants as c
 from analysis import suspicious_combinations as sc
+from report import debug_log as dt
 from statistics import mean
 import re
+
 try:
     from androguard.misc import AnalyzeAPK
 except ImportError:
@@ -27,9 +29,9 @@ except ImportError:
     exit(1)
 
 
-# semantic_graphs.py (en altta)
-def _squash(x: float, K: float = 100.0, a: float = 0.04) -> float: # a=0.04 veya 0.05 olabilir, threshold yok
+def _squash(x: float, K: float = 100.0, a: float = 0.04) -> float:  # a=0.04 veya 0.05 olabilir, threshold yok
     return K / (1.0 + math.exp(-a * x))
+
 
 def build_api_graph_compact(apk_path: str, min_weight: int = 1) -> tuple[dict, Path]:
     """
@@ -60,7 +62,6 @@ def build_api_graph_compact(apk_path: str, min_weight: int = 1) -> tuple[dict, P
         else:
             G.add_edge(src_class, dst_class, weight=1)
 
-
     G.remove_edges_from([(u, v) for u, v, d in G.edges(data=True) if d.get("weight", 1) < min_weight])
     G.remove_nodes_from(list(nx.isolates(G)))
 
@@ -71,7 +72,8 @@ def build_api_graph_compact(apk_path: str, min_weight: int = 1) -> tuple[dict, P
         'apk_name': Path(apk_path).name,
         'apk_size_kb': round(Path(apk_path).stat().st_size / 1024.0, 2),
         'all_permissions': sorted(all_perms),
-        'dangerous_permissions': sorted([p.split('.')[-1] for p in all_perms if p.split('.')[-1] in c.DANGEROUS_PERMISSIONS]),
+        'dangerous_permissions': sorted(
+            [p.split('.')[-1] for p in all_perms if p.split('.')[-1] in c.DANGEROUS_PERMISSIONS]),
         'api_frequencies': {k: v for k, v in sorted(api_frequencies.items(), key=lambda x: x[1], reverse=True)[:10]}
     }
     with meta_path.open("w", encoding="utf-8") as f:
@@ -86,7 +88,8 @@ def compute_category_entropy(log_text: str) -> float:
     Entropi -> Davranış çeşitliliği (0.0 düşük çeşitlilik / tek amaçlı, 1.0 yüksek çeşitlilik / dengeli)
     """
     # Graf Kategorileri satırlarını yakala
-    section = re.search(r"Graf Kategorileri\s*\(counts_g\):([\s\S]*?)(Manifest Kategorileri|Şüpheli API Kombinasyonları)", log_text)
+    section = re.search(
+        r"Graf Kategorileri\s*\(counts_g\):([\s\S]*?)(Manifest Kategorileri|Şüpheli API Kombinasyonları)", log_text)
     if not section:
         return 0.0
 
@@ -110,6 +113,7 @@ def compute_category_entropy(log_text: str) -> float:
     norm_entropy = entropy / max_entropy if max_entropy > 0 else 0.0
 
     return round(norm_entropy, 3)
+
 
 def compute_api_combo_intensity(log_text: str) -> float:
     # 1️⃣ Şüpheli kombinasyonları bul (ör. "+5.5", "Overlay + SMS + Accessibility + C2")
@@ -152,6 +156,7 @@ def compute_api_combo_intensity(log_text: str) -> float:
                  0.3 * temporal_factor)
     return round(min(intensity, 1.0), 3)
 
+
 def compute_semantic_risk_score(benign_ratio: float, log_text: str) -> float:
     api_intensity = compute_api_combo_intensity(log_text)
     cat_entropy = compute_category_entropy(log_text)
@@ -162,52 +167,44 @@ def compute_semantic_risk_score(benign_ratio: float, log_text: str) -> float:
     )
     return round(min(score, 1.0), 3)
 
-def compute_semantic_bonus(counts_g, counts_m, N, E, is_packed, benign_ratio, meta, sc):
+def compute_semantic_bonus(counts_g, counts_m, N, E, is_packed, benign_ratio, sc):
     cfg = c.BONUS_CONFIG
     raw_scores = []
 
-    # 0) Graph density-based suspicion (sparse graphs are suspicious)
     density = (E / max(1.0, N)) if N > 0 else 0.0
     if N <= cfg["min_graph_nodes"] and E <= cfg["min_graph_edges"]:
-        # very small graph -> high suspicion
         raw_scores.append(cfg["empty_graph_severity"] * cfg["max_bonus_raw"] * 0.15)
     else:
-        # sparse but not empty
         if density < cfg["density_threshold_low"]:
             raw_scores.append((1.0 - (density / cfg["density_threshold_low"])) * cfg["max_bonus_raw"] * 0.08)
         elif density > cfg["density_threshold_high"]:
-            # very dense graphs likely benign complex apps -> small negative or zero
             raw_scores.append(-0.02 * cfg["max_bonus_raw"] * min(1.0, density))
 
-    # 1) Packing / obfuscation
-    # is_packed might be boolean or confidence number - normalize
     if isinstance(is_packed, bool):
         pack_sev = cfg["packing_severity"] if is_packed else 0.0
     else:
-        # if confidence in [0..1]
         pack_sev = float(is_packed)
     if pack_sev > 0:
         raw_scores.append(pack_sev * cfg["max_bonus_raw"] * 0.2)
 
-    # 2) Feature-based severity sums (levelled)
     sev_sum = 0.0
     for k, base_sev in cfg["severity_weights"].items():
         count = counts_g.get(k, 0) + counts_m.get(k, 0)
         if count <= 0:
             continue
-        # severity increases sublinearly with count: sev = base_sev * (1 - exp(-count/scale))
+
         scale = 3.0
         sev = base_sev * (1.0 - math.exp(-float(count) / scale))
         sev_sum += sev
 
     raw_scores.append(sev_sum * cfg["max_bonus_raw"] * 0.05)
 
-    # 3) Suspicious combinations (use existing sc.check_suspicious_combinations)
-    suspicious_bonus, detected_combos = sc.check_suspicious_combinations(counts_g, counts_m, benign_ratio)
-    # assume suspicious_bonus is already a severity-like small number; scale it
-    raw_scores.append(suspicious_bonus * cfg["combo_scale"] * cfg["max_bonus_raw"] * 0.01)
+    # GÜNCELLEME: suspicious_combinations artık 3 değer dönüyor (score, combos, flags)
+    # Flags burada gerekli olmadığı için '_' ile yoksayıyoruz.
+    suspicious_score, detected_combos, _ = sc.check_suspicious_combinations(counts_g, counts_m, benign_ratio)
 
-    # 4) Critical flag multipliers (if ransomware/spyware present, amplify)
+    raw_scores.append(suspicious_score * cfg["combo_scale"] * cfg["max_bonus_raw"] * 0.01)
+
     critical_multiplier = 1.0
     if counts_g.get("ransomware", 0) > 0 or counts_g.get("spyware", 0) > 0:
         critical_multiplier += 0.5
@@ -216,39 +213,32 @@ def compute_semantic_bonus(counts_g, counts_m, N, E, is_packed, benign_ratio, me
 
     total_raw = sum(raw_scores) * critical_multiplier
 
-    # 5) Benign shield: if benign_ratio sufficiently high, down-weight bonuses
     if benign_ratio >= cfg["benign_ratio_shield"]:
         total_raw *= cfg["benign_shield_factor"]
 
-    # 6) Squash/normalize into 0..final_scale using logistic-like squash
-    K = cfg["max_bonus_raw"]
-    a = cfg.get("bonus_a", 0.01)
-    # logistic-like mapping: final = final_scale * (1 - exp(-a * total_raw))
-    # but guard negatives
-    total_raw_pos = max(0.0, total_raw / K)
-    final_score = cfg["final_scale"] * (1.0 - math.exp(-a * total_raw_pos))
+    a = cfg.get("bonus_a", 1.0)
+    cap = cfg["total_raw_cap"]
 
-    # optional debug info
+    # scale raw into [0, 1+] range
+    scaled = max(0.0, total_raw / cap)
+
+    final_score = cfg["final_scale"] * (1.0 - math.exp(-a * scaled))
+
     debug = {
         "raw_components": raw_scores,
         "total_raw": total_raw,
+        "a": a,
         "density": density,
         "detected_combos": detected_combos,
         "final_bonus": final_score,
     }
     return final_score, debug
 
-def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,subset) -> tuple[dict, float]:
-    """
-    Oluşturulan graf ve metadatayı analiz ederek bir zararlı yazılım skoru üretir.
-    (Tüm iyileştirmeler entegre edildi: W rafine, dinamik indirim, cap'ler, benign_ui, dinamik norm, sigmoid)
-    """
-
-    # 1) VERİLERİ YÜKLE VE DEĞİŞKENLERİ AYARLA
+def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path, subset) -> tuple[dict, float]:
     graph_path = Path(graph_path)
     apk_path = Path(apk_path)
     meta_path = graph_path.with_suffix(".meta.json")
-    debug_file = Path(subset +"_scores.txt")
+    debug_file_txt = Path("results/" + subset + "_scores.txt")
 
     try:
         G = nx.read_graphml(graph_path)
@@ -267,8 +257,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
     is_small = apk_size_kb <= 2000
     is_large = apk_size_kb >= 10000
 
-    # 2) nodes_str ve KATEGORİ SAYIMLARI (counts_g, counts_m)
-
     nodes_str = [str(n) for n in G.nodes()]
     counts_g = {k: 0 for k in c.CATEGORY_RULES}
     counts_m = {k: 0 for k in c.CATEGORY_RULES}
@@ -285,18 +273,14 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
     if meta.get('dangerous_permissions'):
         counts_m['dangerous_permissions'] = len(meta['dangerous_permissions'])
 
-    # 3) BENIGN RATIO'yu ÖNCE HESAPLA (AĞIRLIK İNDİRİMİ İÇİN GEREKLİ!)
-
-    benign_ratio = calculate_weighted_benign_ratio(nodes_str, N)
-
-
+    benign_ratio = calculate_weighted_benign_ratio(nodes_str, N, apk_path)
 
     effective_W = c.W
-    # 4) Categori caps leri BENIGN RATIO'YA göre sınırla
+    # (Kategori sınırlama mantığı - aynen korundu)
     if benign_ratio >= 0.75:
-        # ==========================
-        # 1) TAM BENIGN (SAFE ZONE)
-        # ==========================
+        # ... (mevcut limitler)
+        counts_g['modern_libs'] = min(counts_g.get('modern_libs', 0), 100)
+        counts_g['benign_ui'] = min(counts_g.get('benign_ui', 0), 100)
         counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 2)
         counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 2)
         counts_g['network'] = min(counts_g.get('network', 0), 5)
@@ -335,11 +319,10 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 5)
         counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 5)
         counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 5)
-
     elif benign_ratio >= 0.3:
-        # ==========================
-        # 2) YARI BENIGN (GRAY ZONE)
-        # ==========================
+        # ... (mevcut limitler)
+        counts_g['modern_libs'] = min(counts_g.get('modern_libs', 0), 50)
+        counts_g['benign_ui'] = min(counts_g.get('benign_ui', 0), 50)
         counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 20)
         counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 20)
         counts_g['network'] = min(counts_g.get('network', 0), 40)
@@ -378,11 +361,10 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 40)
         counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 40)
         counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 40)
-
     else:
-        # ==========================
-        # 3) ZARARLI (MALWARE ZONE)
-        # ==========================
+        # ... (mevcut limitler)
+        counts_g['modern_libs'] = min(counts_g.get('modern_libs', 0), 10)
+        counts_g['benign_ui'] = min(counts_g.get('benign_ui', 0), 10)
         counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 30)
         counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 30)
         counts_g['network'] = min(counts_g.get('network', 0), 60)
@@ -421,15 +403,20 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 60)
         counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 60)
 
-    # 6) HAM SEMANTİK VE YAPISAL SKORLARI HESAPLA
     sem_g_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_g.items())
     sem_m_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_m.items())
 
     beta = 1.0
+    mult = 1.0
     if is_small:
         beta = 1.5
+        mult = 1.2
     elif is_large:
         beta = 0.75
+        mult = 0.9
+    else:
+        mult = 0.85
+
     sem_raw = sem_g_raw + beta * sem_m_raw
 
     avg_degree = (2 * E) / N if N > 0 else 0
@@ -438,6 +425,10 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
 
     structural = 0.0
     total_raw = 0.0
+    bonus = 0.0
+
+    suspicious_score, detected_combos, threat_flags = sc.check_suspicious_combinations(counts_g, counts_m, benign_ratio)
+
     if N > 10:
         max_out = max((d for _, d in G.out_degree()), default=0)
         max_in = max((d for _, d in G.in_degree()), default=0)
@@ -453,81 +444,61 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
             pass
         structural = math.log1p(max_out) * 2 + hub_score * 15 + density * 8 + mod_penalty
 
-        # 7) SEZGİSEL BONUSLARI HESAPLA
         bonus, bonus_debug = compute_semantic_bonus(
-            counts_g, counts_m, N, E, is_packed, benign_ratio, meta, sc
+            counts_g, counts_m, N, E, is_packed, benign_ratio, sc
         )
         report["bonus_debug"] = bonus_debug["final_bonus"]
-
-        # 8) NİHAİ SKORU HESAPLA (DİNAMİK NORMALİZASYON + BENIGN İNDİRİMİ)
-
-        mult = 1.0
-        if is_small:
-            mult = 1.2
-        elif is_large:
-            mult = 0.9
-        else:
-            mult = 0.85
 
         total_raw_unnormalized = (sem_normed + structural + bonus) * mult
         normalization_factor = math.log(max(N, 10))
         total_raw_normalized = total_raw_unnormalized / normalization_factor
 
-        # 8-A) Kombinasyon Bayrakları (benign indirimi / tehdit sınıflaması için)
-        uses_admin = counts_g.get('admin_operations', 0) > 0
-        uses_accessibility = counts_g.get('accessibility', 0) > 0
-        uses_crypto = counts_g.get('crypto', 0) > 1
-        uses_dynamic_code = counts_g.get('dynamic', 0) > 0
-        uses_shell_exec = counts_g.get('shell_exec', 0) > 0
-        uses_sms = counts_g.get('sms', 0) > 0 or counts_m.get('sms', 0) > 0
-        uses_keylogging = counts_g.get('keylogging', 0) > 0
-        uses_overlay = counts_g.get('overlay', 0) > 0
-        has_banking_targets = counts_g.get('banking_targets', 0) > 0
-        has_c2_comm = counts_g.get('network', 0) > 0
-
-        # BENIGN İNDİRİMİ (SADECE BİR KEZ!)
-        very_high_threat_combo_1 = uses_accessibility and uses_overlay and has_banking_targets
-        very_high_threat_combo_2 = uses_admin and uses_crypto
-        very_high_threat_combo_3 = uses_sms and has_c2_comm and uses_dynamic_code
-        very_high_threat_combo_4 = uses_dynamic_code and uses_shell_exec
-        is_very_high_threat = (
-                very_high_threat_combo_1 or
-                very_high_threat_combo_2 or
-                very_high_threat_combo_3 or
-                very_high_threat_combo_4
-        )
-
-        is_medium_threat_combo = uses_dynamic_code and (uses_accessibility or uses_keylogging)
+        is_very_high_threat = threat_flags.get("is_very_high", False)
+        is_high_threat_combo = threat_flags.get("is_high", False)
+        is_medium_threat_combo = threat_flags.get("is_medium", False)
 
         report["benign_ratio"] = benign_ratio
 
-        # ==============================================================
-        # BENIGN REDUCTION SHIELD (tek ve tutarlı blok)
-        # ==============================================================
-
         reduction_multiplier = 1.0
-        reduction_reason = "Default (no reduction applied)"
+        reduction_reason = "no reduction"
 
-        # Packed veya çok yüksek tehdit -> sadece düşük benign_ratio ise kapat
-        if is_packed or (is_very_high_threat and benign_ratio < 0.65):
-            reduction_reason = f"Packed: {is_packed} or high threat (benign_ratio={benign_ratio:.2f}) → reduction disabled"
 
-        # Orta tehdit ama benign_ratio çok yüksek -> sınırlı kırpma uygula
-        elif is_medium_threat_combo and benign_ratio > 0.65:
+        if is_packed:
+            reduction_reason = f"Packed: {is_packed} → reduction disabled"
+
+        elif is_very_high_threat and benign_ratio < 0.75:
+            # Çok yüksek tehdit var ve benign kod oranı bunu "örtbas" edecek kadar yüksek değil (0.75 altı).
+            reduction_reason = f"Very High Threat + Benign Ratio < 0.75 ({benign_ratio:.2f}) → reduction disabled"
+
+        elif is_high_threat_combo and benign_ratio < 0.65:
+            reduction_reason = f"High Threat + Benign Ratio < 0.65 ({benign_ratio:.2f}) → reduction disabled"
+
+
+        elif (is_very_high_threat or is_high_threat_combo or is_medium_threat_combo):
             reduction_reason = (
-                f"Medium threat combo + benign_ratio={benign_ratio:.2f} → partial reduction"
+                f"Threat Detected (Med/High/VeryHigh) but High Benign Ratio ({benign_ratio:.2f}) → partial reduction"
             )
-            slope = 6.0
-            center = 0.7
-            reduction_multiplier = 1.0 / (1.0 + math.exp(slope * (benign_ratio - center)))
 
-        # Normal benign senaryosu
+            # Normalden daha sert parametreler (Center'ı 0.75'e çekerek indirimi zorlaştırıyoruz)
+            slope = 5.0
+            center = 0.75
+            sigmoid_val = 1.0 / (1.0 + math.exp(slope * (benign_ratio - center)))
+
+            # GÜVENLİK FRENİ: Tehdit varsa skor asla %40'ın (0.4) altına inmesin.
+            # Normalde benign_shield %10'lara kadar indirebilir, burada izin vermiyoruz.
+            reduction_multiplier = max(sigmoid_val, 0.40)
+
+        # ---------------------------------------------------------------------
+        # 3. KADEME: STANDART İNDİRİM (NO THREAT)
+        # Herhangi bir kombinasyon tehdidi yoksa, standart benign shield çalışır.
+        # ---------------------------------------------------------------------
         else:
             slope = 6.0
-            center = c.BONUS_CONFIG["benign_ratio_shield"]  # 0.7
+            center = c.BONUS_CONFIG["benign_ratio_shield"]  # Genelde 0.65
             sigmoid_factor = 1.0 / (1.0 + math.exp(slope * (benign_ratio - center)))
 
             if benign_ratio >= center:
+                # Maksimum indirim oranı (benign_shield_factor) ile sınırla
                 reduction_multiplier = min(sigmoid_factor, c.BONUS_CONFIG["benign_shield_factor"])
                 reduction_reason = (
                     f"Benign ratio {benign_ratio:.2f} ≥ {center} → applied shield {reduction_multiplier:.2f}"
@@ -536,57 +507,16 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
                 reduction_multiplier = sigmoid_factor
                 reduction_reason = f"Sigmoid reduction applied (benign_ratio={benign_ratio:.2f})"
 
-        # normalize edilmiş skor üzerine uygula
+
         total_raw = total_raw_normalized * reduction_multiplier
 
-        # debug raporları
         report["reduction_reason"] = reduction_reason
         report["reduction_multiplier"] = reduction_multiplier
 
-    # 9) SİGMOİD SQUASH (DÜŞÜK total_raw İÇİN UYARLANDI)
-    a=0.07
-    K=100.0
+    a = 0.07
+    K = 100.0
     total = _squash(total_raw, K, a)
 
-    # 10) DEBUG LOG
-    try:
-        with debug_file.open("a", encoding="utf-8") as f:
-            f.write(f"\n{'=' * 80}\n")
-            f.write(f"APK: {meta['apk_name']}\n")
-            f.write(f"  N={N}, E={E}, size={apk_size_kb}KB, is_packed={is_packed}\n")
-            f.write(f"  sem_normed={sem_normed:.4f}\n")
-            f.write(f"  structural={structural:.4f}\n")
-            f.write(f"  bonus={bonus:.4f}\n")
-            f.write(f"  mult={mult:.2f}\n")
-            f.write(
-                f"  total_raw_unnormalized={(sem_normed + structural + bonus):.4f} * {mult:.2f} = {total_raw_unnormalized:.4f}\n")
-            f.write(f"  normalization_factor={normalization_factor:.4f}\n")
-            f.write(f"  total_raw_normalized={total_raw_normalized:.4f}\n")
-            f.write(f"\n  Benign Library Hits: Weighted ratio = {benign_ratio:.2%}\n")
-            f.write(f"  Benign Reduction Multiplier: {reduction_multiplier:.4f}\n")
-            f.write(f"  FINAL total_raw={total_raw:.4f}\n")
-
-            f.write(f"\n  Graf Kategorileri (counts_g):\n")
-            for cat, count in sorted(counts_g.items(), key=lambda x: x[1], reverse=True):
-                if count > 0:
-                    f.write(
-                        f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
-
-            f.write(f"\n  Manifest Kategorileri (counts_m):\n")
-            for cat, count in sorted(counts_m.items(), key=lambda x: x[1], reverse=True):
-                if count > 0:
-                    f.write(
-                        f"    {cat}: {count} (weight={c.W.get(cat, 1.0)}, contribution={count * c.W.get(cat, 1.0):.2f})\n")
-
-            f.write("\n  Suspicous API Combinations:\n")
-
-            f.write(f"\n  Squash Function:\n")
-            f.write(f"    _squash(total_raw={total_raw:.4f}, K={K}, a={a}) -> {total:.4f}\n")
-            f.flush()
-    except Exception as e:
-        print(f"[HATA] Debug dosyası yazılamadı: {e}", file=sys.stderr)
-
-    # 8) RAPORU GÜNCELLE VE DÖNDÜR
     report.update({
         'node_count': N,
         'edge_count': E,
@@ -597,7 +527,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         'malware_score': round(total, 4)
     })
 
-    # === Log Text oluşturma ===
     log_text_parts = []
     for k, v in report.items():
         if isinstance(v, str):
@@ -606,9 +535,13 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
             log_text_parts.append(str(v))
     log_text = "\n".join(log_text_parts)
 
-    # === Semantic Risk ve Hybrid Score ===
     semantic_risk = compute_semantic_risk_score(benign_ratio, log_text)
     report["semantic_risk_score"] = semantic_risk
+
+    dt.write_debug_txt(debug_file_txt, meta, N, E, apk_size_kb, is_packed, sem_normed, structural, bonus, mult,
+                       total_raw_unnormalized,
+                       normalization_factor, total_raw_normalized, benign_ratio, total_raw, counts_g, c, counts_m,
+                       suspicious_score, detected_combos, K, a, total,semantic_risk)
 
     malware_score = (
             report.get("squashed_score")
@@ -617,7 +550,6 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
             or 0.0
     )
 
-    # --- 2D adaptive risk_weight (benign_ratio x semantic_risk) ---
     if benign_ratio >= 0.7:
         if semantic_risk > 0.6:
             risk_weight = 0.20
@@ -642,18 +574,15 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path,su
         else:
             risk_weight = 0.30
 
-    # --- Base hybrid (weighted combination) ---
     hybrid_score = (1 - risk_weight) * malware_score + (risk_weight * (semantic_risk * 100))
 
-    # --- Extra penalty for extremely low benign_ratio (< 0.15) ---
-    LIB_RATIO_THRESHOLD = 0.20  # %15 altı = neredeyse hiç benign library yok
-    PENALTY_ALPHA = 0.20  # semantik risk oranına göre çarpan
+    LIB_RATIO_THRESHOLD = 0.20
+    PENALTY_ALPHA = 0.20
 
     if benign_ratio < LIB_RATIO_THRESHOLD:
         penalty_factor = 1.0 + (semantic_risk * PENALTY_ALPHA)
         hybrid_score *= penalty_factor
 
-    # --- Clamp and finalize ---
     hybrid_score = max(0.0, min(hybrid_score, 100.0))
     report["hybrid_score"] = round(hybrid_score, 4)
 
@@ -671,16 +600,25 @@ def analyze_api_frequencies(cg) -> Dict[str, int]:
     return api_call_frequencies
 
 
-def calculate_weighted_benign_ratio(nodes_str: list[str], N: int) -> float:
-    if N == 0:
-        return 0.0
-
+def calculate_weighted_benign_ratio(
+        nodes_str: list[str],
+        N: int,
+        apk_name: str
+) -> float:
     benign_hits = 0
-    # BENIGN_LIBRARIES'i constants'dan import ettiğinizi varsayalım (örn: import constants as c)
-    for node in nodes_str:
-        # startswith KULLANARAK doğru kontrol
-        if any(node.startswith(lib) for lib in c.BENIGN_LIBRARIES):
-            benign_hits += 1
+    matched_libs = set()
 
-    # Gerçek oranı (0.0 ile 1.0 arası) döndür
-    return benign_hits / N
+    if N == 0:
+        ratio = 0.0
+    else:
+        for node in nodes_str:
+            for lib in c.BENIGN_LIBRARIES:
+                if node.startswith(lib):
+                    benign_hits += 1
+                    matched_libs.add(lib)  # sadece prefix’i tut
+                    break
+        ratio = benign_hits / N
+
+    dt.write_benign_libs(apk_name, ratio, benign_hits, N, matched_libs)
+
+    return ratio
