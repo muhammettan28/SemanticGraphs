@@ -276,132 +276,95 @@ def analyze_malware_semantically(graph_path: str | Path, apk_path: str | Path, s
     benign_ratio = calculate_weighted_benign_ratio(nodes_str, N, apk_path)
 
     effective_W = c.W
-    # (Kategori sınırlama mantığı - aynen korundu)
+    
+    # 1. GÜRÜLTÜLÜ (NOISY): Benign applerde çok sık olanlar
+    noisy_cats = [
+        'network', 'file_operations', 'reflection', 'crypto', 'native_code',
+        'notifications', 'webview', 'background_ops', 'content_provider',
+        'device_info', 'bluetooth', 'location', 'shared_prefs', 'sqlite',
+        'analytics', 'adware', 'payment_sdk', 'permissions', 'sensor',
+        'account', 'nfc', 'calendar', 'contacts', 'clipboard'
+    ]
+    
+    # 2. RİSKLİ (RISKY): Benign'de olabilir ama az olmalı
+    risky_cats = [
+        'sms', 'telephony', 'banking_targets', 'shell_exec', 'accessibility',
+        'overlay', 'dynamic', 'privileged_ops', 'system_keys', 'camera_capture',
+        'microphone_capture', 'package_info', 'vpn', 'intent_hijacking',
+        'classloader_manipulation', 'hooking_frameworks'
+    ]
+    
+    # 3. ZARARLI (MALICIOUS): Benign app'te neredeyse hiç olmamalı
+    malicious_cats = [
+        'admin_operations', 'keylogging', 'screenshot', 'exfiltration',
+        'persistence', 'ui_injection', 'data_theft', 'anti_vm', 
+        'c2_communication', 'ransomware', 'spyware', 'permission_abuse',
+        'root_detection', 'emulator_detection', 'anti_debug', 'obfuscation'
+    ]
+
+    # --- BÖLGE 1: GÜVENLİ (BENIGN) BÖLGE (Ratio >= 0.75) ---
     if benign_ratio >= 0.75:
-        # ... (mevcut limitler)
+        # A) Bonusları Serbest Bırak (Skoru düşürmeleri için)
+        counts_g['modern_libs'] = min(counts_g.get('modern_libs', 0), 300)
+        counts_g['benign_ui']   = min(counts_g.get('benign_ui', 0), 300)
+
+        # B) Gürültülü Kategorileri Çok Sıkı Bastır (Max 2-3)
+        # Bu kategoriler benign app'lerde yüzlerce kez geçebilir, skoru şişirmesin.
+        for cat in noisy_cats:
+            counts_g[cat] = min(counts_g.get(cat, 0), 3)
+
+        # C) Riskli Kategorileri Tekil Yap (0 veya 1)
+        # "Var mı var" mantığına döner. Adet sayıp skoru patlatmaz.
+        for cat in risky_cats:
+            counts_g[cat] = min(counts_g.get(cat, 0), 1)
+            
+        # D) Zararlı Kategorileri Sıfırla veya 1 Yap
+        # Benign app içinde "ransomware" stringi geçiyorsa bu %99 ihtimalle
+        # bir güvenlik kütüphanesinin içindeki değişkendir. Cezalandırma.
+        for cat in malicious_cats:
+            counts_g[cat] = min(counts_g.get(cat, 0), 0)  # Direkt 0 yapıyoruz, false positive önlemi
+
+        # Manifest İzinleri de Bastır
+        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 1)
+        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 1)
+
+    # --- BÖLGE 2: GRİ BÖLGE (Ratio >= 0.45) ---
+    elif benign_ratio >= 0.45:
+        # A) Bonuslar (Orta seviye)
         counts_g['modern_libs'] = min(counts_g.get('modern_libs', 0), 100)
-        counts_g['benign_ui'] = min(counts_g.get('benign_ui', 0), 100)
-        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 2)
-        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 2)
-        counts_g['network'] = min(counts_g.get('network', 0), 5)
-        counts_g['crypto'] = min(counts_g.get('crypto', 0), 5)
-        counts_g['native_code'] = min(counts_g.get('native_code', 0), 5)
-        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 5)
-        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 5)
-        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 5)
-        counts_g['location'] = min(counts_g.get('location', 0), 5)
-        counts_g['reflection'] = min(counts_g.get('reflection', 0), 5)
-        counts_g['package_info'] = min(counts_g.get('package_info', 0), 5)
-        counts_g['device_info'] = min(counts_g.get('device_info', 0), 5)
-        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 5)
-        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 5)
-        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 5)
-        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 5)
-        counts_g['contacts'] = min(counts_g.get('contacts', 0), 5)
-        counts_g['c5_communication'] = min(counts_g.get('c5_communication', 0), 5)
-        counts_g['notifications'] = min(counts_g.get('notifications', 0), 5)
-        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 5)
-        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 5)
-        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 5)
-        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 5)
-        counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 5)
-        counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 5)
-        counts_g['adware'] = min(counts_g.get('adware', 0), 5)
-        counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 5)
-        counts_g['overlay'] = min(counts_g.get('overlay', 0), 5)
-        counts_g['analytics'] = min(counts_g.get('analytics', 0), 5)
-        counts_g['webview'] = min(counts_g.get('webview', 0), 5)
-        counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 5)
-        counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 5)
-        counts_g['telephony'] = min(counts_g.get('telephony', 0), 5)
-        counts_g['sms'] = min(counts_g.get('sms', 0), 5)
-        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 5)
-        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 5)
-        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 5)
-        counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 5)
-    elif benign_ratio >= 0.3:
-        # ... (mevcut limitler)
-        counts_g['modern_libs'] = min(counts_g.get('modern_libs', 0), 50)
-        counts_g['benign_ui'] = min(counts_g.get('benign_ui', 0), 50)
-        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 20)
-        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 20)
-        counts_g['network'] = min(counts_g.get('network', 0), 40)
-        counts_g['crypto'] = min(counts_g.get('crypto', 0), 40)
-        counts_g['native_code'] = min(counts_g.get('native_code', 0), 40)
-        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 40)
-        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 40)
-        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 40)
-        counts_g['location'] = min(counts_g.get('location', 0), 40)
-        counts_g['reflection'] = min(counts_g.get('reflection', 0), 40)
-        counts_g['package_info'] = min(counts_g.get('package_info', 0), 40)
-        counts_g['device_info'] = min(counts_g.get('device_info', 0), 40)
-        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 40)
-        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 40)
-        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 40)
-        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 40)
-        counts_g['contacts'] = min(counts_g.get('contacts', 0), 40)
-        counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 40)
-        counts_g['notifications'] = min(counts_g.get('notifications', 0), 40)
-        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 40)
-        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 40)
-        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 40)
-        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 40)
-        counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 40)
-        counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 40)
-        counts_g['adware'] = min(counts_g.get('adware', 0), 40)
-        counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 40)
-        counts_g['overlay'] = min(counts_g.get('overlay', 0), 40)
-        counts_g['analytics'] = min(counts_g.get('analytics', 0), 40)
-        counts_g['telephony'] = min(counts_g.get('telephony', 0), 40)
-        counts_g['sms'] = min(counts_g.get('sms', 0), 40)
-        counts_g['webview'] = min(counts_g.get('webview', 0), 40)
-        counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 40)
-        counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 40)
-        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 40)
-        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 40)
-        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 40)
-        counts_g['data_theft'] = min(counts_g.get('data_theft', 0), 40)
+        counts_g['benign_ui']   = min(counts_g.get('benign_ui', 0), 100)
+
+        # B) Gürültü (Gevşek Limit - 20)
+        for cat in noisy_cats:
+            counts_g[cat] = min(counts_g.get(cat, 0), 20)
+
+        # C) Riskli (Dikkatli Limit - 3)
+        for cat in risky_cats:
+            counts_g[cat] = min(counts_g.get(cat, 0), 3)
+
+        # D) Zararlı (Var olmasına izin ver ama sınırla - 2)
+        for cat in malicious_cats:
+            counts_g[cat] = min(counts_g.get(cat, 0), 2)
+
+        # Manifest
+        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 5)
+        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 5)
+
+    # --- BÖLGE 3: TEHLİKELİ BÖLGE (Malware Bölgesi) ---
     else:
-        # ... (mevcut limitler)
+        # A) Bonusları Kısıtla (Malware taklidi yapamasın)
         counts_g['modern_libs'] = min(counts_g.get('modern_libs', 0), 10)
-        counts_g['benign_ui'] = min(counts_g.get('benign_ui', 0), 10)
-        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 30)
-        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 30)
-        counts_g['network'] = min(counts_g.get('network', 0), 60)
-        counts_g['crypto'] = min(counts_g.get('crypto', 0), 60)
-        counts_g['native_code'] = min(counts_g.get('native_code', 0), 60)
-        counts_g['banking_targets'] = min(counts_g.get('banking_targets', 0), 60)
-        counts_g['shell_exec'] = min(counts_g.get('shell_exec', 0), 60)
-        counts_g['location'] = min(counts_g.get('location', 0), 60)
-        counts_g['file_operations'] = min(counts_g.get('file_operations', 0), 60)
-        counts_g['reflection'] = min(counts_g.get('reflection', 0), 60)
-        counts_g['package_info'] = min(counts_g.get('package_info', 0), 60)
-        counts_g['device_info'] = min(counts_g.get('device_info', 0), 60)
-        counts_g['background_ops'] = min(counts_g.get('background_ops', 0), 60)
-        counts_g['content_provider'] = min(counts_g.get('content_provider', 0), 60)
-        counts_g['emulator_detection'] = min(counts_g.get('emulator_detection', 0), 60)
-        counts_g['sqlite'] = min(counts_g.get('sqlite', 0), 60)
-        counts_g['contacts'] = min(counts_g.get('contacts', 0), 60)
-        counts_g['c2_communication'] = min(counts_g.get('c2_communication', 0), 60)
-        counts_g['notifications'] = min(counts_g.get('notifications', 0), 60)
-        counts_g['exfiltration'] = min(counts_g.get('exfiltration', 0), 60)
-        counts_g['keylogging'] = min(counts_g.get('keylogging', 0), 60)
-        counts_g['accessibility'] = min(counts_g.get('accessibility', 0), 60)
-        counts_g['bluetooth'] = min(counts_g.get('bluetooth', 0), 60)
-        counts_g['camera_capture'] = min(counts_g.get('camera_capture', 0), 60)
-        counts_g['microphone_capture'] = min(counts_g.get('microphone_capture', 0), 60)
-        counts_g['adware'] = min(counts_g.get('adware', 0), 60)
-        counts_g['obfuscation'] = min(counts_g.get('obfuscation', 0), 60)
-        counts_g['overlay'] = min(counts_g.get('overlay', 0), 60)
-        counts_g['analytics'] = min(counts_g.get('analytics', 0), 60)
-        counts_g['telephony'] = min(counts_g.get('telephony', 0), 60)
-        counts_g['sms'] = min(counts_g.get('sms', 0), 60)
-        counts_g['webview'] = min(counts_g.get('webview', 0), 60)
-        counts_g['intent_hijacking'] = min(counts_g.get('intent_hijacking', 0), 60)
-        counts_g['dynamic'] = min(counts_g.get('dynamic', 0), 60)
-        counts_g['privileged_ops'] = min(counts_g.get('privileged_ops', 0), 60)
-        counts_g['hooking_frameworks'] = min(counts_g.get('hooking_frameworks', 0), 60)
-        counts_g['anti_debug'] = min(counts_g.get('anti_debug', 0), 60)
+        counts_g['benign_ui']   = min(counts_g.get('benign_ui', 0), 10)
+
+        # B) Tüm Limitleri Kaldır/Genişlet (100)
+        # Malware ne yapıyorsa skora yansısın.
+        all_cats = noisy_cats + risky_cats + malicious_cats
+        for cat in all_cats:
+            counts_g[cat] = min(counts_g.get(cat, 0), 100)
+
+        # Manifest serbest
+        counts_m['dangerous_permissions'] = min(counts_m.get('dangerous_permissions', 0), 50)
+        counts_g['dangerous_permissions'] = min(counts_g.get('dangerous_permissions', 0), 50)
 
     sem_g_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_g.items())
     sem_m_raw = sum(effective_W.get(cat, 1.0) * count for cat, count in counts_m.items())
