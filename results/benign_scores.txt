@@ -1,0 +1,983 @@
+
+================================================================================
+APK: 0000072CEFB104E974B04E7C634C91D0AEBC7BA9826B7D5F90F4672163C5C06E.apk
+  N=10194, E=38984, size=12338.52KB, is_packed=False
+  sem_normed=176.4246
+  structural=12.7404
+  bonus=79.6984
+  Semantic Risk=0.5630
+  mult=0.90
+  total_raw_unnormalized=268.8634 * 0.90 = 241.9771
+  normalization_factor=9.2296
+  total_raw_normalized=26.2176
+
+  Benign Library Hits: Weighted ratio = 35.11%
+  FINAL total_raw=26.2176
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    network: 40 (weight=4.8, contribution=192.00)
+    native_code: 40 (weight=2.6, contribution=104.00)
+    banking_targets: 40 (weight=4.8, contribution=192.00)
+    accessibility: 40 (weight=6.0, contribution=240.00)
+    shell_exec: 40 (weight=6.2, contribution=248.00)
+    notifications: 38 (weight=1.8, contribution=68.40)
+    crypto: 29 (weight=3.2, contribution=92.80)
+    modern_libs: 16 (weight=-1.2, contribution=-19.20)
+    sqlite: 16 (weight=3.0, contribution=48.00)
+    file_operations: 15 (weight=2.4, contribution=36.00)
+    reflection: 11 (weight=3.4, contribution=37.40)
+    dynamic: 9 (weight=6.4, contribution=57.60)
+    background_ops: 9 (weight=2.2, contribution=19.80)
+    content_provider: 9 (weight=3.2, contribution=28.80)
+    contacts: 7 (weight=3.4, contribution=23.80)
+    emulator_detection: 7 (weight=5.0, contribution=35.00)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    webview: 4 (weight=1.0, contribution=4.00)
+    exfiltration: 4 (weight=7.0, contribution=28.00)
+    obfuscation: 3 (weight=5.0, contribution=15.00)
+    data_theft: 3 (weight=6.8, contribution=20.40)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    location: 2 (weight=4.0, contribution=8.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    bluetooth: 2 (weight=1.8, contribution=3.60)
+    sensor: 2 (weight=3.0, contribution=6.00)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    shared_prefs: 2 (weight=2.2, contribution=4.40)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+
+  Manifest Kategorileri (counts_m):
+    file_operations: 2 (weight=2.4, contribution=4.80)
+    dangerous_permissions: 2 (weight=5.2, contribution=10.40)
+
+  Suspicous API Combinations: 67.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=26.2176, K=100.0, a=0.07) -> 86.2384
+
+================================================================================
+APK: 000019652A1B4C2DFABE6F9E216428632CF7098E2C46BF93EF1D6C4D9532BD33.apk
+  N=4054, E=13533, size=14204.71KB, is_packed=False
+  sem_normed=99.9264
+  structural=11.4990
+  bonus=75.6438
+  Semantic Risk=0.6040
+  mult=0.90
+  total_raw_unnormalized=187.0691 * 0.90 = 168.3622
+  normalization_factor=8.3075
+  total_raw_normalized=20.2664
+
+  Benign Library Hits: Weighted ratio = 23.36%
+  FINAL total_raw=20.2664
+
+  Graf Kategorileri (counts_g):
+    location: 40 (weight=4.0, contribution=160.00)
+    shell_exec: 23 (weight=6.2, contribution=142.60)
+    shared_prefs: 18 (weight=2.2, contribution=39.60)
+    modern_libs: 10 (weight=-1.2, contribution=-12.00)
+    analytics: 10 (weight=1.8, contribution=18.00)
+    network: 8 (weight=4.8, contribution=38.40)
+    file_operations: 7 (weight=2.4, contribution=16.80)
+    notifications: 7 (weight=1.8, contribution=12.60)
+    benign_ui: 5 (weight=-1.6, contribution=-8.00)
+    background_ops: 5 (weight=2.2, contribution=11.00)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    reflection: 4 (weight=3.4, contribution=13.60)
+    webview: 4 (weight=1.0, contribution=4.00)
+    bluetooth: 4 (weight=1.8, contribution=7.20)
+    dynamic: 3 (weight=6.4, contribution=19.20)
+    banking_targets: 3 (weight=4.8, contribution=14.40)
+    sqlite: 3 (weight=3.0, contribution=9.00)
+    crypto: 2 (weight=3.2, contribution=6.40)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=6.0, contribution=12.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    content_provider: 2 (weight=3.2, contribution=6.40)
+    c2_communication: 2 (weight=5.8, contribution=11.60)
+    telephony: 1 (weight=5.2, contribution=5.20)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    screenshot: 1 (weight=4.2, contribution=4.20)
+    contacts: 1 (weight=3.4, contribution=3.40)
+    account: 1 (weight=3.2, contribution=3.20)
+    package_info: 1 (weight=2.0, contribution=2.00)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 5 (weight=5.2, contribution=26.00)
+    background_ops: 3 (weight=2.2, contribution=6.60)
+    location: 2 (weight=4.0, contribution=8.00)
+
+  Suspicous API Combinations: 60.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Ekran görüntüsü alıp dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=20.2664, K=100.0, a=0.07) -> 80.5126
+
+================================================================================
+APK: 000023ADD859923F858C99D7974D4E20798F001E01ED9E9ACFBDBDB928D88A29.apk
+  N=20118, E=76414, size=18200.34KB, is_packed=False
+  sem_normed=209.0016
+  structural=11.5867
+  bonus=94.2577
+  Semantic Risk=0.4880
+  mult=0.90
+  total_raw_unnormalized=314.8460 * 0.90 = 283.3614
+  normalization_factor=9.9094
+  total_raw_normalized=28.5953
+
+  Benign Library Hits: Weighted ratio = 56.47%
+  FINAL total_raw=28.5953
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    modern_libs: 50 (weight=-1.2, contribution=-60.00)
+    network: 40 (weight=4.8, contribution=192.00)
+    native_code: 40 (weight=2.6, contribution=104.00)
+    banking_targets: 40 (weight=4.8, contribution=192.00)
+    accessibility: 40 (weight=6.0, contribution=240.00)
+    notifications: 40 (weight=1.8, contribution=72.00)
+    shell_exec: 40 (weight=6.2, contribution=248.00)
+    bluetooth: 30 (weight=1.8, contribution=54.00)
+    reflection: 26 (weight=3.4, contribution=88.40)
+    dynamic: 25 (weight=6.4, contribution=160.00)
+    crypto: 24 (weight=3.2, contribution=76.80)
+    camera_capture: 23 (weight=4.0, contribution=92.00)
+    analytics: 21 (weight=1.8, contribution=37.80)
+    sqlite: 20 (weight=3.0, contribution=60.00)
+    background_ops: 19 (weight=2.2, contribution=41.80)
+    file_operations: 18 (weight=2.4, contribution=43.20)
+    c2_communication: 16 (weight=5.8, contribution=92.80)
+    data_theft: 9 (weight=6.8, contribution=61.20)
+    content_provider: 7 (weight=3.2, contribution=22.40)
+    emulator_detection: 7 (weight=5.0, contribution=35.00)
+    location: 6 (weight=4.0, contribution=24.00)
+    intent_hijacking: 6 (weight=3.1, contribution=18.60)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    contacts: 5 (weight=3.4, contribution=17.00)
+    adware: 5 (weight=2.6, contribution=13.00)
+    telephony: 4 (weight=5.2, contribution=20.80)
+    webview: 4 (weight=1.0, contribution=4.00)
+    microphone_capture: 3 (weight=4.0, contribution=12.00)
+    obfuscation: 3 (weight=5.0, contribution=15.00)
+    sensor: 3 (weight=3.0, contribution=9.00)
+    device_info: 2 (weight=3.6, contribution=7.20)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    shared_prefs: 2 (weight=2.2, contribution=4.40)
+    exfiltration: 2 (weight=7.0, contribution=14.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    sms: 1 (weight=5.6, contribution=5.60)
+    screenshot: 1 (weight=4.2, contribution=4.20)
+    account: 1 (weight=3.2, contribution=3.20)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 7 (weight=5.2, contribution=36.40)
+    background_ops: 3 (weight=2.2, contribution=6.60)
+    admin_operations: 2 (weight=6.2, contribution=12.40)
+    file_operations: 1 (weight=2.4, contribution=2.40)
+    camera_capture: 1 (weight=4.0, contribution=4.00)
+
+  Suspicous API Combinations: 123.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: Admin + Crypto (Ransomware/privilege chain) (+2.0)', 'VERY_HIGH: SMS + Network + DynamicCode (OTP/Exfiltration chain) (+2.0)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Location + Camera + Microphone + Exfiltration (STALKERWARE) (+2.5)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'VERY_HIGH: Crypto + Exfiltration + Admin (Data Ransom) (+2.0)', 'VERY_HIGH: PackageInfo + Accessibility + Overlay + SMS (Targeted Banking) (+2.0)', 'HIGH: Location + (Camera|Microphone) + Exfiltration (Surveillance) (+1.5)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'HIGH: Contacts + SMS + Exfiltration (Social Engineering) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'ULTIMATE BANKING TROJAN: Full capability (+4.0)', 'ULTIMATE STALKERWARE: Full surveillance + Contact data (+4.0)', 'Complete input interception system (+4.0)', 'Advanced Banking Trojan: Full capability + Targeting (+4.0)', 'TAM BANKING TROJAN: Overlay + SMS + Accessibility + C2 (+3.0)', 'Banking Trojan + Sosyal mühendislik: Full overlay + İletişim verileri (+3.0)', 'Hedefli Banking Trojan: Uygulama tarama + Overlay + SMS + C2 (+3.0)', 'FULL SURVEILLANCE: Konum + Kamera + Mikrofon + Sızdırma (+3.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Tam Banking Trojan profili: Overlay + SMS + Accessibility (+2.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Hedefli saldırı: Uygulama tarama + Overlay + SMS okuma (+2.0)', 'Banking keyword detection + Overlay + SMS intercept (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Phishing + SMS okuma + C2 iletişimi (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'STALKERWARE: Konum + Kamera + Mikrofon gözetleme (+2.0)', 'Lokasyon-based gözetleme + Veri sızdırma (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Audio surveillance + Lokasyon tracking (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Ekran görüntüsü alıp dışarı sızdırma (Spyware) (+1.0)', 'Cihaz yöneticisi yetkisiyle şifreleme (Ransomware riski) (+1.0)', 'SMS mesajlarını okuyup ağa gönderme (OTP Hırsızlığı) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Cihaz yöneticisi yetkileriyle ağ iletişimi (+1.5)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Konum + Kamera: Stalkerware/Gözetleme uygulaması (+1.0)', 'Ses kaydı + Veri sızdırma: Dinleme trojanı (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=28.5953, K=100.0, a=0.07) -> 88.0972
+
+================================================================================
+APK: 0000305D33252AFB51684E5D15ED8978E6A25F826A6143B9170F2FA8E5509924.apk
+  N=6568, E=35609, size=15255.24KB, is_packed=False
+  sem_normed=128.4941
+  structural=12.2972
+  bonus=72.0135
+  Semantic Risk=0.4530
+  mult=0.90
+  total_raw_unnormalized=212.8048 * 0.90 = 191.5243
+  normalization_factor=8.7900
+  total_raw_normalized=21.7890
+
+  Benign Library Hits: Weighted ratio = 66.63%
+  FINAL total_raw=21.7890
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    modern_libs: 50 (weight=-1.2, contribution=-60.00)
+    accessibility: 40 (weight=6.0, contribution=240.00)
+    shell_exec: 40 (weight=6.2, contribution=248.00)
+    adware: 40 (weight=2.6, contribution=104.00)
+    banking_targets: 27 (weight=4.8, contribution=129.60)
+    notifications: 20 (weight=1.8, contribution=36.00)
+    crypto: 16 (weight=3.2, contribution=51.20)
+    network: 11 (weight=4.8, contribution=52.80)
+    file_operations: 9 (weight=2.4, contribution=21.60)
+    sqlite: 8 (weight=3.0, contribution=24.00)
+    analytics: 7 (weight=1.8, contribution=12.60)
+    c2_communication: 7 (weight=5.8, contribution=40.60)
+    dynamic: 6 (weight=6.4, contribution=38.40)
+    reflection: 6 (weight=3.4, contribution=20.40)
+    background_ops: 5 (weight=2.2, contribution=11.00)
+    native_code: 5 (weight=2.6, contribution=13.00)
+    content_provider: 5 (weight=3.2, contribution=16.00)
+    webview: 4 (weight=1.0, contribution=4.00)
+    contacts: 4 (weight=3.4, contribution=13.60)
+    bluetooth: 4 (weight=1.8, contribution=7.20)
+    shared_prefs: 4 (weight=2.2, contribution=8.80)
+    obfuscation: 3 (weight=5.0, contribution=15.00)
+    keylogging: 3 (weight=6.6, contribution=19.80)
+    location: 2 (weight=4.0, contribution=8.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    telephony: 1 (weight=5.2, contribution=5.20)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    sensor: 1 (weight=3.0, contribution=3.00)
+    package_info: 1 (weight=2.0, contribution=2.00)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 4 (weight=5.2, contribution=20.80)
+    file_operations: 2 (weight=2.4, contribution=4.80)
+    background_ops: 2 (weight=2.2, contribution=4.40)
+
+  Suspicous API Combinations: 67.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=21.7890, K=100.0, a=0.07) -> 82.1307
+
+================================================================================
+APK: 00004B1AD1C90DE0B274065019BED0EC5297DC22F5D791C48BCBE10174114036.apk
+  N=6026, E=32543, size=9103.79KB, is_packed=False
+  sem_normed=52.8911
+  structural=12.8096
+  bonus=78.5739
+  Semantic Risk=0.5100
+  mult=0.85
+  total_raw_unnormalized=144.2746 * 0.85 = 122.6334
+  normalization_factor=8.7038
+  total_raw_normalized=14.0896
+
+  Benign Library Hits: Weighted ratio = 50.40%
+  FINAL total_raw=14.0896
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    adware: 23 (weight=2.6, contribution=59.80)
+    shell_exec: 13 (weight=6.2, contribution=80.60)
+    network: 9 (weight=4.8, contribution=43.20)
+    crypto: 8 (weight=3.2, contribution=25.60)
+    file_operations: 7 (weight=2.4, contribution=16.80)
+    c2_communication: 6 (weight=5.8, contribution=34.80)
+    background_ops: 5 (weight=2.2, contribution=11.00)
+    banking_targets: 5 (weight=4.8, contribution=24.00)
+    accessibility: 5 (weight=6.0, contribution=30.00)
+    modern_libs: 4 (weight=-1.2, contribution=-4.80)
+    webview: 4 (weight=1.0, contribution=4.00)
+    dynamic: 3 (weight=6.4, contribution=19.20)
+    reflection: 3 (weight=3.4, contribution=10.20)
+    notifications: 3 (weight=1.8, contribution=5.40)
+    sqlite: 3 (weight=3.0, contribution=9.00)
+    analytics: 3 (weight=1.8, contribution=5.40)
+    shared_prefs: 3 (weight=2.2, contribution=6.60)
+    location: 2 (weight=4.0, contribution=8.00)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    content_provider: 2 (weight=3.2, contribution=6.40)
+    telephony: 1 (weight=5.2, contribution=5.20)
+    camera_capture: 1 (weight=4.0, contribution=4.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    native_code: 1 (weight=2.6, contribution=2.60)
+    keylogging: 1 (weight=6.6, contribution=6.60)
+    contacts: 1 (weight=3.4, contribution=3.40)
+    sensor: 1 (weight=3.0, contribution=3.00)
+    package_info: 1 (weight=2.0, contribution=2.00)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 4 (weight=5.2, contribution=20.80)
+    background_ops: 2 (weight=2.2, contribution=4.40)
+    camera_capture: 1 (weight=4.0, contribution=4.00)
+    overlay: 1 (weight=6.1, contribution=6.10)
+
+  Suspicous API Combinations: 66.0 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Location + (Camera|Microphone) + Exfiltration (Surveillance) (+1.5)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'Lokasyon-based gözetleme + Veri sızdırma (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Konum + Kamera: Stalkerware/Gözetleme uygulaması (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=14.0896, K=100.0, a=0.07) -> 72.8351
+
+================================================================================
+APK: 00005F2C67583207D2E7DCA433EC087C04FD7043E4EBF1282BCE7BFE78221C09.apk
+  N=11998, E=48204, size=6751.91KB, is_packed=False
+  sem_normed=252.0219
+  structural=11.9078
+  bonus=79.8526
+  Semantic Risk=0.5930
+  mult=0.85
+  total_raw_unnormalized=343.7823 * 0.85 = 292.2149
+  normalization_factor=9.3925
+  total_raw_normalized=31.1115
+
+  Benign Library Hits: Weighted ratio = 26.52%
+  FINAL total_raw=31.1115
+
+  Graf Kategorileri (counts_g):
+    network: 60 (weight=4.8, contribution=288.00)
+    banking_targets: 60 (weight=4.8, contribution=288.00)
+    accessibility: 60 (weight=6.0, contribution=360.00)
+    shell_exec: 60 (weight=6.2, contribution=372.00)
+    analytics: 60 (weight=1.8, contribution=108.00)
+    crypto: 46 (weight=3.2, contribution=147.20)
+    notifications: 38 (weight=1.8, contribution=68.40)
+    sqlite: 25 (weight=3.0, contribution=75.00)
+    reflection: 20 (weight=3.4, contribution=68.00)
+    dynamic: 19 (weight=6.4, contribution=121.60)
+    file_operations: 17 (weight=2.4, contribution=40.80)
+    c2_communication: 15 (weight=5.8, contribution=87.00)
+    background_ops: 11 (weight=2.2, contribution=24.20)
+    benign_ui: 10 (weight=-1.6, contribution=-16.00)
+    modern_libs: 10 (weight=-1.2, contribution=-12.00)
+    adware: 6 (weight=2.6, contribution=15.60)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    shared_prefs: 5 (weight=2.2, contribution=11.00)
+    content_provider: 5 (weight=3.2, contribution=16.00)
+    exfiltration: 4 (weight=7.0, contribution=28.00)
+    obfuscation: 3 (weight=5.0, contribution=15.00)
+    native_code: 3 (weight=2.6, contribution=7.80)
+    webview: 3 (weight=1.0, contribution=3.00)
+    contacts: 3 (weight=3.4, contribution=10.20)
+    intent_hijacking: 3 (weight=3.1, contribution=9.30)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    location: 2 (weight=4.0, contribution=8.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    bluetooth: 2 (weight=1.8, contribution=3.60)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    data_theft: 2 (weight=6.8, contribution=13.60)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    sensor: 1 (weight=3.0, contribution=3.00)
+    account: 1 (weight=3.2, contribution=3.20)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+
+  Manifest Kategorileri (counts_m):
+    background_ops: 1 (weight=2.2, contribution=2.20)
+    dangerous_permissions: 1 (weight=5.2, contribution=5.20)
+
+  Suspicous API Combinations: 67.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=31.1115, K=100.0, a=0.07) -> 89.8239
+
+================================================================================
+APK: 00007FD584782D0EDD8B503971D89572889AA4711AF6518CCB521CE63A11D855.apk
+  N=5175, E=18063, size=11812.7KB, is_packed=False
+  sem_normed=132.2181
+  structural=12.1034
+  bonus=75.1831
+  Semantic Risk=0.6580
+  mult=0.90
+  total_raw_unnormalized=219.5046 * 0.90 = 197.5541
+  normalization_factor=8.5516
+  total_raw_normalized=23.1014
+
+  Benign Library Hits: Weighted ratio = 8.04%
+  FINAL total_raw=23.1014
+
+  Graf Kategorileri (counts_g):
+    notifications: 60 (weight=1.8, contribution=108.00)
+    banking_targets: 52 (weight=4.8, contribution=249.60)
+    shell_exec: 38 (weight=6.2, contribution=235.60)
+    benign_ui: 10 (weight=-1.6, contribution=-16.00)
+    file_operations: 10 (weight=2.4, contribution=24.00)
+    background_ops: 9 (weight=2.2, contribution=19.80)
+    network: 9 (weight=4.8, contribution=43.20)
+    reflection: 9 (weight=3.4, contribution=30.60)
+    crypto: 7 (weight=3.2, contribution=22.40)
+    dynamic: 7 (weight=6.4, contribution=44.80)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    content_provider: 5 (weight=3.2, contribution=16.00)
+    webview: 4 (weight=1.0, contribution=4.00)
+    contacts: 3 (weight=3.4, contribution=10.20)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    location: 2 (weight=4.0, contribution=8.00)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=6.0, contribution=12.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    sqlite: 2 (weight=3.0, contribution=6.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    bluetooth: 1 (weight=1.8, contribution=1.80)
+    shared_prefs: 1 (weight=2.2, contribution=2.20)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+    adware: 1 (weight=2.6, contribution=2.60)
+
+  Manifest Kategorileri (counts_m):
+    file_operations: 2 (weight=2.4, contribution=4.80)
+    dangerous_permissions: 2 (weight=5.2, contribution=10.40)
+
+  Suspicous API Combinations: 59.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=23.1014, K=100.0, a=0.07) -> 83.4395
+
+================================================================================
+APK: 0000C6F3AB9F6005F4F266CB58E9746B934F783DCBE894CC79D720AB88004F2E.apk
+  N=6708, E=24357, size=6849.64KB, is_packed=False
+  sem_normed=182.4424
+  structural=11.8531
+  bonus=75.1754
+  Semantic Risk=0.6330
+  mult=0.85
+  total_raw_unnormalized=269.4709 * 0.85 = 229.0502
+  normalization_factor=8.8111
+  total_raw_normalized=25.9958
+
+  Benign Library Hits: Weighted ratio = 15.01%
+  FINAL total_raw=25.9958
+
+  Graf Kategorileri (counts_g):
+    accessibility: 60 (weight=6.0, contribution=360.00)
+    shell_exec: 60 (weight=6.2, contribution=372.00)
+    banking_targets: 48 (weight=4.8, contribution=230.40)
+    notifications: 40 (weight=1.8, contribution=72.00)
+    dynamic: 13 (weight=6.4, contribution=83.20)
+    reflection: 13 (weight=3.4, contribution=44.20)
+    background_ops: 11 (weight=2.2, contribution=24.20)
+    benign_ui: 10 (weight=-1.6, contribution=-16.00)
+    modern_libs: 10 (weight=-1.2, contribution=-12.00)
+    file_operations: 9 (weight=2.4, contribution=21.60)
+    network: 7 (weight=4.8, contribution=33.60)
+    content_provider: 6 (weight=3.2, contribution=19.20)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    crypto: 4 (weight=3.2, contribution=12.80)
+    contacts: 4 (weight=3.4, contribution=13.60)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    location: 2 (weight=4.0, contribution=8.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    bluetooth: 2 (weight=1.8, contribution=3.60)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    sqlite: 2 (weight=3.0, contribution=6.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    obfuscation: 1 (weight=5.0, contribution=5.00)
+    webview: 1 (weight=1.0, contribution=1.00)
+    shared_prefs: 1 (weight=2.2, contribution=2.20)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 2 (weight=5.2, contribution=10.40)
+    background_ops: 1 (weight=2.2, contribution=2.20)
+    overlay: 1 (weight=6.1, contribution=6.10)
+
+  Suspicous API Combinations: 59.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=25.9958, K=100.0, a=0.07) -> 86.0531
+
+================================================================================
+APK: 0000DB9E6E7072E77C8DF199A2F49427CAB7B837E650112D4D37B4331D95644E.apk
+  N=12448, E=46448, size=15283.13KB, is_packed=False
+  sem_normed=174.1757
+  structural=11.8629
+  bonus=79.7643
+  Semantic Risk=0.5000
+  mult=0.90
+  total_raw_unnormalized=265.8029 * 0.90 = 239.2226
+  normalization_factor=9.4293
+  total_raw_normalized=25.3701
+
+  Benign Library Hits: Weighted ratio = 53.20%
+  FINAL total_raw=25.3701
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    modern_libs: 50 (weight=-1.2, contribution=-60.00)
+    location: 40 (weight=4.0, contribution=160.00)
+    network: 40 (weight=4.8, contribution=192.00)
+    banking_targets: 40 (weight=4.8, contribution=192.00)
+    accessibility: 40 (weight=6.0, contribution=240.00)
+    notifications: 40 (weight=1.8, contribution=72.00)
+    shell_exec: 40 (weight=6.2, contribution=248.00)
+    crypto: 23 (weight=3.2, contribution=73.60)
+    sqlite: 17 (weight=3.0, contribution=51.00)
+    file_operations: 16 (weight=2.4, contribution=38.40)
+    c2_communication: 16 (weight=5.8, contribution=92.80)
+    background_ops: 13 (weight=2.2, contribution=28.60)
+    reflection: 11 (weight=3.4, contribution=37.40)
+    dynamic: 10 (weight=6.4, contribution=64.00)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    content_provider: 5 (weight=3.2, contribution=16.00)
+    native_code: 4 (weight=2.6, contribution=10.40)
+    intent_hijacking: 4 (weight=3.1, contribution=12.40)
+    webview: 3 (weight=1.0, contribution=3.00)
+    contacts: 3 (weight=3.4, contribution=10.20)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    sensor: 2 (weight=3.0, contribution=6.00)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    shared_prefs: 2 (weight=2.2, contribution=4.40)
+    exfiltration: 2 (weight=7.0, contribution=14.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    bluetooth: 1 (weight=1.8, contribution=1.80)
+    account: 1 (weight=3.2, contribution=3.20)
+    analytics: 1 (weight=1.8, contribution=1.80)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 3 (weight=5.2, contribution=15.60)
+    file_operations: 1 (weight=2.4, contribution=2.40)
+    microphone_capture: 1 (weight=4.0, contribution=4.00)
+    background_ops: 1 (weight=2.2, contribution=2.20)
+
+  Suspicous API Combinations: 67.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=25.3701, K=100.0, a=0.07) -> 85.5191
+
+================================================================================
+APK: 0001032CBBAF09D805956B316F2CF23BA324A6A687B16CDDC0DE104E85C9D471.apk
+  N=27524, E=116467, size=19523.05KB, is_packed=False
+  sem_normed=249.0429
+  structural=12.9266
+  bonus=88.4425
+  Semantic Risk=0.5040
+  mult=0.90
+  total_raw_unnormalized=350.4120 * 0.90 = 315.3708
+  normalization_factor=10.2228
+  total_raw_normalized=30.8497
+
+  Benign Library Hits: Weighted ratio = 51.87%
+  FINAL total_raw=30.8497
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    modern_libs: 50 (weight=-1.2, contribution=-60.00)
+    crypto: 40 (weight=3.2, contribution=128.00)
+    network: 40 (weight=4.8, contribution=192.00)
+    native_code: 40 (weight=2.6, contribution=104.00)
+    banking_targets: 40 (weight=4.8, contribution=192.00)
+    accessibility: 40 (weight=6.0, contribution=240.00)
+    notifications: 40 (weight=1.8, contribution=72.00)
+    contacts: 40 (weight=3.4, contribution=136.00)
+    shell_exec: 40 (weight=6.2, contribution=248.00)
+    sqlite: 40 (weight=3.0, contribution=120.00)
+    content_provider: 40 (weight=3.2, contribution=128.00)
+    exfiltration: 40 (weight=7.0, contribution=280.00)
+    c2_communication: 40 (weight=5.8, contribution=232.00)
+    file_operations: 34 (weight=2.4, contribution=81.60)
+    reflection: 24 (weight=3.4, contribution=81.60)
+    dynamic: 23 (weight=6.4, contribution=147.20)
+    background_ops: 16 (weight=2.2, contribution=35.20)
+    bluetooth: 13 (weight=1.8, contribution=23.40)
+    shared_prefs: 10 (weight=2.2, contribution=22.00)
+    emulator_detection: 10 (weight=5.0, contribution=50.00)
+    microphone_capture: 6 (weight=4.0, contribution=24.00)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    intent_hijacking: 5 (weight=3.1, contribution=15.50)
+    obfuscation: 4 (weight=5.0, contribution=20.00)
+    webview: 4 (weight=1.0, contribution=4.00)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    location: 2 (weight=4.0, contribution=8.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    sensor: 2 (weight=3.0, contribution=6.00)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    classloader_manipulation: 2 (weight=6.4, contribution=12.80)
+    ui_injection: 2 (weight=4.4, contribution=8.80)
+    data_theft: 2 (weight=6.8, contribution=13.60)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    nfc: 1 (weight=1.6, contribution=1.60)
+    analytics: 1 (weight=1.8, contribution=1.80)
+    adware: 1 (weight=2.6, contribution=2.60)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 13 (weight=5.2, contribution=67.60)
+    background_ops: 3 (weight=2.2, contribution=6.60)
+    admin_operations: 2 (weight=6.2, contribution=12.40)
+    file_operations: 2 (weight=2.4, contribution=4.80)
+    device_info: 2 (weight=3.6, contribution=7.20)
+    location: 1 (weight=4.0, contribution=4.00)
+    camera_capture: 1 (weight=4.0, contribution=4.00)
+    microphone_capture: 1 (weight=4.0, contribution=4.00)
+    overlay: 1 (weight=6.1, contribution=6.10)
+
+  Suspicous API Combinations: 91.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: Admin + Crypto (Ransomware/privilege chain) (+2.0)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Location + Camera + Microphone + Exfiltration (STALKERWARE) (+2.5)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'VERY_HIGH: Crypto + Exfiltration + Admin (Data Ransom) (+2.0)', 'HIGH: Location + (Camera|Microphone) + Exfiltration (Surveillance) (+1.5)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'ULTIMATE STALKERWARE: Full surveillance + Contact data (+4.0)', 'Complete input interception system (+4.0)', 'FULL SURVEILLANCE: Konum + Kamera + Mikrofon + Sızdırma (+3.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'STALKERWARE: Konum + Kamera + Mikrofon gözetleme (+2.0)', 'Lokasyon-based gözetleme + Veri sızdırma (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Audio surveillance + Lokasyon tracking (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Cihaz yöneticisi yetkisiyle şifreleme (Ransomware riski) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Cihaz yöneticisi yetkileriyle ağ iletişimi (+1.5)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Konum + Kamera: Stalkerware/Gözetleme uygulaması (+1.0)', 'Ses kaydı + Veri sızdırma: Dinleme trojanı (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=30.8497, K=100.0, a=0.07) -> 89.6551
+
+================================================================================
+APK: 00010538602CF43DD24361AA20692ACC890C339FC46D78C35ABEC35491297522.apk
+  N=7041, E=24540, size=11089.08KB, is_packed=False
+  sem_normed=199.2012
+  structural=12.5933
+  bonus=79.3500
+  Semantic Risk=0.5880
+  mult=0.90
+  total_raw_unnormalized=291.1444 * 0.90 = 262.0300
+  normalization_factor=8.8595
+  total_raw_normalized=29.5761
+
+  Benign Library Hits: Weighted ratio = 28.06%
+  FINAL total_raw=29.5761
+
+  Graf Kategorileri (counts_g):
+    location: 60 (weight=4.0, contribution=240.00)
+    native_code: 60 (weight=2.6, contribution=156.00)
+    notifications: 60 (weight=1.8, contribution=108.00)
+    shell_exec: 60 (weight=6.2, contribution=372.00)
+    banking_targets: 53 (weight=4.8, contribution=254.40)
+    file_operations: 15 (weight=2.4, contribution=36.00)
+    content_provider: 12 (weight=3.2, contribution=38.40)
+    background_ops: 11 (weight=2.2, contribution=24.20)
+    sqlite: 11 (weight=3.0, contribution=33.00)
+    benign_ui: 10 (weight=-1.6, contribution=-16.00)
+    network: 9 (weight=4.8, contribution=43.20)
+    crypto: 7 (weight=3.2, contribution=22.40)
+    reflection: 7 (weight=3.4, contribution=23.80)
+    dynamic: 6 (weight=6.4, contribution=38.40)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    webview: 4 (weight=1.0, contribution=4.00)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=6.0, contribution=12.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    contacts: 2 (weight=3.4, contribution=6.80)
+    sensor: 2 (weight=3.0, contribution=6.00)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    bluetooth: 1 (weight=1.8, contribution=1.80)
+    shared_prefs: 1 (weight=2.2, contribution=2.20)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+    adware: 1 (weight=2.6, contribution=2.60)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 3 (weight=5.2, contribution=15.60)
+    background_ops: 2 (weight=2.2, contribution=4.40)
+    file_operations: 1 (weight=2.4, contribution=2.40)
+
+  Suspicous API Combinations: 67.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=29.5761, K=100.0, a=0.07) -> 88.7986
+
+================================================================================
+APK: 000141D0BA248BF203A1AE653DF7596DA67F0CC40C2874BE02F8FC63BF0DD94F.apk
+  N=19297, E=94911, size=9314.4KB, is_packed=False
+  sem_normed=307.8034
+  structural=14.2722
+  bonus=83.1516
+  Semantic Risk=0.6160
+  mult=0.85
+  total_raw_unnormalized=405.2272 * 0.85 = 344.4431
+  normalization_factor=9.8677
+  total_raw_normalized=34.9061
+
+  Benign Library Hits: Weighted ratio = 20.01%
+  FINAL total_raw=34.9061
+
+  Graf Kategorileri (counts_g):
+    crypto: 60 (weight=3.2, contribution=192.00)
+    dynamic: 60 (weight=6.4, contribution=384.00)
+    location: 60 (weight=4.0, contribution=240.00)
+    network: 60 (weight=4.8, contribution=288.00)
+    reflection: 60 (weight=3.4, contribution=204.00)
+    banking_targets: 60 (weight=4.8, contribution=288.00)
+    notifications: 60 (weight=1.8, contribution=108.00)
+    contacts: 60 (weight=3.4, contribution=204.00)
+    shell_exec: 60 (weight=6.2, contribution=372.00)
+    sqlite: 60 (weight=3.0, contribution=180.00)
+    content_provider: 60 (weight=3.2, contribution=192.00)
+    shared_prefs: 40 (weight=2.2, contribution=88.00)
+    background_ops: 20 (weight=2.2, contribution=44.00)
+    keylogging: 18 (weight=6.6, contribution=118.80)
+    bluetooth: 12 (weight=1.8, contribution=21.60)
+    file_operations: 11 (weight=2.4, contribution=26.40)
+    benign_ui: 10 (weight=-1.6, contribution=-16.00)
+    native_code: 10 (weight=2.6, contribution=26.00)
+    modern_libs: 10 (weight=-1.2, contribution=-12.00)
+    intent_hijacking: 5 (weight=3.1, contribution=15.50)
+    adware: 5 (weight=2.6, contribution=13.00)
+    exfiltration: 4 (weight=7.0, contribution=28.00)
+    telephony: 3 (weight=5.2, contribution=15.60)
+    anti_debug: 3 (weight=5.1, contribution=15.30)
+    emulator_detection: 3 (weight=5.0, contribution=15.00)
+    device_info: 2 (weight=3.6, contribution=7.20)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    accessibility: 2 (weight=6.0, contribution=12.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    sensor: 2 (weight=3.0, contribution=6.00)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    webview: 1 (weight=1.0, contribution=1.00)
+    screenshot: 1 (weight=4.2, contribution=4.20)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    background_ops: 3 (weight=2.2, contribution=6.60)
+    dangerous_permissions: 3 (weight=5.2, contribution=15.60)
+
+  Suspicous API Combinations: 75.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Native + AntiDebug + Obfuscation + Dynamic (Advanced Evasion) (+1.0)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Maximum evasion: Full anti-analysis stack (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Advanced evasion: Native + AntiDebug + Obfuscation (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Ekran görüntüsü alıp dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Anti-debug + Obfuscation: Analiz karşıtı (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=34.9061, K=100.0, a=0.07) -> 92.0079
+
+================================================================================
+APK: 00015848870686A7477F1212280915A98EF977108445C1CD8A3A2A76539428B1.apk
+  N=13907, E=50956, size=6426.42KB, is_packed=False
+  sem_normed=145.1064
+  structural=12.8766
+  bonus=79.6407
+  Semantic Risk=0.4890
+  mult=0.85
+  total_raw_unnormalized=237.6237 * 0.85 = 201.9801
+  normalization_factor=9.5401
+  total_raw_normalized=21.1716
+
+  Benign Library Hits: Weighted ratio = 56.15%
+  FINAL total_raw=21.1716
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    modern_libs: 50 (weight=-1.2, contribution=-60.00)
+    banking_targets: 40 (weight=4.8, contribution=192.00)
+    accessibility: 40 (weight=6.0, contribution=240.00)
+    shell_exec: 40 (weight=6.2, contribution=248.00)
+    adware: 40 (weight=2.6, contribution=104.00)
+    notifications: 38 (weight=1.8, contribution=68.40)
+    dynamic: 15 (weight=6.4, contribution=96.00)
+    file_operations: 14 (weight=2.4, contribution=33.60)
+    reflection: 14 (weight=3.4, contribution=47.60)
+    native_code: 14 (weight=2.6, contribution=36.40)
+    crypto: 13 (weight=3.2, contribution=41.60)
+    background_ops: 12 (weight=2.2, contribution=26.40)
+    content_provider: 12 (weight=3.2, contribution=38.40)
+    network: 11 (weight=4.8, contribution=52.80)
+    contacts: 10 (weight=3.4, contribution=34.00)
+    bluetooth: 10 (weight=1.8, contribution=18.00)
+    sqlite: 8 (weight=3.0, contribution=24.00)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    webview: 4 (weight=1.0, contribution=4.00)
+    shared_prefs: 4 (weight=2.2, contribution=8.80)
+    intent_hijacking: 3 (weight=3.1, contribution=9.30)
+    telephony: 2 (weight=5.2, contribution=10.40)
+    location: 2 (weight=4.0, contribution=8.00)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    sensor: 2 (weight=3.0, contribution=6.00)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    background_ops: 2 (weight=2.2, contribution=4.40)
+    dangerous_permissions: 2 (weight=5.2, contribution=10.40)
+
+  Suspicous API Combinations: 67.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=21.1716, K=100.0, a=0.07) -> 81.4876
+
+================================================================================
+APK: 00017947DFF8CFCCFEBC9AD5C761F2B6E2693DE66A53463E0A7F20CE20BF3123.apk
+  N=19045, E=83688, size=9038.95KB, is_packed=False
+  sem_normed=211.4061
+  structural=13.1826
+  bonus=88.4764
+  Semantic Risk=0.6390
+  mult=0.85
+  total_raw_unnormalized=313.0651 * 0.85 = 266.1053
+  normalization_factor=9.8546
+  total_raw_normalized=27.0033
+
+  Benign Library Hits: Weighted ratio = 13.44%
+  FINAL total_raw=27.0033
+
+  Graf Kategorileri (counts_g):
+    network: 60 (weight=4.8, contribution=288.00)
+    accessibility: 60 (weight=6.0, contribution=360.00)
+    shell_exec: 60 (weight=6.2, contribution=372.00)
+    c2_communication: 60 (weight=5.8, contribution=348.00)
+    banking_targets: 27 (weight=4.8, contribution=129.60)
+    crypto: 22 (weight=3.2, contribution=70.40)
+    native_code: 19 (weight=2.6, contribution=49.40)
+    dynamic: 18 (weight=6.4, contribution=115.20)
+    anti_debug: 15 (weight=5.1, contribution=76.50)
+    benign_ui: 10 (weight=-1.6, contribution=-16.00)
+    camera_capture: 10 (weight=4.0, contribution=40.00)
+    modern_libs: 10 (weight=-1.2, contribution=-12.00)
+    file_operations: 7 (weight=2.4, contribution=16.80)
+    reflection: 6 (weight=3.4, contribution=20.40)
+    analytics: 5 (weight=1.8, contribution=9.00)
+    background_ops: 4 (weight=2.2, contribution=8.80)
+    webview: 4 (weight=1.0, contribution=4.00)
+    sqlite: 4 (weight=3.0, contribution=12.00)
+    shared_prefs: 4 (weight=2.2, contribution=8.80)
+    content_provider: 4 (weight=3.2, contribution=12.80)
+    obfuscation: 3 (weight=5.0, contribution=15.00)
+    notifications: 3 (weight=1.8, contribution=5.40)
+    contacts: 3 (weight=3.4, contribution=10.20)
+    location: 2 (weight=4.0, contribution=8.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    keylogging: 2 (weight=6.6, contribution=13.20)
+    screenshot: 2 (weight=4.2, contribution=8.40)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    bluetooth: 2 (weight=1.8, contribution=3.60)
+    telephony: 1 (weight=5.2, contribution=5.20)
+    microphone_capture: 1 (weight=4.0, contribution=4.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    sensor: 1 (weight=3.0, contribution=3.00)
+    account: 1 (weight=3.2, contribution=3.20)
+    package_info: 1 (weight=2.0, contribution=2.00)
+    intent_hijacking: 1 (weight=3.1, contribution=3.10)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    exfiltration: 1 (weight=7.0, contribution=7.00)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 8 (weight=5.2, contribution=41.60)
+    background_ops: 3 (weight=2.2, contribution=6.60)
+    telephony: 1 (weight=5.2, contribution=5.20)
+    camera_capture: 1 (weight=4.0, contribution=4.00)
+    microphone_capture: 1 (weight=4.0, contribution=4.00)
+    network: 1 (weight=4.8, contribution=4.80)
+    overlay: 1 (weight=6.1, contribution=6.10)
+
+  Suspicous API Combinations: 93.0 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Location + Camera + Microphone + Exfiltration (STALKERWARE) (+2.5)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'HIGH: Native + AntiDebug + Obfuscation + Dynamic (Advanced Evasion) (+1.0)', 'HIGH: Location + (Camera|Microphone) + Exfiltration (Surveillance) (+1.5)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'ULTIMATE STALKERWARE: Full surveillance + Contact data (+4.0)', 'Complete input interception system (+4.0)', 'FULL SURVEILLANCE: Konum + Kamera + Mikrofon + Sızdırma (+3.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Maximum evasion: Full anti-analysis stack (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'STALKERWARE: Konum + Kamera + Mikrofon gözetleme (+2.0)', 'Lokasyon-based gözetleme + Veri sızdırma (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Advanced evasion: Native + AntiDebug + Obfuscation (+2.0)', 'Audio surveillance + Lokasyon tracking (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Ekran görüntüsü alıp dışarı sızdırma (Spyware) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Konum + Kamera: Stalkerware/Gözetleme uygulaması (+1.0)', 'Ses kaydı + Veri sızdırma: Dinleme trojanı (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Anti-debug + Obfuscation: Analiz karşıtı (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=27.0033, K=100.0, a=0.07) -> 86.8782
+
+================================================================================
+APK: 0001ACA2E80D16BEE8723BD59E674361392213D86FE1C70370F17AA80AE8BF27.apk
+  N=35547, E=143713, size=17982.59KB, is_packed=False
+  sem_normed=238.9759
+  structural=13.0158
+  bonus=84.4988
+  Semantic Risk=0.4630
+  mult=0.90
+  total_raw_unnormalized=336.4905 * 0.90 = 302.8415
+  normalization_factor=10.4786
+  total_raw_normalized=28.9009
+
+  Benign Library Hits: Weighted ratio = 63.67%
+  FINAL total_raw=28.9009
+
+  Graf Kategorileri (counts_g):
+    benign_ui: 50 (weight=-1.6, contribution=-80.00)
+    modern_libs: 50 (weight=-1.2, contribution=-60.00)
+    crypto: 40 (weight=3.2, contribution=128.00)
+    dynamic: 40 (weight=6.4, contribution=256.00)
+    location: 40 (weight=4.0, contribution=160.00)
+    network: 40 (weight=4.8, contribution=192.00)
+    reflection: 40 (weight=3.4, contribution=136.00)
+    native_code: 40 (weight=2.6, contribution=104.00)
+    banking_targets: 40 (weight=4.8, contribution=192.00)
+    accessibility: 40 (weight=6.0, contribution=240.00)
+    notifications: 40 (weight=1.8, contribution=72.00)
+    contacts: 40 (weight=3.4, contribution=136.00)
+    shell_exec: 40 (weight=6.2, contribution=248.00)
+    sqlite: 40 (weight=3.0, contribution=120.00)
+    content_provider: 40 (weight=3.2, contribution=128.00)
+    adware: 40 (weight=2.6, contribution=104.00)
+    bluetooth: 29 (weight=1.8, contribution=52.20)
+    analytics: 23 (weight=1.8, contribution=41.40)
+    background_ops: 21 (weight=2.2, contribution=46.20)
+    file_operations: 20 (weight=2.4, contribution=48.00)
+    c2_communication: 15 (weight=5.8, contribution=87.00)
+    webview: 11 (weight=1.0, contribution=11.00)
+    exfiltration: 10 (weight=7.0, contribution=70.00)
+    shared_prefs: 7 (weight=2.2, contribution=15.40)
+    intent_hijacking: 6 (weight=3.1, contribution=18.60)
+    keylogging: 5 (weight=6.6, contribution=33.00)
+    telephony: 3 (weight=5.2, contribution=15.60)
+    sensor: 3 (weight=3.0, contribution=9.00)
+    obfuscation: 2 (weight=5.0, contribution=10.00)
+    overlay: 2 (weight=6.1, contribution=12.20)
+    clipboard: 2 (weight=4.2, contribution=8.40)
+    package_info: 2 (weight=2.0, contribution=4.00)
+    permissions: 2 (weight=1.0, contribution=2.00)
+    device_info: 1 (weight=3.6, contribution=3.60)
+    account: 1 (weight=3.2, contribution=3.20)
+    classloader_manipulation: 1 (weight=6.4, contribution=6.40)
+    data_theft: 1 (weight=6.8, contribution=6.80)
+
+  Manifest Kategorileri (counts_m):
+    dangerous_permissions: 10 (weight=5.2, contribution=52.00)
+    background_ops: 3 (weight=2.2, contribution=6.60)
+    admin_operations: 2 (weight=6.2, contribution=12.40)
+    file_operations: 2 (weight=2.4, contribution=4.80)
+    location: 2 (weight=4.0, contribution=8.00)
+    camera_capture: 1 (weight=4.0, contribution=4.00)
+
+  Suspicous API Combinations: 78.5 
+
+  Detected Combos: ['VERY_HIGH: Accessibility + Overlay + BankingTargets (+2.5)', 'VERY_HIGH: Admin + Crypto (Ransomware/privilege chain) (+2.0)', 'VERY_HIGH: DynamicCode + ShellExec (Dynamic loader + shell) (+1)', 'VERY_HIGH: Clipboard + Notifications + Accessibility + C2 (2FA Bypass) (+2.0)', 'VERY_HIGH: WebView + Overlay + Keylogging + Exfiltration (Web Phishing) (+1)', 'VERY_HIGH: Crypto + Exfiltration + Admin (Data Ransom) (+2.0)', 'HIGH: Location + (Camera|Microphone) + Exfiltration (Surveillance) (+1.5)', 'HIGH: Accessibility + Keylogging + Clipboard + C2 (Credential Theft) (+1.0)', 'MEDIUM: DynamicCode + (Accessibility|Keylogging) (+0.5)', 'MEDIUM: Obfuscation + DynamicCode (Packing) (+0.5)', 'MEDIUM: Crypto + C2 + Obfuscation (Hidden C2) (+0.5)', 'MEDIUM: Overlay + PackageInfo (Phishing Prep) (+0.5)', 'MEDIUM: (Contacts+SMS) | (Clipboard+Notifications) (Data Collection) (+0.5)', 'MEDIUM: Reflection + (Obfuscation|Native) (Evasion) (+0.5)', 'MEDIUM: VPN | (C2+Crypto) (Network Manipulation) (+0.5)', 'Complete input interception system (+4.0)', 'Advanced web phishing chain (+3.0)', 'Complete 2FA bypass chain (+3.0)', 'Targeted credential theft: App detection + Full input capture (+3.0)', 'IoT/Proximity-based tracking system (+3.0)', 'File stealing + Encryption + Exfiltration (+3.0)', 'Banking Trojan C2: Overlay + Accessibility + Komuta kontrol (+2.0)', 'Kimlik bilgisi hırsızlığı: Accessibility + Banking kelime + Network (+2.0)', 'Overlay attack + Kişi listesi çalma + Accessibility (+2.0)', 'Dinamik yükleme + Gizleme + Network (Gizli C2) (+2.0)', 'Lokasyon-based gözetleme + Veri sızdırma (+2.0)', 'WebView phishing + Overlay + Keylog (+2.0)', '2FA/OTP bypass: Pano + Bildirim + Network (+2.0)', 'Hedefli keylogging: App detection + Accessibility (+2.0)', 'Proximity-based tracking + Veri çalma (+2.0)', 'WebView download + File access + Sızdırma (+2.0)', 'Davranış profilleme: Sensör + Konum + C2 (+2.0)', 'Advanced packing: Reflection + Obfuscation + Dynamic loading (+2.0)', 'Erişilebilirlik ile arayüz bindirme (Phishing/Trojan) (+1.0)', 'Tuş vuruşlarını kaydedip dışarı sızdırma (Spyware) (+1.0)', 'Cihaz yöneticisi yetkisiyle şifreleme (Ransomware riski) (+1.0)', 'Kişi listesini çalıp dışarı sızdırma (Veri Hırsızlığı) (+1.0)', 'Bankacılık anahtar kelimeleri ile arayüz bindirme (Banking Trojan) (+1.0)', 'Yüklü uygulamaları kontrol edip arayüz bindirme (Hedefli Phishing) (+1.0)', 'Cihaz yöneticisi yetkileriyle ağ iletişimi (+1.5)', 'Şifrelenmiş ağ iletişimi (C2/Komuta Kontrol olabilir) (+1.0)', 'Reflection ve native kod kullanımı (Gizlenme/Obfuscation) (+1.0)', 'Konum + Kamera: Stalkerware/Gözetleme uygulaması (+1.0)', 'Pano okuma + Network: Şifre/Token hırsızlığı (+1.0)', 'WebView + Overlay: Web-based phishing attack (+1.0)', 'Bildirim okuma + Sızdırma: 2FA code theft (+1.0)', 'Native kod + Gizleme: Anti-analiz tekniği (+1.0)', 'Bluetooth + Sızdırma: Yakın cihazlara veri aktarımı (+1.0)', 'Sensör + Sızdırma: Davranış profili çıkarma (+1.0)'] 
+
+  Squash Function:
+    _squash(total_raw=28.9009, K=100.0, a=0.07) -> 88.3197

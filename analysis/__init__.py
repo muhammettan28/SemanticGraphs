@@ -7,7 +7,7 @@ module_name = "semantic_graphs"
 try:
     mod = importlib.import_module(f"analysis.{module_name}")
 except ModuleNotFoundError:
-    print(f"[FATAL] Modül bulunamadı: analysis/{module_name}.py", file=sys.stderr)
+    print(f"[FATAL] Modül bulunamadı: analysis.{module_name}.py", file=sys.stderr)
     sys.exit(1)
 
 build_fn = getattr(mod, "build_api_graph_compact", None)

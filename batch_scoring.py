@@ -72,14 +72,6 @@ def iter_dataset_apks(dataset_dir: Path, subset: str | None = None):
             yield p, 1
 
 
-"""def load_done_set(out_csv: Path):
-    #Önceden işlenmiş APK isimlerini döndür (resume desteği için).
-    if not out_csv.exists():
-        return set()
-    with out_csv.open("r", encoding="utf-8") as f:
-        next(f, None)
-        return {line.split(",")[0] for line in f}"""
-
 def is_valid_zip(path: Path) -> bool:
     """ZIP yapısını kontrol et."""
     try:

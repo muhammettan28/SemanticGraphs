@@ -8,3 +8,15 @@ analysis/.DS_Store
 *.graphml
 *.json
 /graph_files
+.venv/bin/python
+.venv/bin/python3
+.venv/bin/python3.12
+.venv/lib64
+.venv/pyvenv.cfg
+analysis/__init__.py
+analysis/__pycache__/suspicious_combinations.cpython-312.pyc
+analysis/__pycache__/semantic_graphs.cpython-312.pyc
+analysis/__pycache__/packing.cpython-312.pyc
+analysis/__pycache__/constants.cpython-312.pyc
+analysis/__pycache__/__init__.cpython-312.pyc
+report/__pycache__/debug_log.cpython-312.pyc
